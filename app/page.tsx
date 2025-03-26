@@ -4,23 +4,21 @@ import ItemsBlock from "@/app/ui/home/items-block";
 
 export default function Home() {
 	return (
-		<div>
+		<main>
 			<section>
 				<ItemsSlider />
 			</section>
-			<section>
-				<div className="m-6 flex flex-col justify-evenly items-center gap-6 md:flex-row">
-					<div className="flex flex-col gap-4 w-full">
-						<ItemsBlock cardTitle="Cool Items" />
-						<ItemsBlock cardTitle="Neat Clothes" />
-					</div>
-					<div className="flex flex-col gap-4 w-full">
-						<ItemsBlock cardTitle="For You" />
-						<ItemsBlock cardTitle="Hot Items" />
-					</div>
-				</div>
+			<section className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 grid-cols-6 grid-rows-2">
+				{/* <div className="m-6 flex flex-row flex-wrap justify-evenly items-center gap-6">
+					<ItemsBlock cardTitle="Cool Items" />
+					<ItemsBlock cardTitle="Neat Clothes" />
+
+					<ItemsBlock cardTitle="For You" />
+					<ItemsBlock cardTitle="Hot Items" />
+				</div> */}
+				{/* the item block is so ugly */}
 			</section>
-		</div>
+		</main>
 		// header w/ search DONE
 		// TODO: items section (3-4)
 		// fancy slider thing DONE
