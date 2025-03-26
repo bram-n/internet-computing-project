@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { inter } from "@/app/ui/fonts"
 import "@/app/ui/globals.css";
 import HeaderNav from "./ui/main/header-nav";
-import Head from "next/head";
 import Footer from "./ui/main/footer";
 
 export const metadata: Metadata = {
@@ -17,10 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} antialiased`}
-      >
-        {/* header here */}
+      <body className={`${inter.className} antialiased`}>
         <HeaderNav />
         {children}
         <Footer />

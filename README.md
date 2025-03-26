@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
-Note from Camden: I am using pnpm, which stands for Performative NPM. To install it, run
+Note from Camden: I am using pnpm, which stands for Performative NPM. It operates essentially the same as npm. To install it, run
 ```bash
 npm i -g pnpm
 ```
