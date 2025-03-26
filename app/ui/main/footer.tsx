@@ -4,7 +4,7 @@ import { buttonVariants } from "@/components/ui/button";
 
 const Footer = () => {
 	return (
-		<footer className="bottom-0 border-t border-neutral-500 ">
+		<footer className="bottom-0 border-t border-neutral-500 bg-white">
 			<div className="mx-auto flex flex-col w-full max-w-7xl gap-6 py-12 px-4 md:gap-12 md:px-4 md:flex-row">
 				<div className="">
 					<Link href="/" className="flex items-center gap-2 md:pt-1 uppercase">

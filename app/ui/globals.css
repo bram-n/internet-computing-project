@@ -44,6 +44,8 @@
   --radius-xl: calc(var(--radius) + 4px);
   --animate-wiggle: wiggle 1s ease-in-out infinite;
   --animate-carousel: marquee 60s linear infinite;
+  --container-8xl: 88rem;
+  
   @keyframes wiggle {
     0%,
     100% {

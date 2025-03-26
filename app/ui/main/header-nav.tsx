@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 
 const HeaderNav = () => {
 	return (
-		<nav className="relative flex items-center justify-between p-4 lg:px-6 border-b border-neutral-500 mb-6">
+		<nav className="relative flex items-center justify-between p-4 lg:px-6 border-b border-neutral-500 bg-white">
 			<div className="block flex-none md:hidden">
 				<MenuSheet />
 			</div>
