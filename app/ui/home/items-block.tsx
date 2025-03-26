@@ -20,15 +20,15 @@ const ItemsBlock = ({ cardTitle }: ItemsBlockProps) => {
 				<CardHeader>
 					<CardTitle>{ cardTitle }</CardTitle>
 				</CardHeader>
-				<CardContent>
-					<div className="flex flex-col gap-4">
+				<CardContent className="">
+					<div className="flex flex-col gap-4 xl:flex-row">
 						<div className="flex flex-row gap-4">
-							<div className="w-[120px] aspect-square bg-white border border-neutral-500 rounded-lg"></div>
-							<div className="w-[120px] aspect-square bg-white border border-neutral-500 rounded-lg"></div>
+							<div className="w-1/2 max-w-[150px] aspect-square bg-white border border-neutral-500 rounded-lg lg:w-[120px]"></div>
+							<div className="w-1/2 max-w-[150px] aspect-square bg-white border border-neutral-500 rounded-lg lg:w-[120px]"></div>
 						</div>
 						<div className="flex flex-row gap-4">
-							<div className="w-[120px] aspect-square bg-white border border-neutral-500 rounded-lg"></div>
-							<div className="w-[120px] aspect-square bg-white border border-neutral-500 rounded-lg"></div>
+							<div className="w-1/2 max-w-[150px] aspect-square bg-white border border-neutral-500 rounded-lg lg:w-[120px]"></div>
+							<div className="w-1/2 max-w-[150px] aspect-square bg-white border border-neutral-500 rounded-lg lg:w-[120px]"></div>
 						</div>
 					</div>
 				</CardContent>
