@@ -6,6 +6,14 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from "@/components/ui/carousel";
+
 import Link from "next/link";
 
 type ItemsBlockProps = {
@@ -21,27 +29,78 @@ const ItemsBlock = ({ cardTitle }: ItemsBlockProps) => {
 				<CardTitle>{cardTitle}</CardTitle>
 			</CardHeader>
 			<CardContent>
-				<div className="flex flex-col gap-4 xl:flex-row">
-					<div className="flex flex-row gap-4">
-						<div className="bg-white border border-neutral-500 rounded-lg">
-							<div className="w-auto min-w-30 h-30"></div>
-							<div className="w-30 h-10 border-t border-black"></div>
-						</div>
-						<div className="bg-white border border-neutral-500 rounded-lg">
-							<div className="w-auto min-w-30 h-30"></div>
-							<div className="w-30 h-10 border-t border-black"></div>
-						</div>
-					</div>
-					<div className="flex flex-row gap-4">
-						<div className="bg-white border border-neutral-500 rounded-lg">
-							<div className="w-auto min-w-30 h-30"></div>
-							<div className="w-30 h-10 border-t border-black"></div>
-						</div>
-						<div className="bg-white border border-neutral-500 rounded-lg">
-							<div className="w-auto min-w-30 h-30"></div>
-							<div className="w-30 h-10 border-t border-black"></div>
-						</div>
-					</div>
+				<div className="flex items-center justify-center">
+					<Carousel
+						opts={{
+							align: "start",
+						}}
+						className="max-w-sm sm:max-w-md md:max-w-[calc(100vw-200px)]"
+					>
+						<CarouselContent>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+						</CarouselContent>
+						<CarouselPrevious className="hidden sm:inline-flex" />
+						<CarouselNext className="hidden sm:inline-flex" />
+					</Carousel>
 				</div>
 			</CardContent>
 			<CardFooter>
