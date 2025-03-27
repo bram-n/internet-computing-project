@@ -4,7 +4,7 @@ import ItemsBlock from "./ui/home/items-block";
 
 export default function Home() {
 	return (
-		<main className="max-w-8xl flex flex-col justify-center mx-auto pt-6 bg-white">
+		<main className="max-w-8xl flex flex-col justify-center mx-auto pt-6 bg-white border-t border-neutral-500">
 			<section>
 				<div className="w-full mx-4 flex items-center justify-start mb-4">
 					<h2>Recommended Items</h2>

@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 const SliderItem = ({itemName, itemPrice}: { itemName: string, itemPrice: number }) => {
 	return (
 		<>
-			<a className="relative h-full w-full" href="/">
+			<Link className="relative h-full w-full" href="/">
 				<div className="group flex h-full w-full bg-white overflow-hidden relative border border-neutral-500 rounded-xl">
 					<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
 						<div className="flex items-center rounded-full border border-neutral-500 font-semibold text-xs p-1">
@@ -14,7 +16,7 @@ const SliderItem = ({itemName, itemPrice}: { itemName: string, itemPrice: number
 						</div>
 					</div>
 				</div>
-			</a>
+			</Link>
 		</>
 	);
 };

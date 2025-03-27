@@ -1,10 +1,11 @@
 import { Item } from "@/lib/types";
+import Link from "next/link";
 
 const FeaturedItems = ({ featuredItemList }: { featuredItemList: Item[] }) => {
 	return (
 		<div className="mt-4 mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-6 md:grid-rows-2 lg:max-h-[calc(100vh-200px)]">
 			<div className="md:col-span-4 md:row-span-2">
-				<a className="relative block aspect-square h-full w-full" href="/">
+				<Link className="relative block aspect-square h-full w-full" href="/">
 					<div className="h-full w-full relative items-center justify-center overflow-hidden border border-neutral-500 rounded-xl">
 						<div className="h-[710]"></div>
 						<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4 lg:px-20 lg:pb-[35%]">
@@ -18,10 +19,10 @@ const FeaturedItems = ({ featuredItemList }: { featuredItemList: Item[] }) => {
 							</div>
 						</div>
 					</div>
-				</a>
+				</Link>
 			</div>
 			<div className="md:col-span-2 md:row-span-1">
-				<a className="relative block aspect-square h-full w-full" href="/">
+				<Link className="relative block aspect-square h-full w-full" href="/">
 					<div className="h-full w-full relative items-center justify-center overflow-hidden border border-neutral-500 rounded-xl">
 						<div className="h-[710]"></div>
 						<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
@@ -35,10 +36,10 @@ const FeaturedItems = ({ featuredItemList }: { featuredItemList: Item[] }) => {
 							</div>
 						</div>
 					</div>
-				</a>
+				</Link>
 			</div>
 			<div className="md:col-span-2 md:row-span-1">
-				<a className="relative block aspect-square h-full w-full" href="/">
+				<Link className="relative block aspect-square h-full w-full" href="/">
 					<div className="h-full w-full relative items-center justify-center overflow-hidden border border-neutral-500 rounded-xl">
 						<div className="h-[710]"></div>
 						<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
@@ -52,7 +53,7 @@ const FeaturedItems = ({ featuredItemList }: { featuredItemList: Item[] }) => {
 							</div>
 						</div>
 					</div>
-				</a>
+				</Link>
 			</div>
 		</div>
 	);
