@@ -1,6 +1,13 @@
+'use client';
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 const CategorySidebar = () => {
+	const pathname = usePathname();
+	const pathExtension = pathname.split("/")[2] || "";
+	console.log(pathExtension);
 	return (
 			<nav>
 				<h3 className="font-semibold text-gray-600 text-sm">Categories</h3>
@@ -9,14 +16,15 @@ const CategorySidebar = () => {
 						<Link
 							href="/search"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className={clsx("hover:border-b hover:border-black")}
+							
 						>
 							All
 						</Link>
 					</li>
 					<li className="py-1 text-sm">
 						<Link
-							href="/search"
+							href="/search/things-1"
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
@@ -25,7 +33,7 @@ const CategorySidebar = () => {
 					</li>
 					<li className="py-1 text-sm">
 						<Link
-							href="/search"
+							href="/search/things-2"
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
@@ -34,7 +42,7 @@ const CategorySidebar = () => {
 					</li>
 					<li className="py-1 text-sm">
 						<Link
-							href="/search"
+							href="/search/things-3"
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
@@ -43,7 +51,7 @@ const CategorySidebar = () => {
 					</li>
 					<li className="py-1 text-sm">
 						<Link
-							href="/search"
+							href="/search/things-4"
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
@@ -52,7 +60,7 @@ const CategorySidebar = () => {
 					</li>
 					<li className="py-1 text-sm">
 						<Link
-							href="/search"
+							href="/search/things-5"
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
@@ -61,7 +69,7 @@ const CategorySidebar = () => {
 					</li>
 					<li className="py-1 text-sm">
 						<Link
-							href="/search"
+							href="/search/things-6"
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
@@ -70,7 +78,7 @@ const CategorySidebar = () => {
 					</li>
 					<li className="py-1 text-sm">
 						<Link
-							href="/search"
+							href="/search/things-7"
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
@@ -79,7 +87,7 @@ const CategorySidebar = () => {
 					</li>
 					<li className="py-1 text-sm">
 						<Link
-							href="/search"
+							href="/search/things-8"
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
@@ -88,7 +96,7 @@ const CategorySidebar = () => {
 					</li>
 					<li className="py-1 text-sm">
 						<Link
-							href="/search"
+							href="/search/things-9"
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
@@ -97,7 +105,7 @@ const CategorySidebar = () => {
 					</li>
 					<li className="py-1 text-sm">
 						<Link
-							href="/search"
+							href="/search/things-10"
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>

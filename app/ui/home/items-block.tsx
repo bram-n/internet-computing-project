@@ -34,66 +34,66 @@ const ItemsBlock = ({ cardTitle }: ItemsBlockProps) => {
 						opts={{
 							align: "start",
 						}}
-						className="max-w-sm sm:max-w-md md:max-w-[calc(100vw-200px)]"
+						className="max-w-sm sm:max-w-md md:max-w-[calc(100%-200px)]"
 					>
 						<CarouselContent>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-40 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>

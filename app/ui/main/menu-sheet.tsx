@@ -26,7 +26,7 @@ const MenuSheet = () => {
 			</SheetTrigger>
 			<SheetContent side="left" className="w-full">
 				<SheetHeader>
-					<SheetTitle>MacShop</SheetTitle>
+					<SheetTitle>3AM Movies</SheetTitle>
 				</SheetHeader>
 				<div className="p-4">
 					<div className="mb-4 w-full">

@@ -22,7 +22,7 @@ const HeaderNav = () => {
 							<House />
 						</div>
 						<div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
-							MacShop
+							3AM Movies
 						</div>
 					</Link>
 					<ul className="hidden md:flex flex-row gap-6 items-center justify-center">

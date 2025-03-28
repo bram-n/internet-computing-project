@@ -3,13 +3,13 @@ import SortSidebar from "@/app/ui/search/sort-sidebar";
 import CategorySelect from "@/app/ui/search/category-select";
 import SortSelect from "@/app/ui/search/sort-select";
 
-const Search = () => {
+const Category = () => {
 
-	return (
+	return ( 
 		<main>
-
+			adsfadkfja;lsdkjf;alskdj
 		</main>
-	);
+	)
 
 	// return (
 	// 	<main>
@@ -22,7 +22,9 @@ const Search = () => {
 	// 					<CategorySidebar />
 	// 				</div>
 	// 			</div>
-	// 			<div className="order-last min-h-screen w-full md:order-none"></div>
+	// 			<div className="order-last min-h-screen w-full md:order-none">
+	// 				aksjdf;laksjdf;lajsdfkla
+	// 			</div>
 	// 			<div className="order-none w-full flex-none md:max-w-[125px] md:order-last">
 	// 				<div className="block md:hidden">
 	// 					<SortSelect />
@@ -34,12 +36,12 @@ const Search = () => {
 	// 			</div>
 	// 		</div>
 	// 	</main>
-		// same header
-		// left side bar: item categories
-		// right side bar: cart icon, sorting
-		// same about
-		// same footer
+	// 	// same header
+	// 	// left side bar: item categories
+	// 	// right side bar: cart icon, sorting
+	// 	// same about
+	// 	// same footer
 	// );
 };
 
-export default Search;
+export default Category;

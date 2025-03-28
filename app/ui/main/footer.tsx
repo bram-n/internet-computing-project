@@ -8,7 +8,7 @@ const Footer = () => {
 			<div className="mx-auto flex flex-col w-full max-w-7xl gap-6 py-12 px-4 md:gap-12 md:px-4 md:flex-row">
 				<div className="">
 					<Link href="/" className="flex items-center gap-2 md:pt-1 uppercase">
-						MacShop
+						3AM Movies
 					</Link>
 				</div>
 				<nav>
