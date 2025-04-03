@@ -1,12 +1,12 @@
 import {
 	Sheet,
 	SheetTrigger,
-	SheetClose,
+	// SheetClose,
 	SheetContent,
 	SheetHeader,
-	SheetFooter,
+	// SheetFooter,
 	SheetTitle,
-	SheetDescription,
+	// SheetDescription,
 } from "@/components/ui/sheet";
 
 import { Label } from "@/components/ui/label";

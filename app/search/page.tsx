@@ -1,7 +1,7 @@
-import CategorySidebar from "@/app/ui/search/category-sidebar";
-import SortSidebar from "@/app/ui/search/sort-sidebar";
-import CategorySelect from "@/app/ui/search/category-select";
-import SortSelect from "@/app/ui/search/sort-select";
+// import CategorySidebar from "@/app/ui/search/category-sidebar";
+// import SortSidebar from "@/app/ui/search/sort-sidebar";
+// import CategorySelect from "@/app/ui/search/category-select";
+// import SortSelect from "@/app/ui/search/sort-select";
 
 const Search = () => {
 

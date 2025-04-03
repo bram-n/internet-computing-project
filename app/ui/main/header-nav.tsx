@@ -1,9 +1,9 @@
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { House, User, ShoppingCart, Menu, Search } from "lucide-react";
 import MenuSheet from "./menu-sheet";
-import { Separator } from "@/components/ui/separator";
+// import { Separator } from "@/components/ui/separator";
 
 const HeaderNav = () => {
 	return (
