@@ -15,8 +15,8 @@ const CategorySelect = () => {
 		</SelectTrigger>
 		<SelectContent>
 			<SelectItem value="all">All</SelectItem>
-			<SelectItem value="1">Things 1</SelectItem>
-			<SelectItem value="2">Things 2</SelectItem>
+			<SelectItem value="1">Action</SelectItem>
+			<SelectItem value="2">Romance</SelectItem>
 		</SelectContent>
 	</Select>
 	);

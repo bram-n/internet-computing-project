@@ -38,7 +38,7 @@ const SortSidebar = () => {
 						target="_self"
 						className="hover:border-b hover:border-black"
 					>
-						Price: High to low
+						Rating: High to low
 					</Link>
 				</li>
 				<li className="py-1 text-sm">
@@ -47,7 +47,7 @@ const SortSidebar = () => {
 						target="_self"
 						className="hover:border-b hover:border-black"
 					>
-						Price: Low to high
+						Rating: Low to high
 					</Link>
 				</li>
 			</ul>

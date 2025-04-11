@@ -28,7 +28,7 @@ const CategorySidebar = () => {
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
-							Things 1
+							Action
 						</Link>
 					</li>
 					<li className="py-1 text-sm">
@@ -37,7 +37,7 @@ const CategorySidebar = () => {
 							target="_self"
 							className="hover:border-b hover:border-black"
 						>
-							Things 2
+							Romance
 						</Link>
 					</li>
 					<li className="py-1 text-sm">

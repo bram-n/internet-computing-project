@@ -28,7 +28,7 @@ export default function Home() {
 					]}
 				/>
 			</section>
-			<section>
+			<section className="gap-2">
 				<ItemsBlock cardTitle={"Cool Items"}/>
 				<ItemsBlock cardTitle={"New Stuff"} />
 				<ItemsBlock cardTitle={"Deals"} />

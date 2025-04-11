@@ -36,7 +36,7 @@ const HeaderNav = () => {
 						</li>
 						<li>
 							<Link href="/" type="_self"  className="hover:border-b hover:border-black">
-								Shirts
+								Action
 							</Link>
 						</li>
 					</ul>
