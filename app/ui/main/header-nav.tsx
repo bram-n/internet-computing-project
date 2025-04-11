@@ -4,6 +4,7 @@ import Link from "next/link";
 import { House, User, ShoppingCart,  Search } from "lucide-react";
 // Removed Menu here
 import MenuSheet from "./menu-sheet";
+import CartSheet from "./cart-sheet";
 // import { Separator } from "@/components/ui/separator";
 
 const HeaderNav = () => {
@@ -54,9 +55,7 @@ const HeaderNav = () => {
 						<Link href="/" className="hidden border border-neutral-500 rounded-xl p-2 md:flex">
 							<User />
 						</Link>
-						<Link href="/" className="border border-neutral-500 rounded-xl p-2">
-							<ShoppingCart />
-						</Link>
+						<CartSheet />
 					</div>
 				</div>
 			</div>
