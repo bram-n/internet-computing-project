@@ -6,7 +6,7 @@ import SortSelect from "@/app/ui/search/sort-select";
 const SearchLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<main>
-			<div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 md:flex-row bg-white">
+			<div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 mt-6 md:flex-row bg-white">
 				<div className="order-first w-full flex-none md:max-w-[125px]">
 					<div className="block md:hidden">
 						<CategorySelect />
