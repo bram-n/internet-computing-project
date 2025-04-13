@@ -9,7 +9,7 @@ import CartSheet from "./cart-sheet";
 
 const HeaderNav = () => {
 	return (
-		<nav className="relative flex items-center justify-between p-4 lg:px-6 bg-white">
+		<nav className="relative flex items-center justify-between p-4 lg:px-6 bg-white border-b border-neutral-500">
 			<div className="block flex-none md:hidden">
 				<MenuSheet />
 			</div>
@@ -18,16 +18,16 @@ const HeaderNav = () => {
 					<Link
 						href="/"
 						target="_self"
-						className="mr-2 w-full flex justify-center items-center md:w-auto md:mr-6"
+						className="mr-2 w-full flex justify-center items-center md:w-auto md:mr-2 lg:mr-6"
 					>
 						<div className="flex flex-none items-center justify-center border border-neutral-500 rounded-xl p-2">
 							<House />
 						</div>
-						<div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
+						<div className="ml-2 mr-2 flex-none text-lg font-medium uppercase md:hidden lg:block">
 							3AM Movies
 						</div>
 					</Link>
-					<ul className="hidden md:flex flex-row gap-6 items-center justify-center">
+					<ul className="hidden md:flex flex-row gap-4 items-center justify-center">
 						{/* put links for search in here */}
 						
 						<li>
@@ -57,7 +57,7 @@ const HeaderNav = () => {
 				</div>
 				<div className="flex justify-end md:w-1/3">
 					<div className="flex flex-row gap-4">
-						<Link href="/" className="hidden border border-neutral-500 rounded-xl p-2 md:flex">
+						<Link href="/account" className="hidden border border-neutral-500 rounded-xl p-2 md:flex">
 							<User />
 						</Link>
 						<CartSheet />

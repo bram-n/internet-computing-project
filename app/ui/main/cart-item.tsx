@@ -1,9 +1,13 @@
+import { X } from "lucide-react";
+
 const CartItem = () => {
 	return (
-		<div className="relative flex w-full flex-row justify-between px-1 py-4">
-			<div>{/* X icon on image */}</div>
+		<div className="relative flex w-full flex-row justify-between px-3 py-4">
+			<div className="absolute -ml-3 -mt-3 p-0.5 rounded-full bg-gray-300">
+				<X/>
+			</div>
 			<div className="flex flex-row">
-				<div className="relative h-32 w-16 overflow-hidden border border-neutral-500 rounded-lg">
+				<div className="relative h-24 w-16 overflow-hidden border border-neutral-500 rounded-lg">
 					{/* image */}
 				</div>
 				<div>
@@ -17,7 +21,7 @@ const CartItem = () => {
 					</a>
 				</div>
 			</div>
-			<div>{/* price */}</div>
+			<div>$9.99</div>
 		</div>
 	);
 };
