@@ -6,15 +6,15 @@ import {
 	SheetHeader,
 	SheetFooter,
 	SheetTitle,
-	SheetDescription,
+	// SheetDescription,
 } from "@/components/ui/sheet";
 
-import { Label } from "@/components/ui/label";
+// import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Menu, Search, ShoppingCart } from "lucide-react";
-import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
+// import Link from "next/link";
+// import { Input } from "@/components/ui/input";
+// import { Separator } from "@/components/ui/separator";
 import CartItem from "./cart-item";
 
 const CartSheet = () => {
