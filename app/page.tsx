@@ -9,12 +9,14 @@ export default function Home() {
 				<div className="w-full mx-4 flex items-center justify-start mb-4">
 					<h2>Recommended Items</h2>
 				</div>
-				<ItemsSlider itemsList={[
+				<ItemsSlider
+					itemsList={[
 						{ itemName: "Something Something Item", itemPrice: 999 },
 						{ itemName: "Something Something Item", itemPrice: 999 },
 						{ itemName: "Something Something Item", itemPrice: 999 },
 						{ itemName: "Something Something Item", itemPrice: 999 },
-					]}/>
+					]}
+				/>
 			</section>
 			<section>
 				<div className="w-full mx-4 flex items-center justify-start my-4">
@@ -28,11 +30,19 @@ export default function Home() {
 					]}
 				/>
 			</section>
-			<section className="gap-2">
-				<ItemsBlock cardTitle={"Cool Items"}/>
-				<ItemsBlock cardTitle={"New Stuff"} />
-				<ItemsBlock cardTitle={"Deals"} />
-				<ItemsBlock cardTitle={"Your History"} />
+			<section>
+				<div className="mb-4">
+					<ItemsBlock cardTitle={"Cool Items"} />
+				</div>
+				<div className="mb-4">
+					<ItemsBlock cardTitle={"New Stuff"} />
+				</div>
+				<div className="mb-4">
+					<ItemsBlock cardTitle={"Deals"} />
+				</div>
+				<div className="mb-4">
+					<ItemsBlock cardTitle={"Your History"} />
+				</div>
 			</section>
 		</main>
 		// header w/ search DONE

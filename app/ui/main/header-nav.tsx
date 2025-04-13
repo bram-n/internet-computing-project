@@ -31,13 +31,18 @@ const HeaderNav = () => {
 						{/* put links for search in here */}
 						
 						<li>
-							<Link href="/" type="_self" className="hover:border-b hover:border-black">
+							<Link href="/search" type="_self" className="hover:border-b hover:border-black">
 								All
 							</Link>
 						</li>
 						<li>
-							<Link href="/" type="_self"  className="hover:border-b hover:border-black">
+							<Link href="/search/action" type="_self"  className="hover:border-b hover:border-black">
 								Action
+							</Link>
+						</li>
+						<li>
+							<Link href="/search/romance" type="_self"  className="hover:border-b hover:border-black">
+								Romance
 							</Link>
 						</li>
 					</ul>
