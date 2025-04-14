@@ -15,7 +15,7 @@ import { ShoppingCart } from "lucide-react";
 // import Link from "next/link";
 // import { Input } from "@/components/ui/input";
 // import { Separator } from "@/components/ui/separator";
-import CartItem from "./cart-item";
+import CartItem from "@/app/ui/main/cart-item";
 
 const CartSheet = () => {
 	return (

@@ -3,8 +3,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { House, User, Search } from "lucide-react";
 // Removed Menu here
-import MenuSheet from "./menu-sheet";
-import CartSheet from "./cart-sheet";
+import MenuSheet from "@/app/ui/main/menu-sheet";
+import CartSheet from "@/app/ui/main/cart-sheet";
 // import { Separator } from "@/components/ui/separator";
 
 const HeaderNav = () => {

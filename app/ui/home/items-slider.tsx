@@ -1,5 +1,5 @@
-import SliderItem from "./slider-item";
-import { Item } from "@/lib/types";
+import SliderItem from "@/app/ui/home/slider-item";
+import { Item } from "@/app/lib/types";
 
 const ItemsSlider = ({ itemsList }: { itemsList: Item[] }) => {
 	const multipleItemsList: Item[] = [];

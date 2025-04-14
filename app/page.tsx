@@ -1,6 +1,6 @@
 import ItemsSlider from "@/app/ui/home/items-slider";
-import FeaturedItems from "./ui/home/featured-items";
-import ItemsBlock from "./ui/home/items-block";
+import FeaturedItems from "@/app/ui/home/featured-items";
+import ItemsBlock from "@/app/ui/home/items-block";
 
 export default function Home() {
 	return (
