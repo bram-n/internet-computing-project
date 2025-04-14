@@ -1,4 +1,4 @@
-import { Package } from "lucide-react";
+import { CircleUser, Package, Wrench } from "lucide-react";
 
 const AccountPage = () => {
 	return (
@@ -8,7 +8,7 @@ const AccountPage = () => {
 			</div>
 			<div className="flex flex-col items-center md:flex-row gap-5">
 				<div className="flex flex-row w-full md:w-1/3 border border-neutral-500 p-4 rounded-xl">
-					<div className="flex justify-center items-center border border-neutral-500 rounded-xl p-4">
+					<div className="flex justify-center items-center border border-neutral-500 rounded-full p-6">
 						{/* image */}
 						<Package />
 					</div>
@@ -20,9 +20,9 @@ const AccountPage = () => {
 					</a>
 				</div>
 				<div className="flex flex-row w-full md:w-1/3 border border-neutral-500 p-4 rounded-xl">
-					<div className="flex justify-center items-center border border-neutral-500 rounded-xl p-4">
+					<div className="flex justify-center items-center border border-neutral-500 rounded-full p-6">
 						{/* image */}
-						<Package />
+						<CircleUser />
 					</div>
 					<a href="/account" className="ml-2">
 						<div>User Information</div>
@@ -32,9 +32,9 @@ const AccountPage = () => {
 					</a>
 				</div>
 				<div className="flex flex-row w-full md:w-1/3 border border-neutral-500 p-4 rounded-xl">
-					<div className="flex justify-center items-center border border-neutral-500 rounded-xl p-4">
+					<div className="flex justify-center items-center border border-neutral-500 rounded-full p-6">
 						{/* image */}
-						<Package />
+						<Wrench />
 					</div>
 					<a href="/account" className="ml-2">
 						<div>Preferences</div>

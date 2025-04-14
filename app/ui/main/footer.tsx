@@ -16,22 +16,22 @@ const Footer = () => {
 						<Link href="/" className="hover:border-b hover:border-black">Home</Link>
 					</ul>
 					<ul>
-						<Link href="/" className="hover:border-b hover:border-black">About</Link>
+						<Link href="/about" className="hover:border-b hover:border-black">About</Link>
 					</ul>
 					<ul>
-						<Link href="/" className="hover:border-b hover:border-black">Your Account</Link>
+						<Link href="/account" className="hover:border-b hover:border-black">Your Account</Link>
 					</ul>
 					<ul>
-						<Link href="/" className="hover:border-b hover:border-black">Terms and Conditions</Link>
+						<Link href="/terms-and-conditions" className="hover:border-b hover:border-black">Terms and Conditions</Link>
 					</ul>
 					<ul>
-						<Link href="/" className="hover:border-b hover:border-black">Shipping and Returns Policy</Link>
+						<Link href="/returns" className="hover:border-b hover:border-black">Returns</Link>
 					</ul>
 					<ul>
-						<Link href="/" className="hover:border-b hover:border-black">Privacy Policy</Link>
+						<Link href="/privacy-policy" className="hover:border-b hover:border-black">Privacy Policy</Link>
 					</ul>
 					<ul>
-						<Link href="/" className="hover:border-b hover:border-black">FAQ</Link>
+						<Link href="/faq" className="hover:border-b hover:border-black">FAQ</Link>
 					</ul>
 				</nav>
 
