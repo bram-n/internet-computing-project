@@ -1,4 +1,4 @@
-import { Item } from "@/app/lib/types";
+import { Item } from "@/app/lib/definitions";
 import Link from "next/link";
 
 const FeaturedItems = ({ featuredItemList }: { featuredItemList: Item[] }) => {
