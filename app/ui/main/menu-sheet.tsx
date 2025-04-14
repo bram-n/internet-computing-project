@@ -1,7 +1,7 @@
 import {
 	Sheet,
 	SheetTrigger,
-	// SheetClose,
+	SheetClose,
 	SheetContent,
 	SheetHeader,
 	// SheetFooter,
@@ -41,33 +41,48 @@ const MenuSheet = () => {
 						{/* put links for search in here */}
 						<li className="py-2">
 							<Link
-								href="/"
+								href="/account"
 								type="_self"
 								className="text-xl transition-colors hover:text-neutral-500"
 							>
-								Profile
+								Your Account
 							</Link>
 						</li>
 						<div className="my-2">
 							<Separator />
 						</div>
 						<li className="py-2">
-							<Link
-								href="/"
-								type="_self"
-								className="text-xl transition-colors hover:text-neutral-500"
-							>
-								All
-							</Link>
+							<SheetClose asChild>
+								<Link
+									href="/search"
+									type="_self"
+									className="text-xl transition-colors hover:text-neutral-500"
+								>
+									All
+								</Link>
+							</SheetClose>
 						</li>
-						<li>
-							<Link
-								href="/"
-								type="_self"
-								className="py-2 text-xl transition-colors hover:text-neutral-500"
-							>
-								Shirts
-							</Link>
+						<li className="py-2">
+							<SheetClose asChild>
+								<Link
+									href="/search/romance"
+									type="_self"
+									className="py-2 text-xl transition-colors hover:text-neutral-500"
+								>
+									Action
+								</Link>
+							</SheetClose>
+						</li>
+						<li className="py-2">
+							<SheetClose asChild>
+								<Link
+									href="/search/romance"
+									type="_self"
+									className="py-2 text-xl transition-colors hover:text-neutral-500"
+								>
+									Romance
+								</Link>
+							</SheetClose>
 						</li>
 					</ul>
 				</div>
