@@ -1,19 +1,12 @@
+import { createClient } from '@/app/supabase/server';
 import { Movie } from "./definitions";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-	process.env.SUPABASE_URL!,
-	process.env.SUPABASE_ANON_KEY!
-);
-
-
-export const fetchMovies = async (): Promise<Movie[]> => {
-	try {
-		const { data, error } = await supabase.from("movies").select("*");
-		if (error) throw error;
-		return data || [];
-	} catch (error) {
-		console.error("Supabase error:", error);
-		throw new Error("Failed to fetch movie data.");
-	}
-};
+export const fetchMovies = async (limit: number = 10): Promise<Movie[]> => {
+	const supabase = await createClient();
+	
+		const { data: movies, error } = await supabase.from<any, Movie>('Movies').select().limit(limit);
+		if (error) {
+			console.error('Database error:', error);
+			throw new Error("Error with querying movies");
+		}
+		return movies;
+}

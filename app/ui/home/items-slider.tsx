@@ -1,9 +1,9 @@
 import SliderItem from "@/app/ui/home/slider-item";
 import { 
 	Item, 
-	// Movie 
+	Movie 
 } from "@/app/lib/definitions";
-// import { fetchMovies } from "@/app/lib/data";
+import { fetchMovies }  from "@/app/lib/data";
 
 const ItemsSlider = async ({ itemsList }: { itemsList: Item[] }) => {
 	const multipleItemsList: Item[] = [];
@@ -13,8 +13,8 @@ const ItemsSlider = async ({ itemsList }: { itemsList: Item[] }) => {
 		});
 	}
 
-	// const movies: Movie[] = await fetchMovies();
-	// console.log(movies);
+	const movies: Movie[] = await fetchMovies(12);
+	console.log(movies);
 
 	return (
 		<div className="w-full overflow-x-auto pb-6 pt-1">
