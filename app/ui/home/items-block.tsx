@@ -13,6 +13,7 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 // import { createClient } from "@supabase/supabase-js";
 
 import Link from "next/link";
@@ -21,39 +22,38 @@ type ItemsBlockProps = {
 	cardTitle: string;
 };
 
-
 async function getMoviePoster(imdbId: string): Promise<string | null> {
 	const apiKey = process.env.TMDB_API_KEY;
-	
+
 	try {
-	  const response = await fetch(
-		`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`
-	  );
-	  
-	  const data = await response.json();
-	  
-	  if (data.movie_results && data.movie_results.length > 0) {
-		const posterPath = data.movie_results[0].poster_path;
-	
-		if (posterPath) {
-		  return `https://image.tmdb.org/t/p/original${posterPath}`;
+		const response = await fetch(
+			`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`
+		);
+
+		const data = await response.json();
+
+		if (data.movie_results && data.movie_results.length > 0) {
+			const posterPath = data.movie_results[0].poster_path;
+
+			if (posterPath) {
+				return `https://image.tmdb.org/t/p/original${posterPath}`;
+			}
 		}
-	  }
-	  
-	  return "";
+
+		return "";
 	} catch (error) {
-	  console.error("Error getting movie poster:", error);
-	  return "";
+		console.error("Error getting movie poster:", error);
+		return "";
 	}
-  }
-  
-getMoviePoster("tt0068646").then(url => {
-	  console.log("Poster URL:", url);
-  });
+}
+
+getMoviePoster("tt0068646").then((url) => {
+	console.log("Poster URL:", url);
+});
 
 const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
-	const poster = await getMoviePoster("tt0068646");
-	
+	const poster = (await getMoviePoster("tt0068646")) || "";
+
 	// TODO: need to fill with items
 	// TODO: make this take variable titles
 	return (
@@ -72,7 +72,12 @@ const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
 						<CarouselContent>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
 								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
+									<Image
+										src={poster}
+										alt="Movie Poster"
+										width={400}
+										height={600}
+									/>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
