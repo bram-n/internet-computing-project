@@ -1,4 +1,5 @@
 import { getMoviePosterImage } from "@/app/lib/data";
+import { Movie } from "@/app/lib/definitions";
 import {
 	Card,
 	CardContent,
@@ -21,15 +22,11 @@ import Link from "next/link";
 
 type ItemsBlockProps = {
 	cardTitle: string;
-};
-
-
-
-getMoviePosterImage("tt0068646").then((url) => {
-	console.log("Poster URL:", url);
-});
+}; 
 
 const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
+
+
 	const poster = (await getMoviePosterImage("tt0068646")) || "";
 
 	// TODO: need to fill with items

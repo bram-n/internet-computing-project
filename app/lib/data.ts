@@ -17,11 +17,45 @@ const fetchMovies = async (limit: number = 10): Promise<Movie[]> => {
 };
 
 // just get random movies for now
-const fetchPopularMovies = async (limit: number = 4): Promise<Movie[]> => {
+const fetchPopularMovies = async (limit: number = 5): Promise<Movie[]> => {
 	const supabase = await createClient();
 	const { data: supabaseMovies, error } = await supabase
 		.from<any, Movie>("Movies")
 		.select()
+		.limit(limit);
+	if (error) {
+		console.error("Database error:", error);
+		throw new Error("Error with querying POPULAR movies");
+	}
+
+	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
+
+	return movies;
+};
+
+// just get random movies for now
+const fetchFeaturedMovies = async (limit: number = 3): Promise<Movie[]> => {
+	const supabase = await createClient();
+	const { data: supabaseMovies, error } = await supabase
+		.from<any, Movie>("Movies")
+		.select()
+		.limit(limit);
+	if (error) {
+		console.error("Database error:", error);
+		throw new Error("Error with querying POPULAR movies");
+	}
+
+	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
+
+	return movies;
+};
+
+const fetchQuickMovies = async (limit: number = 3, queryParam: string): Promise<Movie[]> => {
+	const supabase = await createClient();
+	const { data: supabaseMovies, error } = await supabase
+		.from<any, Movie>("Movies")
+		.select("*")
+		.lte("runtimeMinutes", 90)
 		.limit(limit);
 	if (error) {
 		console.error("Database error:", error);
@@ -54,11 +88,15 @@ const getMoviePosterImage = async (imdbId: string): Promise<string> => {
 		}
 
 		return `https://image.tmdb.org/t/p/original${posterPath}`;
-		
 	} catch (error) {
 		console.error("Error getting movie poster:", error);
 		return "";
 	}
 };
 
-export { fetchMovies, fetchPopularMovies, getMoviePosterImage };
+export {
+	fetchMovies,
+	fetchPopularMovies,
+	fetchFeaturedMovies,
+	getMoviePosterImage,
+};

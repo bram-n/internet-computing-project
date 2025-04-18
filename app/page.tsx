@@ -19,16 +19,16 @@ export default function Home() {
 			</section>
 			<section>
 				<div className="mb-4">
-					<ItemsBlock cardTitle={"Cool Items"} />
+					<ItemsBlock cardTitle={"Quick Watches"} />
 				</div>
 				<div className="mb-4">
-					<ItemsBlock cardTitle={"New Stuff"} />
+					<ItemsBlock cardTitle={"Marathons"} />
 				</div>
 				<div className="mb-4">
-					<ItemsBlock cardTitle={"Deals"} />
+					<ItemsBlock cardTitle={"Deals"}/>
 				</div>
 				<div className="mb-4">
-					<ItemsBlock cardTitle={"Your History"} />
+					<ItemsBlock cardTitle={"Your History"}/>
 				</div>
 			</section>
 		</main>
