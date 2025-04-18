@@ -17,7 +17,7 @@ const ItemsSlider = async ({ itemsList }: { itemsList: Item[] }) => {
 	console.log(movies);
 
 	return (
-		<div className="w-full overflow-x-auto pb-6 pt-1">
+		<div className="w-full overflow-x-auto pb-6 pt-1 bg-black text-white">
 			<ul className="flex animate-carousel gap-4">
 				{multipleItemsList.map((item, index) => (
 					<li

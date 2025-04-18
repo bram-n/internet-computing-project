@@ -10,13 +10,13 @@ const CategorySidebar = () => {
 	console.log(pathExtension);
 	return (
 			<nav>
-				<h3 className="font-semibold text-gray-600 text-sm">Categories</h3>
+				<h3 className="font-semibold text-gray-100 text-sm">Categories</h3>
 				<ul className="list-none">
 					<li className="py-1 text-sm">
 						<Link
 							href="/search"
 							target="_self"
-							className={clsx("hover:border-b hover:border-black")}
+							className={clsx("hover:border-b hover:border-white")}
 							
 						>
 							All
@@ -26,7 +26,7 @@ const CategorySidebar = () => {
 						<Link
 							href="/search/things-1"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className="hover:border-b hover:border-white"
 						>
 							Action
 						</Link>
@@ -35,7 +35,7 @@ const CategorySidebar = () => {
 						<Link
 							href="/search/things-2"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className="hover:border-b hover:border-white"
 						>
 							Romance
 						</Link>
@@ -44,7 +44,7 @@ const CategorySidebar = () => {
 						<Link
 							href="/search/things-3"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className="hover:border-b hover:border-white"
 						>
 							Things 3
 						</Link>
@@ -53,7 +53,7 @@ const CategorySidebar = () => {
 						<Link
 							href="/search/things-4"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className="hover:border-b hover:border-white"
 						>
 							Things 4
 						</Link>
@@ -62,7 +62,7 @@ const CategorySidebar = () => {
 						<Link
 							href="/search/things-5"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className="hover:border-b hover:border-white"
 						>
 							Things 5
 						</Link>
@@ -71,7 +71,7 @@ const CategorySidebar = () => {
 						<Link
 							href="/search/things-6"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className="hover:border-b hover:border-white"
 						>
 							Things 6
 						</Link>
@@ -80,7 +80,7 @@ const CategorySidebar = () => {
 						<Link
 							href="/search/things-7"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className="hover:border-b hover:border-white"
 						>
 							Things 7
 						</Link>
@@ -89,7 +89,7 @@ const CategorySidebar = () => {
 						<Link
 							href="/search/things-8"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className="hover:border-b hover:border-white"
 						>
 							Things 8
 						</Link>
@@ -98,7 +98,7 @@ const CategorySidebar = () => {
 						<Link
 							href="/search/things-9"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className="hover:border-b hover:border-white"
 						>
 							Things 9
 						</Link>
@@ -107,7 +107,7 @@ const CategorySidebar = () => {
 						<Link
 							href="/search/things-10"
 							target="_self"
-							className="hover:border-b hover:border-black"
+							className="hover:border-b hover:border-white"
 						>
 							Things 10
 						</Link>

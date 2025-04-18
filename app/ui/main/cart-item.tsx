@@ -7,7 +7,7 @@ const CartItem = () => {
 				<X/>
 			</div>
 			<div className="flex flex-row">
-				<div className="relative h-24 w-16 overflow-hidden border border-neutral-500 rounded-lg">
+				<div className="relative h-24 w-16 overflow-hidden border border-neutral-50 rounded-lg">
 					{/* image */}
 				</div>
 				<div>

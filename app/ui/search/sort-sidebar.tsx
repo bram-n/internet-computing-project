@@ -3,13 +3,13 @@ import Link from "next/link";
 const SortSidebar = () => {
 	return (
 		<nav>
-			<h3 className="font-semibold text-gray-600 text-sm">Sort by</h3>
+			<h3 className="font-semibold text-gray-100 text-sm">Sort by</h3>
 			<ul className="list-none">
 				<li className="py-1 text-sm">
 					<Link
 						href="/search"
 						target="_self"
-						className="hover:border-b hover:border-black"
+						className="hover:border-b hover:border-white"
 					>
 						Relevance
 					</Link>
@@ -18,7 +18,7 @@ const SortSidebar = () => {
 					<Link
 						href="/search"
 						target="_self"
-						className="hover:border-b hover:border-black"
+						className="hover:border-b hover:border-white"
 					>
 						Trending
 					</Link>
@@ -27,7 +27,7 @@ const SortSidebar = () => {
 					<Link
 						href="/search"
 						target="_self"
-						className="hover:border-b hover:border-black"
+						className="hover:border-b hover:border-white"
 					>
 						Latest Arrivals
 					</Link>
@@ -36,7 +36,7 @@ const SortSidebar = () => {
 					<Link
 						href="/search"
 						target="_self"
-						className="hover:border-b hover:border-black"
+						className="hover:border-b hover:border-white"
 					>
 						Rating: High to low
 					</Link>
@@ -45,7 +45,7 @@ const SortSidebar = () => {
 					<Link
 						href="/search"
 						target="_self"
-						className="hover:border-b hover:border-black"
+						className="hover:border-b hover:border-white"
 					>
 						Rating: Low to high
 					</Link>
