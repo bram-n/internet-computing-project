@@ -9,7 +9,7 @@ import CartSheet from "@/app/ui/main/cart-sheet";
 
 const HeaderNav = () => {
 	return (
-		<nav className="relative flex items-center justify-between p-4 lg:px-6 bg-white border-b border-neutral-500">
+		<nav className="relative flex items-center justify-between p-4 lg:px-6 border-b border-neutral-50">
 			<div className="block flex-none md:hidden">
 				<MenuSheet />
 			</div>
@@ -20,7 +20,7 @@ const HeaderNav = () => {
 						target="_self"
 						className="mr-2 w-full flex justify-center items-center md:w-auto md:mr-2 lg:mr-6"
 					>
-						<div className="flex flex-none items-center justify-center border border-neutral-500 rounded-xl p-2">
+						<div className="flex flex-none items-center justify-center border border-neutral-50 rounded-xl p-2">
 							<House />
 						</div>
 						<div className="ml-2 mr-2 flex-none text-lg font-medium uppercase md:hidden lg:block">
@@ -31,17 +31,17 @@ const HeaderNav = () => {
 						{/* put links for search in here */}
 						
 						<li>
-							<Link href="/search" type="_self" className="hover:border-b hover:border-black">
+							<Link href="/search" type="_self" className="hover:border-b hover:border-white">
 								All
 							</Link>
 						</li>
 						<li>
-							<Link href="/search/action" type="_self"  className="hover:border-b hover:border-black">
+							<Link href="/search/action" type="_self"  className="hover:border-b hover:border-white">
 								Action
 							</Link>
 						</li>
 						<li>
-							<Link href="/search/romance" type="_self"  className="hover:border-b hover:border-black">
+							<Link href="/search/romance" type="_self"  className="hover:border-b hover:border-white">
 								Romance
 							</Link>
 						</li>
@@ -57,7 +57,7 @@ const HeaderNav = () => {
 				</div>
 				<div className="flex justify-end md:w-1/3">
 					<div className="flex flex-row gap-4">
-						<Link href="/account" className="hidden border border-neutral-500 rounded-xl p-2 md:flex">
+						<Link href="/account" className="hidden border border-neutral-50 rounded-xl p-2 md:flex">
 							<User />
 						</Link>
 						<CartSheet />

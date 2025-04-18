@@ -21,7 +21,7 @@ const CartSheet = () => {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<div className="flex justify-center items-center p-2 border border-neutral-500 rounded-xl hover:cursor-pointer">
+				<div className="flex justify-center items-center p-2 border border-neutral-50 rounded-xl hover:cursor-pointer">
 					<ShoppingCart />
 				</div>
 			</SheetTrigger>
@@ -42,15 +42,15 @@ const CartSheet = () => {
 						<div className="flex flex-col ">
 							<div className="flex flex-col gap-2 mb-4">
 								{/* prices */}
-								<div className="flex flex-row justify-between items-center pb-1 border-b border-neutral-500">
+								<div className="flex flex-row justify-between items-center pb-1 border-b border-neutral-50">
 									<div className="text-sm">Taxes</div>
 									<div className="text-md font-semibold">$0.00</div>
 								</div>
-								<div className="flex flex-row justify-between items-center pb-1 border-b border-neutral-500">
+								<div className="flex flex-row justify-between items-center pb-1 border-b border-neutral-50">
 									<div className="text-sm">Shipping</div>
 									<div className="text-sm">Calculated at checkout</div>
 								</div>
-								<div className="flex flex-row justify-between items-center pb-1 border-b border-neutral-500">
+								<div className="flex flex-row justify-between items-center pb-1 border-b border-neutral-50">
 									<div className="text-sm">Total</div>
 									<div className="text-md font-semibold">$0.00</div>
 								</div>

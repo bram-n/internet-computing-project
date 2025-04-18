@@ -57,7 +57,7 @@ const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
 	// TODO: need to fill with items
 	// TODO: make this take variable titles
 	return (
-		<Card>
+		<Card className="bg-black text-white">
 			<CardHeader>
 				<CardTitle>{cardTitle}</CardTitle>
 			</CardHeader>
@@ -71,62 +71,62 @@ const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
 					>
 						<CarouselContent>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
-								{poster && <img src={poster} alt="The Godfather Poster" />}
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
 							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-500 flex items-center justify-center">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
+									<span>Item</span>
+								</div>
+							</CarouselItem>
+							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
+								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
 									<span>Item</span>
 								</div>
 							</CarouselItem>
@@ -141,7 +141,7 @@ const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
 					<Link
 						href="/"
 						target="_self"
-						className="hover:border-b hover:border-black"
+						className="hover:border-b hover:border-white"
 					>
 						Shop these items
 					</Link>
