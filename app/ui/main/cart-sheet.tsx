@@ -25,9 +25,9 @@ const CartSheet = () => {
 					<ShoppingCart />
 				</div>
 			</SheetTrigger>
-			<SheetContent side="right" className="w-full">
+			<SheetContent side="right" className="w-full text-white">
 				<SheetHeader>
-					<SheetTitle>My Cart</SheetTitle>
+					<SheetTitle className="text-white">My Cart</SheetTitle>
 				</SheetHeader>
 				<div className="grid gap-4 p-4">
 					<div className="flex flex-col overflow-hidden">

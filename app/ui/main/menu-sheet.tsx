@@ -24,9 +24,9 @@ const MenuSheet = () => {
 					<Menu />
 				</Button>
 			</SheetTrigger>
-			<SheetContent side="left" className="w-full">
+			<SheetContent side="left" className="w-full text-white">
 				<SheetHeader>
-					<SheetTitle>3AM Movies</SheetTitle>
+					<SheetTitle className="text-white">3AM Movies</SheetTitle>
 				</SheetHeader>
 				<div className="p-4">
 					<div className="mb-4 w-full">

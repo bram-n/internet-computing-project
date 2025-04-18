@@ -3,9 +3,12 @@ import {
 	Item, 
 	Movie 
 } from "@/app/lib/definitions";
-import { fetchMovies }  from "@/app/lib/data";
+import { fetchPopularMovies }  from "@/app/lib/data";
 
 const ItemsSlider = async ({ itemsList }: { itemsList: Item[] }) => {
+
+	const popularMovies: Movie[] = await fetchPopularMovies(4);
+	
 	const multipleItemsList: Item[] = [];
 	for (let i = 0; i < 3; i++) {
 		itemsList.forEach((item) => {
@@ -13,8 +16,8 @@ const ItemsSlider = async ({ itemsList }: { itemsList: Item[] }) => {
 		});
 	}
 
-	const movies: Movie[] = await fetchMovies(12);
-	console.log(movies);
+	// const movies: Movie[] = await fetchMovies(12);
+	// console.log(movies);
 
 	return (
 		<div className="w-full overflow-x-auto pb-6 pt-1 bg-black text-white">
