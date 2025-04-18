@@ -9,26 +9,13 @@ export default function Home() {
 				<div className="w-full mx-4 flex items-center justify-start mb-4">
 					<h2>Recommended Items</h2>
 				</div>
-				<ItemsSlider
-					itemsList={[
-						{ itemName: "Something Something Item", itemPrice: 999 },
-						{ itemName: "Something Something Item", itemPrice: 999 },
-						{ itemName: "Something Something Item", itemPrice: 999 },
-						{ itemName: "Something Something Item", itemPrice: 999 },
-					]}
-				/>
+				<ItemsSlider />
 			</section>
 			<section>
 				<div className="w-full mx-4 flex items-center justify-start my-4">
 					<h2>Popular Items</h2>
 				</div>
-				<FeaturedItems
-					featuredItemList={[
-						{ itemName: "Something Something Item", itemPrice: 999 },
-						{ itemName: "Something Something Item", itemPrice: 999 },
-						{ itemName: "Something Something Item", itemPrice: 999 },
-					]}
-				/>
+				<FeaturedItems/>
 			</section>
 			<section>
 				<div className="mb-4">

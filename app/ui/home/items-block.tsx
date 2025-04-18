@@ -1,3 +1,4 @@
+import { getMoviePosterImage } from "@/app/lib/data";
 import {
 	Card,
 	CardContent,
@@ -22,37 +23,14 @@ type ItemsBlockProps = {
 	cardTitle: string;
 };
 
-async function getMoviePoster(imdbId: string): Promise<string | null> {
-	const apiKey = process.env.TMDB_API_KEY;
 
-	try {
-		const response = await fetch(
-			`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`
-		);
 
-		const data = await response.json();
-
-		if (data.movie_results && data.movie_results.length > 0) {
-			const posterPath = data.movie_results[0].poster_path;
-
-			if (posterPath) {
-				return `https://image.tmdb.org/t/p/original${posterPath}`;
-			}
-		}
-
-		return "";
-	} catch (error) {
-		console.error("Error getting movie poster:", error);
-		return "";
-	}
-}
-
-getMoviePoster("tt0068646").then((url) => {
+getMoviePosterImage("tt0068646").then((url) => {
 	console.log("Poster URL:", url);
 });
 
 const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
-	const poster = (await getMoviePoster("tt0068646")) || "";
+	const poster = (await getMoviePosterImage("tt0068646")) || "";
 
 	// TODO: need to fill with items
 	// TODO: make this take variable titles
@@ -157,3 +135,7 @@ const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
 };
 
 export default ItemsBlock;
+function getMoviePoster(arg0: string) {
+	throw new Error("Function not implemented.");
+}
+

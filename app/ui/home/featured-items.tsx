@@ -1,7 +1,7 @@
 import { Item } from "@/app/lib/definitions";
 import Link from "next/link";
 
-const FeaturedItems = ({ featuredItemList }: { featuredItemList: Item[] }) => {
+const FeaturedItems = () => {
 	return (
 		<div className="mt-4 mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-6 md:grid-rows-2 lg:max-h-[calc(100vh-200px)]">
 			<div className="md:col-span-4 md:row-span-2">

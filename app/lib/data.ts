@@ -1,29 +1,64 @@
-import { createClient } from '@/app/supabase/server';
+import { createClient } from "@/app/supabase/server";
 import { Movie } from "./definitions";
 
-const supabase = await createClient();
-
 const fetchMovies = async (limit: number = 10): Promise<Movie[]> => {
-	
-	const { data: movies, error } = await supabase.from<any, Movie>('Movies').select().limit(limit);
+	const supabase = await createClient();
+	const { data: supabaseMovies, error } = await supabase
+		.from<any, Movie>("Movies")
+		.select()
+		.limit(limit);
 	if (error) {
-		console.error('Database error:', error);
+		console.error("Database error:", error);
 		throw new Error("Error with querying movies");
 	}
+	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
+
 	return movies;
-}
+};
 
-// just get popular movies for now
+// just get random movies for now
 const fetchPopularMovies = async (limit: number = 4): Promise<Movie[]> => {
-
-	const { data: movies, error } = await supabase.from<any, Movie>('Movies').select().limit(limit);
+	const supabase = await createClient();
+	const { data: supabaseMovies, error } = await supabase
+		.from<any, Movie>("Movies")
+		.select()
+		.limit(limit);
 	if (error) {
-		console.error('Database error:', error);
+		console.error("Database error:", error);
 		throw new Error("Error with querying POPULAR movies");
 	}
+
+	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
+
 	return movies;
-}
+};
 
+const getMoviePosterImage = async (imdbId: string): Promise<string> => {
+	const apiKey = process.env.TMDB_API_KEY!;
 
-export { fetchMovies, fetchPopularMovies };
+	try {
+		const response = await fetch(
+			`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`
+		);
 
+		const data = await response.json();
+
+		if (!data.movie_results) {
+			throw new Error("No movie found for this imdbID");
+		}
+
+		const posterPath = data.movie_results[0].poster_path;
+
+		if (!posterPath) {
+			throw new Error("No poster found for this imdbID");
+		}
+
+		return `https://image.tmdb.org/t/p/original${posterPath}`;
+		
+	} catch (error) {
+		console.error("Error getting movie poster:", error);
+		return "";
+	}
+};
+
+export { fetchMovies, fetchPopularMovies, getMoviePosterImage };

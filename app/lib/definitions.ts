@@ -9,8 +9,8 @@ export type User = {
 }
 
 export type Movie = {
-	movieID: string;
-	movieTitle: string;
+	id: string;
+	Title: string;
 	runtimeMinutes: number;
 	imdbID: string;
 }
