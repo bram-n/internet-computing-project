@@ -55,7 +55,7 @@ const CartSheet = () => {
 									<div className="text-md font-semibold">$0.00</div>
 								</div>
 							</div>
-							<Link href="/checkout/information" className="w-full">
+							<Link href="/checkout" className="w-full">
 								<Button type="submit" className="w-full">Proceed to Checkout</Button>
 							</Link>
 						</div>
