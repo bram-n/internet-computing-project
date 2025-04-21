@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Movie } from "@/app/lib/definitions";
-import { getMoviePosterImage } from "@/app/lib/data";
+import { Movie } from "@/lib/definitions";
+import { getMoviePosterImage } from "@/lib/data";
 import Image from "next/image";
 
 const SliderItem = async ({ movie }: { movie: Movie }) => {

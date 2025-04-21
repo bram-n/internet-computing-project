@@ -12,7 +12,7 @@ import {
 // import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
-// import Link from "next/link";
+import Link from "next/link";
 // import { Input } from "@/components/ui/input";
 // import { Separator } from "@/components/ui/separator";
 import CartItem from "@/app/ui/main/cart-item";
@@ -55,7 +55,9 @@ const CartSheet = () => {
 									<div className="text-md font-semibold">$0.00</div>
 								</div>
 							</div>
-							<Button type="submit">Proceed to Checkout</Button>
+							<Link href="/checkout/information" className="w-full">
+								<Button type="submit" className="w-full">Proceed to Checkout</Button>
+							</Link>
 						</div>
 					</SheetClose>
 				</SheetFooter>

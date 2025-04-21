@@ -1,5 +1,5 @@
-import { fetchFeaturedMovies, getMoviePosterImage } from "@/app/lib/data";
-import { Movie } from "@/app/lib/definitions";
+import { fetchFeaturedMovies, getMoviePosterImage } from "@/lib/data";
+import { Movie } from "@/lib/definitions";
 import Image from "next/image";
 import Link from "next/link";
 

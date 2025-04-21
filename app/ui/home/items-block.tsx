@@ -1,5 +1,5 @@
-import { getMoviePosterImage } from "@/app/lib/data";
-import { Movie } from "@/app/lib/definitions";
+import { getMoviePosterImage } from "@/lib/data";
+import { Movie } from "@/lib/definitions";
 import {
 	Card,
 	CardContent,

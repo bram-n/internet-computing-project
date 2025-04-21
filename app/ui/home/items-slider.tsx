@@ -2,8 +2,8 @@ import SliderItem from "@/app/ui/home/slider-item";
 import { 
 	Item, 
 	Movie 
-} from "@/app/lib/definitions";
-import { fetchPopularMovies }  from "@/app/lib/data";
+} from "@/lib/definitions";
+import { fetchPopularMovies }  from "@/lib/data";
 
 const ItemsSlider = async () => {
 
