@@ -65,7 +65,7 @@ const MenuSheet = () => {
 						<li className="py-2">
 							<SheetClose asChild>
 								<Link
-									href="/search/romance"
+									href="/search/test"
 									type="_self"
 									className="py-2 text-xl transition-colors hover:text-neutral-500"
 								>
@@ -84,6 +84,7 @@ const MenuSheet = () => {
 								</Link>
 							</SheetClose>
 						</li>
+						
 					</ul>
 				</div>
 			</SheetContent>

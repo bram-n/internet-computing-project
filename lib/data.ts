@@ -1,5 +1,5 @@
 import { createClient } from "@/app/supabase/server";
-import { Movie } from "./definitions";
+import { Movie, Genre} from "./definitions";
 
 const fetchMovies = async (limit: number = 10): Promise<Movie[]> => {
 	const supabase = await createClient();
@@ -15,6 +15,37 @@ const fetchMovies = async (limit: number = 10): Promise<Movie[]> => {
 
 	return movies;
 };
+
+const fetchMoviesByGenre = async (genreName: string, limit: number = 10): Promise<Movie[]> => {
+	const supabase = await createClient();
+	
+	const { data: genreData, error: genreError } = await supabase
+	  .from('genres')
+	  .select('id') 
+	  .eq('genre_name', genreName);
+	  
+	if (genreError) {
+	  console.error("Genre query error:", genreError);
+	  throw new Error(`Error fetching movies with genre: ${genreName}`);
+	}
+	
+	const movieIds = genreData.map(item => item.id);
+	
+	const { data: movieData, error: movieError } = await supabase
+	  .from('Movies')
+	  .select('*')
+	  .in('id', movieIds)
+	  .limit(limit);
+	  
+	if (movieError) {
+	  console.error("Movie query error:", movieError);
+	  throw new Error(`Error fetching movie details for genre: ${genreName}`);
+	}
+	
+	return movieData || [];
+  };
+  
+
 
 // just get random movies for now
 const fetchPopularMovies = async (limit: number = 5): Promise<Movie[]> => {
@@ -67,12 +98,11 @@ const fetchQuickMovies = async (limit: number = 3, queryParam: string): Promise<
 	return movies;
 };
 
-const getMoviePosterImage = async (imdbId: string): Promise<string> => {
+const getMoviePosterImage = async (imdb_id: string): Promise<string> => {
 	const apiKey = process.env.TMDB_API_KEY!;
-
 	try {
 		const response = await fetch(
-			`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`
+			`https://api.themoviedb.org/3/find/${imdb_id}?api_key=${apiKey}&external_source=imdb_id`
 		);
 
 		const data = await response.json();
@@ -93,10 +123,30 @@ const getMoviePosterImage = async (imdbId: string): Promise<string> => {
 		return "";
 	}
 };
+  
+const fetchAllGenres = async (): Promise<Genre[]> => {
+  const supabase = await createClient();
+  
+  const { data, error } = await supabase
+    .from('unique_genres')
+    .select('genre_name')
+  
+  if (error) {
+    console.error("Error fetching genres:", error);
+    throw new Error("Error fetching genres");
+  }
+  
+  console.log("Returned genres count:", data.length);
+  console.log("First few genres:", data.slice(0, 5));
+  
+  return data as Genre[];
+};
 
-export {
+  export {
 	fetchMovies,
 	fetchPopularMovies,
 	fetchFeaturedMovies,
+	fetchMoviesByGenre,
 	getMoviePosterImage,
-};
+	fetchAllGenres,
+  };

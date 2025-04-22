@@ -6,9 +6,9 @@ import Link from "next/link";
 const FeaturedItems = async () => {
 	const featuredMovies: Movie[] = await fetchFeaturedMovies(3);
 
-	const movieOnePoster = await getMoviePosterImage(featuredMovies[0].imdbID);
-	const movieTwoPoster = await getMoviePosterImage(featuredMovies[1].imdbID);
-	const movieThreePoster = await getMoviePosterImage(featuredMovies[2].imdbID);
+	const movieOnePoster = await getMoviePosterImage(featuredMovies[0].imdb_id);
+	const movieTwoPoster = await getMoviePosterImage(featuredMovies[1].imdb_id);
+	const movieThreePoster = await getMoviePosterImage(featuredMovies[2].imdb_id);
 
 	return (
 		<div className="mt-4 mx-auto grid max-w-screen-2xl gap-4 pb-4 md:grid-cols-4 md:grid-rows-6 lg:max-h-[calc(100vh-200px)]">
@@ -18,7 +18,7 @@ const FeaturedItems = async () => {
 						<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4 lg:px-20 lg:pb-[35%]">
 							<div className="flex items-center rounded-full border border-neutral-50 font-semibold text-xs p-1">
 								<h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">
-									{featuredMovies[0].Title}
+									{featuredMovies[0].title}
 								</h3>
 								<p className="flex-none rounded-full bg-blue-700 p-2 text-white font-bold">
 									${599 / 100}
@@ -42,7 +42,7 @@ const FeaturedItems = async () => {
 						<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
 							<div className="flex items-center rounded-full border border-neutral-50 font-semibold text-xs p-1">
 								<h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">
-									{featuredMovies[1].Title}
+									{featuredMovies[1].title}
 								</h3>
 								<p className="flex-none rounded-full bg-blue-700 p-2 text-white font-bold">
 									${599 / 100}
@@ -66,7 +66,7 @@ const FeaturedItems = async () => {
 						<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
 							<div className="flex items-center rounded-full border border-neutral-50 font-semibold text-xs p-1">
 								<h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">
-									{featuredMovies[2].Title}
+									{featuredMovies[2].title}
 								</h3>
 								<p className="flex-none rounded-full bg-blue-700 p-2 text-white font-bold">
 									${599 / 100}

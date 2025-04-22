@@ -10,7 +10,13 @@ export type User = {
 
 export type Movie = {
 	id: string;
-	Title: string;
-	runtimeMinutes: number;
-	imdbID: string;
+	title: string;
+	runtime_minutes: number;
+	imdb_id: string;
 }
+
+export type Genre = {
+	genre_id: string,
+	genre_name: string,
+}
+
