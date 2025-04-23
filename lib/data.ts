@@ -6,7 +6,7 @@ import { Movie, Genre} from "./definitions";
 const fetchMovies = async (limit: number = 10): Promise<Movie[]> => {
 	const supabase = await createClient();
 	const { data: supabaseMovies, error } = await supabase
-		.from<any, Movie>("Movies")
+		.from("Movies")
 		.select()
 		.limit(limit);
 	if (error) {
@@ -48,7 +48,7 @@ const fetchMoviesByGenre = async (genreName: string, limit: number = 10): Promis
 		if (moviesError) return [];
 		
 		return movies || [];
-	} catch (error) {
+	} catch (err) {
 		return [];
 	}
 };
@@ -131,10 +131,10 @@ const fetchFeaturedMovies = async (limit: number = 3): Promise<Movie[]> => {
 	return movies;
 };
 
-const fetchQuickMovies = async (limit: number = 3, queryParam: string): Promise<Movie[]> => {
+const fetchQuickMovies = async (limit: number = 3): Promise<Movie[]> => {
 	const supabase = await createClient();
 	const { data: supabaseMovies, error } = await supabase
-		.from<any, Movie>("Movies")
+		.from("Movies")
 		.select("*")
 		.lte("runtimeMinutes", 90)
 		.limit(limit);
@@ -202,11 +202,13 @@ const fetchAllGenres = async (): Promise<Genre[]> => {
   return data as Genre[];
 };
 
-  export {
+export {
 	fetchMovies,
 	fetchPopularMovies,
 	fetchFeaturedMovies,
 	fetchMoviesByGenre,
 	getMoviePosterImage,
 	fetchAllGenres,
-  };
+	fetchAwardWinningMovies,
+	fetchQuickMovies,
+};

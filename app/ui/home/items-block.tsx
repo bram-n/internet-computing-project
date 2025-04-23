@@ -131,7 +131,5 @@ const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
 };
 
 export default ItemsBlock;
-function getMoviePoster(arg0: string) {
-	throw new Error("Function not implemented.");
-}
+
 

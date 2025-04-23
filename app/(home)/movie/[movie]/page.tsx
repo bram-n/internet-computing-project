@@ -1,4 +1,4 @@
-import { getMoviePosterImage, fetchAllGenres } from "@/lib/data";
+import { getMoviePosterImage } from "@/lib/data";
 import Image from "next/image";
 import { createClient } from "@/app/supabase/server";
 import CategorySidebar from "@/app/ui/search/category-sidebar";
