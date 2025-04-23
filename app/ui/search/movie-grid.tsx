@@ -1,15 +1,11 @@
-import { Movie } from "@/lib/definitions";
 import Link from "next/link";
 import Image from "next/image";
 import { getMoviePosterImage } from "@/lib/data";
-
-type MovieGridProps = {
-  movies: Movie[];
-  title: string;
-};
+import {MovieGridProps} from "@/lib/definitions";
 
 const MovieGrid = async ({ movies, title }: MovieGridProps) => {
-// get the posters
+
+  // get the posters
   const moviesWithPosters = await Promise.all(
     movies.map(async (movie) => {
       const posterPath = await getMoviePosterImage(movie.imdb_id);
@@ -29,15 +25,31 @@ const MovieGrid = async ({ movies, title }: MovieGridProps) => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {moviesWithPosters.map((movie) => (
-            <Link href={`/movie/${movie.id}`} key={movie.id}>
+            <Link 
+              href={`/movie/${movie.id}`} 
+              key={movie.id}
+              className="relative bg-black text-white"
+            >
               <div className="flex flex-col h-full transition-transform hover:scale-105">
                 <div className="relative aspect-[2/3] w-full mb-2">
-                  <Image
-                    src={movie.posterPath || ''}
-                    alt={movie.title}
-                    fill
-                    className="object-cover rounded-md"
-                  />
+                  {movie.posterPath?.includes('placeholder-poster.png') ? (
+                        <div className="border-2 border-gray-700 w-full h-full flex items-center justify-center rounded-md">
+                        <Image
+                            src={movie.posterPath}
+                            alt={movie.title}
+                            width={150}
+                            height={225}
+                            className="rounded-md object-contain"
+                        />
+                        </div>
+                  ) : (
+                    <Image
+                      src={movie.posterPath || ''}
+                      alt={movie.title}
+                      fill
+                      className="object-cover rounded-md"
+                    />
+                  )}
                 </div>
                 <h3 className="font-medium">{movie.title}</h3>
                 <p className="text-sm text-gray-400">{movie.runtime_minutes} min</p>

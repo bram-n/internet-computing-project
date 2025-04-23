@@ -20,3 +20,7 @@ export type Genre = {
 	genre_name: string,
 }
 
+export type MovieGridProps = {
+	movies: Movie[];
+	title: string;
+  };

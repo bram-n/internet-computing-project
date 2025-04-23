@@ -1,5 +1,4 @@
 import { getMoviePosterImage } from "@/lib/data";
-import { Movie } from "@/lib/definitions";
 import {
 	Card,
 	CardContent,

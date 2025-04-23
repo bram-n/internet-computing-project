@@ -1,6 +1,8 @@
 import { createClient } from "@/app/supabase/server";
 import { Movie, Genre} from "./definitions";
 
+// Rewrite all of these to sort in order of most likely to be preffered by the user using Tam's algo
+
 const fetchMovies = async (limit: number = 10): Promise<Movie[]> => {
 	const supabase = await createClient();
 	const { data: supabaseMovies, error } = await supabase
@@ -70,6 +72,48 @@ const fetchPopularMovies = async (limit: number = 5): Promise<Movie[]> => {
 	return movies;
 };
 
+
+const fetchAwardWinningMovies = async (limit: number = 3): Promise<Movie[]> => {
+	const supabase = await createClient();
+	const { data: supabaseMovies, error } = await supabase
+		.from<any, Movie>("Movies")
+		.select()
+		.limit(limit);
+	if (error) {
+		console.error("Database error:", error);
+		throw new Error("Error with querying POPULAR movies");
+	}
+
+	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
+
+	return movies;
+};
+
+// const fetchBoxOfficeHitsMovies = async (limit: number = 3): Promise<Movie[]> => {
+// 	const supabase = await createClient();
+// 	const { data: movieIds, error: movieIdsError } = await supabase
+// 			.from('boxOffice')
+// 			.select('movie_id')
+// 			.eq('genre_id', genre.genre_id)
+// 			.limit(limit * 2);
+
+// 		if (movieIdsError || !movieIds || movieIds.length === 0) return [];
+
+
+// 	const ids = movieIds.map(item => item.movie_id);
+
+// 		const { data: movies, error: moviesError } = await supabase
+// 			.from('Movies')
+// 			.select('*')
+// 			.in('id', ids)
+// 			.limit(limit);
+
+// 	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
+
+// 	return movies;
+// };
+
+
 // just get random movies for now
 const fetchFeaturedMovies = async (limit: number = 3): Promise<Movie[]> => {
 	const supabase = await createClient();
@@ -104,32 +148,42 @@ const fetchQuickMovies = async (limit: number = 3, queryParam: string): Promise<
 	return movies;
 };
 
-const getMoviePosterImage = async (imdb_id: string): Promise<string> => {
-	const apiKey = process.env.TMDB_API_KEY!;
+const getMoviePosterImage = async (imdbId: string): Promise<string> => {
 	try {
+		if (!imdbId) {
+			console.error("Missing IMDB ID");
+			return '/placeholder-poster.jpg';
+		}
+
+		const apiKey = process.env.TMDB_API_KEY!;
 		const response = await fetch(
-			`https://api.themoviedb.org/3/find/${imdb_id}?api_key=${apiKey}&external_source=imdb_id`
+			`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`
 		);
 
 		const data = await response.json();
 
-		if (!data.movie_results) {
-			throw new Error("No movie found for this imdbID");
+		// Check if movie_results exists and has at least one entry
+		if (!data.movie_results || data.movie_results.length === 0) {
+			console.log(`No movie results found for IMDB ID: ${imdbId}`);
+			return '/placeholder-poster.png';
 		}
 
-		const posterPath = data.movie_results[0].poster_path;
+		// Safely access poster_path
+		const posterPath = data.movie_results[0]?.poster_path;
 
 		if (!posterPath) {
-			throw new Error("No poster found for this imdbID");
+			console.log(`No poster path found for IMDB ID: ${imdbId}`);
+			return '/placeholder-poster.png';
 		}
 
-		return `https://image.tmdb.org/t/p/original${posterPath}`;
+		return `https://image.tmdb.org/t/p/w500${posterPath}`;
 	} catch (error) {
-		console.error("Error getting movie poster:", error);
-		return "";
+		console.error(`Error fetching poster for ${imdbId}:`, error);
+		// https://www.flaticon.com/free-icon/movie_4263893?term=movie&page=1&position=38&origin=tag&related_id=4263893
+		return '/placeholder-poster.png';
 	}
 };
-  
+
 const fetchAllGenres = async (): Promise<Genre[]> => {
   const supabase = await createClient();
   
