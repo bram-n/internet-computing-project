@@ -20,37 +20,34 @@ const fetchMovies = async (limit: number = 10): Promise<Movie[]> => {
 
 const fetchMoviesByGenre = async (genreName: string, limit: number = 10): Promise<Movie[]> => {
 	const supabase = await createClient();
-	try {
-		const { data: genre } = await supabase
-			.from('unique_genres')
-			.select('genre_id')
-			.ilike('genre_name', genreName)
-			.maybeSingle();
-		
-		if (!genre) return [];
+	const { data: genre } = await supabase
+		.from('unique_genres')
+		.select('genre_id')
+		.ilike('genre_name', genreName)
+		.maybeSingle();
+	
+	if (!genre) return [];
 
-		const { data: movieIds, error: movieIdsError } = await supabase
-			.from('genres')
-			.select('movie_id')
-			.eq('genre_id', genre.genre_id)
-			.limit(limit * 2);
+	const { data: movieIds, error: movieIdsError } = await supabase
+		.from('genres')
+		.select('movie_id')
+		.eq('genre_id', genre.genre_id)
+		.limit(limit * 2);
 
-		if (movieIdsError || !movieIds || movieIds.length === 0) return [];
+	if (movieIdsError || !movieIds || movieIds.length === 0) return [];
 
-		const ids = movieIds.map(item => item.movie_id);
+	const ids = movieIds.map(item => item.movie_id);
 
-		const { data: movies, error: moviesError } = await supabase
-			.from('Movies')
-			.select('*')
-			.in('id', ids)
-			.limit(limit);
-		
-		if (moviesError) return [];
-		
-		return movies || [];
-	} catch (error) {
-		return [];
-	}
+	const { data: movies, error: moviesError } = await supabase
+		.from('Movies')
+		.select('*')
+		.in('id', ids)
+		.limit(limit);
+	
+	if (moviesError) return [];
+	
+	return movies || [];
+
 };
   
 
