@@ -21,6 +21,7 @@ const CheckoutPage = () => {
 					<div className="max-w-xl w-full">
 						<form
 							onSubmit={(e) => {
+								e.preventDefault();
 								console.log("submitted form data");
 							}}
 						>

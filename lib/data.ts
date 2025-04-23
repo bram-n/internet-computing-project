@@ -48,7 +48,7 @@ const fetchMoviesByGenre = async (genreName: string, limit: number = 10): Promis
 		if (moviesError) return [];
 		
 		return movies || [];
-	} catch (err) {
+	} catch (error) {
 		return [];
 	}
 };
@@ -59,7 +59,7 @@ const fetchMoviesByGenre = async (genreName: string, limit: number = 10): Promis
 const fetchPopularMovies = async (limit: number = 5): Promise<Movie[]> => {
 	const supabase = await createClient();
 	const { data: supabaseMovies, error } = await supabase
-		.from<any, Movie>("Movies")
+		.from("Movies")
 		.select()
 		.limit(limit);
 	if (error) {
@@ -76,7 +76,7 @@ const fetchPopularMovies = async (limit: number = 5): Promise<Movie[]> => {
 const fetchAwardWinningMovies = async (limit: number = 3): Promise<Movie[]> => {
 	const supabase = await createClient();
 	const { data: supabaseMovies, error } = await supabase
-		.from<any, Movie>("Movies")
+		.from("Movies")
 		.select()
 		.limit(limit);
 	if (error) {
@@ -118,7 +118,7 @@ const fetchAwardWinningMovies = async (limit: number = 3): Promise<Movie[]> => {
 const fetchFeaturedMovies = async (limit: number = 3): Promise<Movie[]> => {
 	const supabase = await createClient();
 	const { data: supabaseMovies, error } = await supabase
-		.from<any, Movie>("Movies")
+		.from("Movies")
 		.select()
 		.limit(limit);
 	if (error) {
