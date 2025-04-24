@@ -1,0 +1,206 @@
+---
+title: "recommedation_sys"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(caret) 
+library(readr)
+library(e1071)
+library(stringr)
+library(rlang)
+movies <- read_csv("DataForProject.csv")
+```
+
+```{r}
+dummy <- function(data, var){
+  var_sym <- ensym(var)  # captures variable name as symbol
+  
+  data %>%
+    select(Title, !!var_sym) %>%
+    separate_longer_delim(!!var_sym, delim = ",") %>%
+    mutate(
+      var_processed = paste0(
+        "p_", str_trim(str_to_lower(.data[[as_string(var_sym)]]))
+      )
+    ) %>%
+    mutate(value = 1) %>%
+    select(-!!var_sym) %>%
+    pivot_wider(names_from = var_processed, values_from = value, values_fill = 0)
+}
+```
+
+```{r}
+dummy(sub_movies, "Actors")
+```
+
+```{r}
+names(movies) 
+```
+
+```{r}
+sub_vars <- c("Title", "Genre", "runtimeMinutes" ,"originalLanguage","tomatoMeter", "audienceScore", "Actors", "Director", "Writer")
+
+dummy_var = c("Genre", "Actors", "Director")
+
+
+
+sub_movies <- movies %>% 
+  select(all_of(sub_vars)) %>%
+  distinct() %>% 
+  mutate(liked = if_else(audienceScore > 50, 1, 0))
+
+sub_movies <- sub_movies[complete.cases(sub_movies), ]
+
+
+predictors <- c("Title", "runtimeMinutes" ,"originalLanguage","tomatoMeter", "audienceScore", "liked")
+
+
+other_pred_tbl <- sub_movies %>% 
+  select(all_of(predictors))
+```
+
+```{r}
+movies %>% 
+  select(Actors)
+```
+
+```{r}
+
+```
+
+```{r}
+sub_movies %>%
+  select(Title, Actors) %>%
+  separate_longer_delim(Actors, delim = ",") %>%
+  mutate(genre_processed = paste0("p_",str_trim(str_to_lower(Actors)))) %>%
+  mutate(value = 1) %>%
+  select(-Actors) %>% 
+  pivot_wider(names_from = genre_processed, values_from = value, values_fill = 0)
+```
+
+```{r}
+tbl_list <- map(dummy_var, ~ dummy(sub_movies, !!sym(.x)))
+joined_table <- reduce(tbl_list, ~ left_join(.x, .y, by = "Title"))
+joined_table <- joined_table %>% 
+  select(-matches("\\.x"))
+
+
+```
+
+```{r}
+joined_table
+```
+
+```{r}
+official_data <- other_pred_tbl %>% 
+  left_join(joined_table, by = "Title")
+```
+
+```{r}
+write_csv(official_data, "final_data.csv")
+```
+
+```{r}
+
+# Features (X) and Target (y)
+X <- official_data %>% 
+  select(-c("Title", "liked"))
+y <- official_data$liked
+title <- official_data$Title
+
+official_data <- official_data[complete.cases(official_data), ]
+
+# Train/Test split (70% train, 30% test)
+set.seed(446)
+train_indices <- sample(1:nrow(official_data), 0.7 * nrow(official_data))
+
+X_train <- X[train_indices, ]
+y_train <- y[train_indices]
+X_test <- X[-train_indices, ]
+y_test <- y[-train_indices]
+
+# train_data <- sub_movies[train_indices, ]
+# test_data <- sub_movies[-train_indices, ] %>% select(all_of(c("genre", "runtimeMinutes" ,"originalLanguage","tomatoMeter")))
+# title_test <- title[-train_indices]
+
+# # Perform hyperparameter tuning using tune.svm
+# tune_result <- tune.svm(
+#   x = X_train, 
+#   y = as.factor(y_train), 
+#   gamma = 2^(-3:3),  # Search range for gamma (RBF kernel)
+#   cost = 2^(-3:3),   # Search range for cost parameter (C)
+#   kernel = "radial",  # Use RBF kernel
+#   tunecontrol = tune.control(cross = 4)  # 5-fold cross-validation
+# )
+# 
+# # Best parameters
+# best_params <- tune_result$best.parameters
+# print(best_params)
+
+# Train the SVM model with the best parameters
+# svm_model_tuned <- svm(
+#   x = X_train, 
+#   y = as.factor(y_train), 
+  # cost = best_params$cost, 
+  # gamma = best_params$gamma, 
+  # kernel = "radial", 
+#   probability = TRUE
+# )
+# 
+# svm_model <- svm(liked ~ genre + runtimeMinutes + originalLanguage + tomatoMeter, data = train_data, kernel = "radial")
+# # Predict probabilities on the test set
+# pred_probs_tuned <- predict(svm_model, newdata = test_data)
+
+# # Get the probabilities of class '1' (recommendation)
+# recommend_probs_tuned <- attr(pred_probs_tuned, "probabilities")[, 2]
+# 
+# # Add probabilities to test data
+# recommendations_tuned <- cbind(X_test, recommend_score = recommend_probs_tuned)
+# 
+# # Sort by highest recommendation score
+# recommended_items_tuned <- recommendations_tuned[order(-recommendations_tuned$recommend_score), ]
+# print(recommended_items_tuned)
+
+```
+
+```{r}
+
+dim(official_data)
+
+# Check for NAs in X_train and y_train
+sum(is.na(X_train))  # Number of NAs in features
+sum(is.na(y_train))  # Number of NAs in target
+
+# Check for Inf or NaN values
+sum(is.infinite(X_train))  # Infinite values in features
+sum(is.infinite(y_train))  # Infinite values in target
+sum(is.nan(X_train))  # NaN values in features
+sum(is.nan(y_train))  # NaN values in target
+```
+
+```{r}
+model_untuned <- svm(x = X_train, y = as.factor(y_train), kernel = "linear", cost = 0.1, gamma = 0.125, scale = TRUE)
+```
+
+```{r}
+svm_model <- svm(liked ~ genre + runtimeMinutes + originalLanguage + tomatoMeter, data = train_data, kernel = "radial")
+```
+
+```{r}
+res <- cbind(title_test, test_data, recommend_probs_tuned, y_test) %>% 
+  mutate(pred = if_else(recommend_probs_tuned < 0.5, 0, 1)) %>% 
+  arrange(desc(recommend_probs_tuned))
+
+res
+```
+
+```{r}
+confusionMatrix(as.factor(res$y_test), as.factor(res$pred))
+```
+
+```{r}
+
+```
