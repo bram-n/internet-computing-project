@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input";
 // import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { House, User, Search } from "lucide-react";
+import Image from "next/image";
 // Removed Menu here
 import MenuSheet from "@/app/ui/main/menu-sheet";
 import CartSheet from "@/app/ui/main/cart-sheet";
@@ -20,14 +21,17 @@ const HeaderNav = () => {
 						target="_self"
 						className="mr-2 w-full flex justify-center items-center md:w-auto md:mr-2 lg:mr-6"
 					>
-						<div className="flex flex-none items-center justify-center border border-neutral-50 rounded-xl p-2">
-							<House />
-						</div>
-						<div className="ml-2 mr-2 flex-none text-lg font-medium uppercase md:hidden lg:block">
-							3AM Movies
-						</div>
+
+							<Image
+							src="/logo.svg" 
+							alt="3AM Movies"
+							width={60}
+							height={60}
+							className = "borderounded-xl"
+							/>
+						
 					</Link>
-					<ul className="hidden md:flex flex-row gap-4 items-center justify-center">
+					<ul className="hidden md:flex flex-row gap-6 items-center justify-center">
 						{/* put links for search in here */}
 						
 						<li>
@@ -58,7 +62,10 @@ const HeaderNav = () => {
 				<div className="flex justify-end md:w-1/3">
 					<div className="flex flex-row gap-4">
 						<Link href="/account" className="hidden border border-neutral-50 rounded-xl p-2 md:flex">
-							<User />
+							<User 
+							width = {40}
+							height = {40}
+							/>
 						</Link>
 						<CartSheet />
 					</div>
