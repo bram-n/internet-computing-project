@@ -47,7 +47,7 @@ const Footer = () => {
 					<hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-50 md:inline-block"></hr>
 					<p>
 						{/* change to repo link */}
-						<Link href="https://github.com" target="_blank">
+						<Link href="https://github.com/bram-n/internet-computing-project" target="_blank">
 							View the Source
 						</Link>
 					</p>
