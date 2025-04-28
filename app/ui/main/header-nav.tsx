@@ -1,11 +1,15 @@
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 // import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {User, Search } from "lucide-react";
+import { 
+	User, 
+	// Search 
+} from "lucide-react";
 import Image from "next/image";
 // Removed Menu here
 import MenuSheet from "@/app/ui/main/menu-sheet";
 import CartSheet from "@/app/ui/main/cart-sheet";
+import SearchBar from "@/app/ui/main/search-bar";
 // import { Separator } from "@/components/ui/separator";
 
 const HeaderNav = () => {
@@ -54,12 +58,13 @@ const HeaderNav = () => {
 					</ul>
 				</div>
 				<div className="hidden md:flex justify-center md:w-1/3 ">
-					<form action="/search" className="relative md:w-80 xl:w-full">
+					{/* <form action="/search" className="relative md:w-80 xl:w-full">
 						<Input placeholder="Search for items..." />
 						<div className="absolute top-0 right-0 mr-3 flex h-full items-center w-4">
 							<Search />
 						</div>
-					</form>
+					</form> */}
+					<SearchBar />
 				</div>
 				<div className="flex justify-end md:w-1/3">
 					<div className="flex flex-row gap-4">
