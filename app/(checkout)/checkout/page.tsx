@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { CircleSlash2, Loader2 } from "lucide-react";
 import CartItem from "@/app/ui/main/cart-item";
