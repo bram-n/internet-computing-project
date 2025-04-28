@@ -14,7 +14,7 @@ const ItemsSlider = async () => {
 	}
 	return (
 		<div className="w-full overflow-x-auto pb-6 pt-1 bg-black text-white">
-			<ul className="flex items-end animate-carousel gap-4">
+			<ul className="flex items-center animate-carousel gap-4">
 				{duplicateMovieList.map((movie, index) => (
 					<li
 						key={index}

@@ -56,7 +56,7 @@ const CartSheet = () => {
 								</div>
 							</div>
 							<Link href="/checkout" className="w-full">
-								<Button type="submit" className="w-full">Proceed to Checkout</Button>
+								<Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">Proceed to Checkout</Button>
 							</Link>
 						</div>
 					</SheetClose>
