@@ -19,33 +19,35 @@ const HeaderNav = () => {
 					<Link
 						href="/"
 						target="_self"
-						className="mr-2 w-full flex justify-center items-center md:w-auto md:mr-2 lg:mr-6"
+						className="mr-2 w-full flex justify-center items-center md:w-auto md:mr-6"
 					>
-
-							<Image
-							src="/logo.svg" 
-							alt="3AM Movies"
-							width={60}
-							height={60}
-							className = "borderounded-xl"
-							/>
-						
+						<Image src="/logo.svg" alt="3AM Movies" width={40} height={40} />
 					</Link>
-					<ul className="hidden md:flex flex-row gap-6 items-center justify-center">
-						{/* put links for search in here */}
-						
+					<ul className="hidden md:flex flex-row gap-4 items-center justify-center">
 						<li>
-							<Link href="/search" type="_self" className="hover:border-b hover:border-white">
+							<Link
+								href="/search"
+								type="_self"
+								className="hover:border-b hover:border-white"
+							>
 								All
 							</Link>
 						</li>
 						<li>
-							<Link href="/search/action" type="_self"  className="hover:border-b hover:border-white">
+							<Link
+								href="/search/action"
+								type="_self"
+								className="hover:border-b hover:border-white"
+							>
 								Action
 							</Link>
 						</li>
 						<li>
-							<Link href="/search/romance" type="_self"  className="hover:border-b hover:border-white">
+							<Link
+								href="/search/romance"
+								type="_self"
+								className="hover:border-b hover:border-white"
+							>
 								Romance
 							</Link>
 						</li>
@@ -61,11 +63,11 @@ const HeaderNav = () => {
 				</div>
 				<div className="flex justify-end md:w-1/3">
 					<div className="flex flex-row gap-4">
-						<Link href="/account" className="hidden border border-neutral-50 rounded-xl p-2 md:flex">
-							<User 
-							width = {40}
-							height = {40}
-							/>
+						<Link
+							href="/account"
+							className="hidden border border-neutral-50 rounded-xl p-2 md:flex"
+						>
+							<User />
 						</Link>
 						<CartSheet />
 					</div>

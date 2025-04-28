@@ -20,9 +20,9 @@ const MenuSheet = () => {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<Button variant="outline">
+				<div className="p-2 border border-neutral-50 rounded-xl cursor-pointer">
 					<Menu />
-				</Button>
+				</div>
 			</SheetTrigger>
 			<SheetContent side="left" className="w-[100vw] text-white">
 				<SheetHeader>
