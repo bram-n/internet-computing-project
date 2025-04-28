@@ -1,3 +1,5 @@
+"use client";
+
 import {
 	Sheet,
 	SheetTrigger,
@@ -10,13 +12,29 @@ import {
 } from "@/components/ui/sheet";
 
 // import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
+import { useSearchParams, useRouter } from "next/navigation";
+
 import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { useDebouncedCallback } from "use-debounce";
 
 const MenuSheet = () => {
+	const searchParams = useSearchParams();
+	const { replace } = useRouter();
+
+	const handleSearch = useDebouncedCallback((term) => {
+		const params = new URLSearchParams(searchParams);
+		if (term) {
+			params.set("query", term);
+		} else {
+			params.delete("query");
+		}
+		replace(`search?${params.toString()}`);
+	}, 300);
+
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
@@ -24,18 +42,24 @@ const MenuSheet = () => {
 					<Menu />
 				</div>
 			</SheetTrigger>
-			<SheetContent side="left" className="w-[100vw] text-white">
+			<SheetContent side="left" className="w-[75%] text-white">
 				<SheetHeader>
 					<SheetTitle className="text-white">3AM Movies</SheetTitle>
 				</SheetHeader>
 				<div className="px-4">
 					<div className="mb-4 w-full">
-						<form action="/search" className="relative md:w-80 xl:w-full">
-							<Input placeholder="Search for items..." />
+						<div
+							className="relative md:w-80 xl:w-full"
+						>
+							<Input
+								placeholder="Search for items..."
+								onChange={(e) => handleSearch(e.target.value)}
+								defaultValue={searchParams.get("query")?.toString()}
+							/>
 							<div className="absolute top-0 right-0 mr-3 flex h-full items-center w-4">
 								<Search />
 							</div>
-						</form>
+						</div>
 					</div>
 					<ul className="mt-4 flex w-full flex-col">
 						{/* put links for search in here */}
@@ -65,7 +89,7 @@ const MenuSheet = () => {
 						<li className="py-2">
 							<SheetClose asChild>
 								<Link
-									href="/search/test"
+									href="/search/action"
 									type="_self"
 									className="py-2 text-xl transition-colors hover:text-neutral-500"
 								>
@@ -84,7 +108,6 @@ const MenuSheet = () => {
 								</Link>
 							</SheetClose>
 						</li>
-						
 					</ul>
 				</div>
 			</SheetContent>

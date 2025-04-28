@@ -1,7 +1,6 @@
 import LoginForm from '@/components/ui/login-form';
 import { Suspense } from 'react';
 import Image from "next/image";
-import Link from "next/link";
 
 export default function LoginPage() {
   return (

@@ -199,12 +199,13 @@ const fetchAllGenres = async (): Promise<Genre[]> => {
   return data as Genre[];
 };
 
-const fetchMoviesByName = async (term: string): Promise<Movie[]> => {
+const fetchMoviesByName = async (term: string, limit: number = 12): Promise<Movie[]> => {
 	const supabase = await createClient();
 	const { data: supabaseMovies, error } = await supabase
 		.from("Movies")
 		.select("*")
-		.ilike('Title', term)
+		.ilike('title', `%${term}%`)
+		.limit(limit)
 	if (error) {
 		console.error("Database error:", error);
 		throw new Error("Error with querying movies");
