@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import Image from "next/image";
 import SignupForm from '@/components/ui/signup-form';
-import Link from "next/link";
 
 export default function SignupPage() {
 	return (
