@@ -26,7 +26,7 @@ const MovieGrid = async ({ movies, title }: MovieGridProps) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {moviesWithPosters.map((movie) => (
             <Link 
-              href={`/movie/${movie.id}`} 
+              href={`/search/movie/${movie.id}`} 
               key={movie.id}
               className="relative bg-black text-white"
             >

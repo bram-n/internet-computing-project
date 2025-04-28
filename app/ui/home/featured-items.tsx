@@ -13,7 +13,7 @@ const FeaturedItems = async () => {
 	return (
 		<div className="mt-4 mx-auto grid max-w-screen-2xl gap-4 pb-4 md:grid-cols-4 md:grid-rows-6 lg:max-h-[calc(100vh-200px)]">
 			<div className="md:col-span-3 md:row-span-6">
-				<Link className="relative block aspect-square h-full w-full" href="/">
+				<Link className="relative block aspect-square h-full w-full" href={`/search/movie/${featuredMovies[0].id}`}>
 					<div className="h-full w-full relative items-center justify-center overflow-hidden border border-neutral-50 rounded-xl">
 						<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4 lg:px-20 lg:pb-[35%]">
 							<div className="flex items-center rounded-full border border-neutral-50 font-semibold text-xs p-1">
@@ -37,7 +37,7 @@ const FeaturedItems = async () => {
 				</Link>
 			</div>
 			<div className="md:col-span-1 md:row-span-3">
-				<Link className="relative block aspect-square h-full w-full" href="/">
+				<Link className="relative block aspect-square h-full w-full" href={`/search/movie/${featuredMovies[1].id}`}>
 					<div className="h-full w-full relative items-center justify-center overflow-hidden border border-neutral-50 rounded-xl">
 						<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
 							<div className="flex items-center rounded-full border border-neutral-50 font-semibold text-xs p-1">
@@ -61,7 +61,7 @@ const FeaturedItems = async () => {
 				</Link>
 			</div>
 			<div className="md:col-span-1 md:row-span-3">
-				<Link className="relative block aspect-square h-full w-full" href="/">
+				<Link className="relative block aspect-square h-full w-full" href={`/search/movie/${featuredMovies[2].id}`}>
 					<div className="h-full w-full relative items-center justify-center overflow-hidden border border-neutral-50 rounded-xl">
 						<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
 							<div className="flex items-center rounded-full border border-neutral-50 font-semibold text-xs p-1">

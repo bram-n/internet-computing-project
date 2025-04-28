@@ -18,7 +18,7 @@ const SearchLayout = ({ children }: { children: React.ReactNode }) => {
 				<div className="order-last min-h-screen w-full md:order-none">
 					{ children }
 				</div>
-				<div className="order-none w-full flex-none md:max-w-[125px] md:order-last">
+				<div className="order-none w-full flex-none md:max-w-[150px] md:order-last">
 					<div className="block md:hidden">
 						<SortSelect />
 					</div>

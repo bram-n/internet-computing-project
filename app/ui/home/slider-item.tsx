@@ -9,7 +9,7 @@ const SliderItem = async ({ movie }: { movie: Movie }) => {
 
 	return (
 		<>
-			<Link className="relative bg-black text-white" href={`/movie/${movie.id}`} key={movie.id}>
+			<Link className="relative bg-black text-white" href={`/search/movie/${movie.id}`} key={movie.id}>
 				<div className="group overflow-hidden relative">
 					<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
 						<div className="flex items-center rounded-full border border-neutral-50 font-semibold text-xs p-1">

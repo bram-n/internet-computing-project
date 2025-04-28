@@ -1,7 +1,6 @@
 import { getMoviePosterImage } from "@/lib/data";
 import Image from "next/image";
 import { createClient } from "@/app/supabase/server";
-import CategorySidebar from "@/app/ui/search/category-sidebar";
 import MoviePoster from "@/app/ui/movie/movie-poster";
 import MovieInfo from "@/app/ui/movie/movie-info";
 import MovieRatings from "@/app/ui/movie/movie-ratings";
@@ -67,14 +66,6 @@ export default async function MovieDetails({ params }: { params: { movie: string
     <main className="p-6 bg-black text-white min-h-screen">
       <div className="mx-auto max-w-screen-2xl">
         <div className="flex flex-col md:flex-row gap-8">
-          {/* Category Sidebar */}
-          <div className="order-first w-full flex-none md:max-w-[125px]">
-            <div className="hidden md:flex">
-              <CategorySidebar />
-            </div>
-          </div>
-          
-          {/* Main content */}
           <div className="order-last w-full">
             {/* Top section with poster and basic details */}
             <div className="flex flex-col md:flex-row gap-8 mb-10">
