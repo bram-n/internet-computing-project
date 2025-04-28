@@ -3,13 +3,16 @@ import SortSidebar from "@/app/ui/search/sort-sidebar";
 import CategorySelect from "@/app/ui/search/category-select";
 import SortSelect from "@/app/ui/search/sort-select";
 
-const SearchLayout = ({ children }: { children: React.ReactNode }) => {
+import { fetchAllGenres } from "@/lib/data";
+
+const SearchLayout = async ({ children }: { children: React.ReactNode }) => {
+	const genres = await fetchAllGenres();
 	return (
 		<main>
 			<div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 mt-6 md:flex-row">
 				<div className="order-first w-full flex-none md:max-w-[125px]">
 					<div className="block md:hidden">
-						<CategorySelect />
+						<CategorySelect genres={genres}/>
 					</div>
 					<div className="hidden md:flex">
 						<CategorySidebar />
