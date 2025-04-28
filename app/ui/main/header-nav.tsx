@@ -64,7 +64,7 @@ const HeaderNav = () => {
 				<div className="flex justify-end md:w-1/3">
 					<div className="flex flex-row gap-4">
 						<Link
-							href="/account"
+							href="/login"
 							className="hidden border border-neutral-50 rounded-xl p-2 md:flex"
 						>
 							<User />
