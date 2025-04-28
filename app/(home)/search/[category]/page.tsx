@@ -7,7 +7,7 @@ export default async function Category({ params }: { params: { category: string 
 	const formattedCategoryName = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
 	
 	return (
-		<main className="p-6 bg-black text-white min-h-screen">
+		<main className="px-6 bg-black text-white min-h-screen">
 			<MovieGrid movies={movies} title={`${formattedCategoryName} Movies`} />
 		</main>
 	);
