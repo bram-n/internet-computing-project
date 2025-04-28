@@ -199,6 +199,21 @@ const fetchAllGenres = async (): Promise<Genre[]> => {
   return data as Genre[];
 };
 
+const fetchMoviesByName = async (term: string): Promise<Movie[]> => {
+	const supabase = await createClient();
+	const { data: supabaseMovies, error } = await supabase
+		.from("Movies")
+		.select("*")
+		.ilike('Title', term)
+	if (error) {
+		console.error("Database error:", error);
+		throw new Error("Error with querying movies");
+	}
+	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
+
+	return movies;
+}
+
 export {
 	fetchMovies,
 	fetchPopularMovies,
@@ -208,4 +223,5 @@ export {
 	fetchAllGenres,
 	fetchAwardWinningMovies,
 	fetchQuickMovies,
+	fetchMoviesByName,
 };
