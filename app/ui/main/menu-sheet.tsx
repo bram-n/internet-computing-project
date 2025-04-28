@@ -24,11 +24,11 @@ const MenuSheet = () => {
 					<Menu />
 				</Button>
 			</SheetTrigger>
-			<SheetContent side="left" className="w-full text-white">
+			<SheetContent side="left" className="w-[100vw] text-white">
 				<SheetHeader>
 					<SheetTitle className="text-white">3AM Movies</SheetTitle>
 				</SheetHeader>
-				<div className="p-4">
+				<div className="px-4">
 					<div className="mb-4 w-full">
 						<form action="/search" className="relative md:w-80 xl:w-full">
 							<Input placeholder="Search for items..." />
