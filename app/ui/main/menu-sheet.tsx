@@ -48,9 +48,7 @@ const MenuSheet = () => {
 				</SheetHeader>
 				<div className="px-4">
 					<div className="mb-4 w-full">
-						<div
-							className="relative md:w-80 xl:w-full"
-						>
+						<div className="relative md:w-80 xl:w-full">
 							<Input
 								placeholder="Search for items..."
 								onChange={(e) => handleSearch(e.target.value)}
@@ -64,13 +62,15 @@ const MenuSheet = () => {
 					<ul className="mt-4 flex w-full flex-col">
 						{/* put links for search in here */}
 						<li className="py-2">
-							<Link
-								href="/account"
-								type="_self"
-								className="text-xl transition-colors hover:text-neutral-500"
-							>
-								Your Account
-							</Link>
+							<SheetClose asChild>
+								<Link
+									href="/account"
+									type="_self"
+									className="text-xl transition-colors hover:text-neutral-500"
+								>
+									Your Account
+								</Link>
+							</SheetClose>
 						</li>
 						<div className="my-2">
 							<Separator />

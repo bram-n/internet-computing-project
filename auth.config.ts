@@ -10,7 +10,7 @@ export const authConfig = {
       const isLoggedIn = !!auth?.user;
       const isOnHomePage = !nextUrl.pathname.startsWith('/login') || !nextUrl.pathname.startsWith('/signup');
       // console.log(isLoggedIn, isOnHomePage, nextUrl);
-      return true;
+      // return true;
 
       if (isOnHomePage) {
         if (isLoggedIn) return true;

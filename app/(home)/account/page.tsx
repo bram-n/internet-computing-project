@@ -36,7 +36,7 @@ const AccountPage = () => {
 						{/* image */}
 						<Wrench />
 					</div>
-					<a href="/account" className="ml-2">
+					<a href="/preferences" className="ml-2">
 						<div>Preferences</div>
 						<p className="text-sm text-gray-100">
 							View and update your preferences
