@@ -46,7 +46,6 @@ sub_vars <- c("Title", "Genre", "runtimeMinutes" ,"originalLanguage","tomatoMete
 dummy_var = c("Genre", "Actors", "Director")
 
 
-
 sub_movies <- movies %>% 
   select(all_of(sub_vars)) %>%
   distinct() %>% 
@@ -97,10 +96,15 @@ joined_table
 ```{r}
 official_data <- other_pred_tbl %>% 
   left_join(joined_table, by = "Title")
+
 ```
 
 ```{r}
 write_csv(official_data, "final_data.csv")
+```
+
+```{r}
+official_data <- read_csv("final_data.csv")
 ```
 
 ```{r}
@@ -122,9 +126,9 @@ y_train <- y[train_indices]
 X_test <- X[-train_indices, ]
 y_test <- y[-train_indices]
 
-# train_data <- sub_movies[train_indices, ]
-# test_data <- sub_movies[-train_indices, ] %>% select(all_of(c("genre", "runtimeMinutes" ,"originalLanguage","tomatoMeter")))
-# title_test <- title[-train_indices]
+train_data <- official_data[train_indices, ] %>% select(-Title)
+test_data <- official_data[-train_indices, ] %>% select(-Title)
+title_test <- title[-train_indices]
 
 # # Perform hyperparameter tuning using tune.svm
 # tune_result <- tune.svm(
@@ -182,11 +186,17 @@ sum(is.nan(y_train))  # NaN values in target
 ```
 
 ```{r}
+X_train <- na.omit(train_data)
 model_untuned <- svm(x = X_train, y = as.factor(y_train), kernel = "linear", cost = 0.1, gamma = 0.125, scale = TRUE)
 ```
 
 ```{r}
-svm_model <- svm(liked ~ genre + runtimeMinutes + originalLanguage + tomatoMeter, data = train_data, kernel = "radial")
+
+svm_model <- svm(liked ~ ., data = train_data, kernel = "linear")
+```
+
+```{r}
+pred_probs_tuned <- predict(svm_model, newdata = test_data)
 ```
 
 ```{r}
