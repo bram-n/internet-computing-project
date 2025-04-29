@@ -2,7 +2,6 @@
 // import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { 
-	User, 
 	// Search 
 } from "lucide-react";
 import Image from "next/image";
@@ -10,6 +9,9 @@ import Image from "next/image";
 import MenuSheet from "@/app/ui/main/menu-sheet";
 import CartSheet from "@/app/ui/main/cart-sheet";
 import SearchBar from "@/app/ui/main/search-bar";
+import { AccountDropdown } from "@/app/ui/main/dropdown-menu-demo"
+// import AccountButton from "@/app/ui/main/account-button"
+
 // import { Separator } from "@/components/ui/separator";
 
 const HeaderNav = () => {
@@ -68,12 +70,7 @@ const HeaderNav = () => {
 				</div>
 				<div className="flex justify-end md:w-1/3">
 					<div className="flex flex-row gap-4">
-						<Link
-							href="/login"
-							className="hidden border border-neutral-50 rounded-xl p-2 md:flex"
-						>
-							<User />
-						</Link>
+						<AccountDropdown />
 						<CartSheet />
 					</div>
 				</div>

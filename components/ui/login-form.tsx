@@ -8,21 +8,43 @@ import {
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from '@/components/ui/button';
-import { useActionState } from 'react';
-import { authenticate } from '@/lib/actions';
+import { useState } from 'react';
+import { signIn } from '@/lib/actions';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
  
 export default function LoginForm() {
+  const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
-  const [errorMessage, formAction, isPending] = useActionState(
-    authenticate,
-    undefined,
-  );
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async (formData: FormData) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const { data, error } = await signIn(formData);
+
+      if (error) {
+        setError(error);
+        return;
+      }
+
+      if (data) {
+        router.push(callbackUrl);
+      }
+    } catch (error) {
+      setError('An unexpected error occurred');
+    } finally {
+      setLoading(false);
+    }
+  };
  
   return (
-    <form action={formAction} className="space-y-3">
+    <form action={handleLogin} className="space-y-3">
       <div className="flex-1 rounded-lg border border-neutral-50 px-6 pb-4 pt-8">
         <h1 className={`${lusitana.className} mb-3 text-2xl text-white`}>
           Please log in to continue
@@ -68,22 +90,15 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
-        <input type="hidden" name="redirectTo" value={callbackUrl} />
-        <Button className="mt-4 w-full bg-white text-black hover:bg-gray-200" aria-disabled={isPending}>
-          Log in <ArrowRightIcon className="ml-auto h-5 w-5" />
+        <Button className="mt-4 w-full bg-white text-black hover:bg-gray-200" disabled={loading}>
+          {loading ? 'Logging in...' : 'Log in'} <ArrowRightIcon className="ml-auto h-5 w-5" />
         </Button>
-        <div
-          className="flex h-8 items-end space-x-1"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          {errorMessage && (
-            <>
-              <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-              <p className="text-sm text-red-500">{errorMessage}</p>
-            </>
-          )}
-        </div>
+        {error && (
+          <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
+            <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+            <p className="text-sm text-red-500">{error}</p>
+          </div>
+        )}
         <div className="text-center mt-4 text-sm text-white">
           New?{" "}
           <Link href="/signup" className="text-blue-400 hover:underline">
