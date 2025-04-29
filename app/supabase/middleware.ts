@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-const publicRoutes = ['/', '/about', '/search', '/search/action', '/search/romance', '/terms-and-conditions', '/returns', '/privacy-policy', '/faq']
+const publicRoutes = ['/', '/about', '/search', '/terms-and-conditions', '/returns', '/privacy-policy', '/faq']
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
@@ -35,7 +35,8 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  const isPublicRoute = publicRoutes.some(route => request.nextUrl.pathname === route)
+  const isPublicRoute = publicRoutes.some(route => request.nextUrl.pathname === route) ||
+                       request.nextUrl.pathname.startsWith('/search/')
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login') || 
                      request.nextUrl.pathname.startsWith('/signup') ||
                      request.nextUrl.pathname.startsWith('/auth')
