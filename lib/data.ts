@@ -78,7 +78,7 @@ const fetchAwardWinningMovies = async (limit: number = 3): Promise<Movie[]> => {
 		.limit(limit);
 	if (error) {
 		console.error("Database error:", error);
-		throw new Error("Error with querying POPULAR movies");
+		throw new Error("Error with querying award winning movies");
 	}
 
 	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
@@ -128,16 +128,16 @@ const fetchFeaturedMovies = async (limit: number = 3): Promise<Movie[]> => {
 	return movies;
 };
 
-const fetchQuickMovies = async (limit: number = 3): Promise<Movie[]> => {
+const fetchQuickMovies = async (limit: number = 12): Promise<Movie[]> => {
 	const supabase = await createClient();
 	const { data: supabaseMovies, error } = await supabase
 		.from("Movies")
 		.select("*")
-		.lte("runtimeMinutes", 90)
+		.lte("runtime_minutes", 90)
 		.limit(limit);
 	if (error) {
 		console.error("Database error:", error);
-		throw new Error("Error with querying POPULAR movies");
+		throw new Error("Error with querying quick movies");
 	}
 
 	const movies: Movie[] = (supabaseMovies as Movie[]) || [];

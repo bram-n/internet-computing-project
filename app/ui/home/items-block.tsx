@@ -1,4 +1,3 @@
-import { getMoviePosterImage } from "@/lib/data";
 import {
 	Card,
 	CardContent,
@@ -14,22 +13,18 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image from "next/image";
-// import { createClient } from "@supabase/supabase-js";
 
 import Link from "next/link";
+import { Movie } from "@/lib/definitions";
+import BlockMovie from "./block-movie";
 
 type ItemsBlockProps = {
 	cardTitle: string;
-}; 
+	movieList: Movie[];
+};
 
-const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
-
-
-	const poster = (await getMoviePosterImage("tt0068646")) || "";
-
-	// TODO: need to fill with items
-	// TODO: make this take variable titles
+const ItemsBlock = async ({ cardTitle, movieList }: ItemsBlockProps) => {
+	
 	return (
 		<Card className="bg-black text-white">
 			<CardHeader>
@@ -44,71 +39,14 @@ const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
 						className="max-w-sm sm:max-w-md md:max-w-[calc(100%-200px)]"
 					>
 						<CarouselContent>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<Image
-										src={poster}
-										alt="Movie Poster"
-										width={400}
-										height={600}
-									/>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
-							<CarouselItem className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5">
-								<div className="w-40 h-60 border border-neutral-50 flex items-center justify-center">
-									<span>Item</span>
-								</div>
-							</CarouselItem>
+							{movieList.map((movie, index) => (
+								<CarouselItem
+									className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5"
+									key={index}
+								>
+									<BlockMovie movie={movie} />
+								</CarouselItem>
+							))}
 						</CarouselContent>
 						<CarouselPrevious className="hidden sm:inline-flex" />
 						<CarouselNext className="hidden sm:inline-flex" />
@@ -131,5 +69,3 @@ const ItemsBlock = async ({ cardTitle }: ItemsBlockProps) => {
 };
 
 export default ItemsBlock;
-
-
