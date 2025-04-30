@@ -145,6 +145,23 @@ const fetchQuickMovies = async (limit: number = 12): Promise<Movie[]> => {
 	return movies;
 };
 
+const fetchLongMovies = async (limit: number = 12): Promise<Movie[]> => {
+	const supabase = await createClient();
+	const { data: supabaseMovies, error } = await supabase
+		.from("Movies")
+		.select("*")
+		.gte("runtime_minutes", 120)
+		.limit(limit);
+	if (error) {
+		console.error("Database error:", error);
+		throw new Error("Error with querying quick movies");
+	}
+
+	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
+
+	return movies;
+};
+
 const getMoviePosterImage = async (imdbId: string): Promise<string> => {
 	try {
 		if (!imdbId) {
@@ -224,5 +241,6 @@ export {
 	fetchAllGenres,
 	fetchAwardWinningMovies,
 	fetchQuickMovies,
+	fetchLongMovies,
 	fetchMoviesByName,
 };

@@ -1,6 +1,9 @@
 import ItemsSlider from "@/app/ui/home/items-slider";
 import FeaturedItems from "@/app/ui/home/featured-items";
 import QuickMoviesBlock from "../ui/home/quick-movies-block";
+import LongMoviesBlock from "../ui/home/long-movies-block";
+import FilmNoirBlock from "../ui/home/film-noir-block";
+import YourHistoryBlock from "../ui/home/your-history-block";
 
 export default function Home() {
 	return (
@@ -19,15 +22,9 @@ export default function Home() {
 			</section>
 			<section>
 				<QuickMoviesBlock />
-				{/* <div className="mb-4">
-					<ItemsBlock cardTitle={"Marathons"} />
-				</div>
-				<div className="mb-4">
-					<ItemsBlock cardTitle={"Deals"}/>
-				</div>
-				<div className="mb-4">
-					<ItemsBlock cardTitle={"Your History"}/>
-				</div> */}
+				<LongMoviesBlock />
+				<FilmNoirBlock />
+				<YourHistoryBlock />
 			</section>
 		</main>
 		// header w/ search DONE

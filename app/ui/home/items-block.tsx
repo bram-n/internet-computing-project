@@ -14,7 +14,7 @@ import {
 	CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import Link from "next/link";
+// import Link from "next/link";
 import { Movie } from "@/lib/definitions";
 import BlockMovie from "./block-movie";
 
@@ -54,7 +54,7 @@ const ItemsBlock = async ({ cardTitle, movieList }: ItemsBlockProps) => {
 				</div>
 			</CardContent>
 			<CardFooter>
-				<div>
+				{/* <div>
 					<Link
 						href="/"
 						target="_self"
@@ -62,7 +62,7 @@ const ItemsBlock = async ({ cardTitle, movieList }: ItemsBlockProps) => {
 					>
 						Shop these items
 					</Link>
-				</div>
+				</div> */}
 			</CardFooter>
 		</Card>
 	);
