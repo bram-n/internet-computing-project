@@ -4,14 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { 
 	useSearchParams, 
-	// usePathname, 
 	useRouter 
 } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
 const SearchBar = () => {
 	const searchParams = useSearchParams();
-	// const pathname = usePathname();
 	const { replace } = useRouter();
 
 	const handleSearch = useDebouncedCallback((term) => {
