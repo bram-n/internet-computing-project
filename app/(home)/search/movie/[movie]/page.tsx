@@ -6,6 +6,7 @@ import MovieInfo from "@/app/ui/movie/movie-info";
 import MovieRatings from "@/app/ui/movie/movie-ratings";
 import ActorsList from "@/app/ui/movie/actors-list";
 import CriticReviews from "@/app/ui/movie/critic-reviews";
+import MovieReactions from "@/components/ui/movie-reactions";
 
 export default async function MovieDetails({ params }: { params: { movie: string } }) {
   const movieId = params.movie;
@@ -54,6 +55,9 @@ export default async function MovieDetails({ params }: { params: { movie: string
           <div className="mt-4">
             <p>Runtime: {movieByNumericId.runtime_minutes} minutes</p>
             <p>IMDB ID: {movieByNumericId.imdb_id}</p>
+            <div className="mt-4">
+              <MovieReactions movieId={numericId} />
+            </div>
           </div>
         </div>
       </main>
@@ -74,6 +78,9 @@ export default async function MovieDetails({ params }: { params: { movie: string
               <div className="w-full md:w-2/3">
                 <MovieInfo title={movie.title} runtime={movie.runtime_minutes} director="director id" />
                 <MovieRatings />
+                <div className="mb-4">
+                  <MovieReactions movieId={movieId} />
+                </div>
                 <div className="mb-8">
                   <button className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-12 rounded-md border-2 border-white">
                     Buy
