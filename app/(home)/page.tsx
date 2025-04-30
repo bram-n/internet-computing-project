@@ -9,18 +9,21 @@ export default function Home() {
 	return (
 		<main className="max-w-8xl flex flex-col justify-center mx-auto pt-6">
 			<section>
-				<div className="w-full mx-4 flex items-center justify-start mb-4">
+				<div className="w-full mx-4 flex items-center justify-start mb-6 text-xl">
 					<h2>Recommended Items</h2>
 				</div>
 				<ItemsSlider />
 			</section>
 			<section>
-				<div className="w-full mx-4 flex items-center justify-start my-4">
+				<div className="w-full mx-4 flex items-center justify-start my-6 text-xl">
 					<h2>Popular Items</h2>
 				</div>
-				<FeaturedItems/>
+				<FeaturedItems />
 			</section>
 			<section>
+				<div className="w-full mx-4 flex items-center justify-start mb-6 mt-2 text-xl">
+					<h2>Categories</h2>
+				</div>
 				<QuickMoviesBlock />
 				<LongMoviesBlock />
 				<FilmNoirBlock />
