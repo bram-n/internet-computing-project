@@ -47,10 +47,6 @@ const CartSheet = () => {
 									<div className="text-md font-semibold">$0.00</div>
 								</div>
 								<div className="flex flex-row justify-between items-center pb-1 border-b border-neutral-50">
-									<div className="text-sm">Shipping</div>
-									<div className="text-sm">Calculated at checkout</div>
-								</div>
-								<div className="flex flex-row justify-between items-center pb-1 border-b border-neutral-50">
 									<div className="text-sm">Total</div>
 									<div className="text-md font-semibold">$0.00</div>
 								</div>
