@@ -251,6 +251,25 @@ const fetchMovieRatings = async ({ params }: { params: { movie: string } }): Pro
 	return ratings;
 };
 
+const fetchMovieCriticReviews = async ({ params }: { params: { movie: string } }): Promise<{ critic_name: string; publication_name: string; review_url: string; review_text: string }[] | null> => {
+	const movieId = params.movie;
+	const supabase = await createClient();
+	console.log("Fetching reviews for movie ID:", movieId);
+	
+	const { data: reviews, error } = await supabase
+		.from("critic_reviews")
+		.select('id, critic_name, publication_name, review_url, review_text, score_sentiment')
+		.eq('id', movieId);
+		
+	if (error) {
+		console.error("Error fetching critic reviews:", error);
+		return null;
+	}
+	
+	console.log("Reviews found:", reviews);
+	return reviews;
+};
+
 export {
 	fetchMovies,
 	fetchPopularMovies,
@@ -263,4 +282,5 @@ export {
 	fetchLongMovies,
 	fetchMoviesByName,
 	fetchMovieRatings,
+	fetchMovieCriticReviews,
 };

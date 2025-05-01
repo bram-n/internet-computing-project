@@ -18,7 +18,7 @@ export default async function MovieDetails({ params }: { params: { movie: string
     .eq("id", movieId)
     .single();
   
-    if (error || !movie) {
+  if (error || !movie) {
     console.log("Not found with full ID, trying with numeric part only");
     const numericId = movieId.includes('-') ? movieId.split('-')[0] : movieId;
     
@@ -89,7 +89,7 @@ export default async function MovieDetails({ params }: { params: { movie: string
               </div>
             </div>
             <ActorsList />
-            <CriticReviews />
+            <CriticReviews movieId={movieId} />
           </div>
         </div>
       </div>
