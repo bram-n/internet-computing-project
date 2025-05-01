@@ -34,6 +34,7 @@ export default function SignupForm() {
 				router.push('/login?message=Check your email to confirm your account');
 			}
 		} catch (error) {
+			console.error('Signup error', error);
 			setError('An unexpected error occurred');
 		} finally {
 			setLoading(false);
