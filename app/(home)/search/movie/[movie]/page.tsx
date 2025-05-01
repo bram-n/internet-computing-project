@@ -77,7 +77,7 @@ export default async function MovieDetails({ params }: { params: { movie: string
               
               <div className="w-full md:w-2/3">
                 <MovieInfo title={movie.title} runtime={movie.runtime_minutes} director="director id" />
-                <MovieRatings />
+                <MovieRatings movieId={movieId} />
                 <div className="mb-4">
                   <MovieReactions movieId={movieId} />
                 </div>

@@ -1,9 +1,5 @@
 import Image from "next/image";
-
-type MoviePosterProps = {
-  src: string;
-  title: string;
-};
+import {MoviePosterProps} from "@/lib/definitions";
 
 export default function MoviePoster({ src, title }: MoviePosterProps) {
   const isPlaceholder = src.includes('placeholder-poster.png');

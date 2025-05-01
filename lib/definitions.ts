@@ -24,3 +24,9 @@ export type MovieGridProps = {
 	movies: Movie[];
 	title: string;
   };
+
+export type MoviePosterProps = {
+src: string;
+title: string;
+};
+  
