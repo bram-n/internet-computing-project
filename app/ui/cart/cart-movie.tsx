@@ -11,9 +11,6 @@ const CartMovie = ({ movie }: { movie: Movie }) => {
     const getPoster = async () => {
       try {
         const response = await fetch(`/api/movie-poster?imdbId=${movie.imdb_id}`);
-				if (!response.ok) {
-          throw new Error(`Failed to fetch poster: ${response.statusText}`);
-        }
         const data = await response.json();
         setMoviePoster(data.poster);
       } catch (error) {
@@ -26,12 +23,12 @@ const CartMovie = ({ movie }: { movie: Movie }) => {
 	return (
 		<Link href={`/search/movie/${movie.id}`}>
 			<div className="flex flex-row">
-				<div className="relative h-24 w-16 overflow-hidden border border-neutral-50 rounded-lg">
+				<div className="relative overflow-hidden">
 					<Image
 						src={moviePoster || "/logo.svg"}
 						alt="Movie Poster"
-						width={300}
-						height={450}
+						width={70}
+						height={95}
 					></Image>
 				</div>
 				<div>
