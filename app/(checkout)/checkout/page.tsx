@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { CircleSlash2, Loader2 } from "lucide-react";
-import CartItem from "@/app/ui/main/cart-item";
+import CartItem from "@/app/ui/cart/cart-item";
 import { Separator } from "@/components/ui/separator";
 import {
 	Accordion,

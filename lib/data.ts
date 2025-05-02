@@ -1,5 +1,5 @@
 import { createClient } from "@/app/supabase/server";
-import { Movie, Genre} from "./definitions";
+import { Movie, Genre } from "./definitions";
 
 // Rewrite all of these to sort in order of most likely to be preffered by the user using Tam's algo
 

@@ -1,3 +1,5 @@
+"use client";
+
 import {
 	Sheet,
 	SheetTrigger,
@@ -9,15 +11,17 @@ import {
 	// SheetDescription,
 } from "@/components/ui/sheet";
 
-// import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
-// import { Input } from "@/components/ui/input";
-// import { Separator } from "@/components/ui/separator";
-import CartItem from "@/app/ui/main/cart-item";
+import CartItem from "@/app/ui/cart/cart-item";
+import { useCart } from "@/app/ui/main/context";
 
 const CartSheet = () => {
+
+	const { state } = useCart();
+	const cartList = state.cartList || [];
+
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
@@ -31,10 +35,13 @@ const CartSheet = () => {
 				</SheetHeader>
 				<div className="grid gap-4 p-4">
 					<div className="flex flex-col overflow-hidden">
-						{/* items */}
-						<CartItem />
-						<CartItem />
-						<CartItem />
+					{cartList.length === 0 ? (
+							<div className="text-neutral-400">Your cart is empty.</div>
+						) : (
+							cartList.map((movie) => (
+								<CartItem key={movie.id} movie={movie} />
+							))
+						)}
 					</div>
 				</div>
 				<SheetFooter>

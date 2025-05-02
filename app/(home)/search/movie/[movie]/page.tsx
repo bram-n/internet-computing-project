@@ -7,9 +7,11 @@ import MovieRatings from "@/app/ui/movie/movie-ratings";
 import ActorsList from "@/app/ui/movie/actors-list";
 import CriticReviews from "@/app/ui/movie/critic-reviews";
 import MovieReactions from "@/components/ui/movie-reactions";
+import MovieBuyButton from "@/app/ui/movie/movie-buy-button";
 
 export default async function MovieDetails({ params }: { params: { movie: string } }) {
-  const movieId = params.movie;
+
+  const movieId = await params.movie;
 
   const supabase = await createClient();
   const { data: movie, error } = await supabase
@@ -82,9 +84,7 @@ export default async function MovieDetails({ params }: { params: { movie: string
                   <MovieReactions movieId={movieId} />
                 </div>
                 <div className="mb-8">
-                  <button className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-12 rounded-md border-2 border-white">
-                    Buy
-                  </button>
+                  <MovieBuyButton movie={movie}/>
                 </div>
               </div>
             </div>

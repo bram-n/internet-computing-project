@@ -7,7 +7,7 @@ import {
 import Image from "next/image";
 // Removed Menu here
 import MenuSheet from "@/app/ui/main/menu-sheet";
-import CartSheet from "@/app/ui/main/cart-sheet";
+import CartSheet from "@/app/ui/cart/cart-sheet";
 import SearchBar from "@/app/ui/main/search-bar";
 import { AccountDropdown } from "@/app/ui/main/dropdown-menu-demo"
 // import AccountButton from "@/app/ui/main/account-button"
