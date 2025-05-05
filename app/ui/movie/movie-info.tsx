@@ -4,6 +4,8 @@ type MovieInfoProps = {
   director: string;
 };
 
+// TODO: UPDATE THIS TO HAVE DIRECTOR AND GENRES
+
 export default function MovieInfo({ title, runtime, director }: MovieInfoProps) {
   return (
     <>
