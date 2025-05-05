@@ -74,10 +74,10 @@ export default async function MovieDetails({ params }: { params: { movie: string
         <div className="flex flex-col md:flex-row gap-8">
           <div className="order-last w-full">
             {/* Top section with poster and basic details */}
-            <div className="flex flex-col md:flex-row gap-8 mb-10">
+            <div className="flex flex-col md:flex-row md:w-full gap-8 mb-10">
               <MoviePoster src={moviePoster} title={movie.title} />
               
-              <div className="w-full md:w-2/3">
+              <div className="w-full md:w-1/3">
                 <MovieInfo title={movie.title} runtime={movie.runtime_minutes} director="director id" />
                 <MovieRatings movieId={movieId} />
                 <div className="mb-4">
