@@ -14,6 +14,7 @@ export type Movie = {
 	runtime_minutes: number;
 	imdb_id: string;
 	price: number;
+	year: number;
 }
 
 export type Genre = {
@@ -35,3 +36,6 @@ export type MoviePrice = {
 	id: string;
 	price: number;
 }
+
+  
+  

@@ -286,6 +286,58 @@ const fetchPriceOfMovie = async (movieId: string) => {
 	return price as MoviePrice[];
 }
 
+
+const fetchMovieDirector = async ({ params }: { params: { movie: string } }): Promise<{ name: string; id: string } | null> => {
+	const movieId = params.movie;
+	const supabase = await createClient();
+	
+	const { data: directorData, error: directorError } = await supabase
+		.from("director")
+		.select("*")
+		.eq('id', movieId)
+		.single();
+		
+	if (directorError || !directorData) {
+		console.error("Error fetching director:", directorError);
+		return null;
+	}
+	console.log(directorData)
+	
+	const { data: personData, error: personError } = await supabase
+		.from("person_id")
+		.select("*")
+		.eq('person_id', directorData.person_id)
+		.single();
+		
+	if (personError || !personData) {
+		console.log(personData)
+		console.error("Error fetching person:", personError);
+		return null;
+	}
+	console.log(personData)
+	return personData;
+};
+
+export async function FetchMovieDetails({ params }: { params: { movie: string } }): Promise<Movie | null> {
+	const movieId = params.movie;
+  
+	const supabase = await createClient();
+	const { data: movie, error } = await supabase
+	  .from("Movies")
+	  .select("*")
+	  .eq("id", movieId)
+	  .single();
+	
+	if (error) {
+		console.error("Error fetching movie details:", error);
+		return null;
+	}
+	
+	return movie;
+}
+
+
+
 export {
 	fetchMovies,
 	fetchPopularMovies,
@@ -300,4 +352,5 @@ export {
 	fetchMovieRatings,
 	fetchMovieCriticReviews,
 	fetchPriceOfMovie,
+	fetchMovieDirector,
 };
