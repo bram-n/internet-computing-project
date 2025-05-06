@@ -1,6 +1,13 @@
 "use client";
 
-import { useContext, createContext, useReducer, FC, ReactNode } from "react";
+import {
+	useContext,
+	createContext,
+	useReducer,
+	FC,
+	ReactNode,
+	useEffect,
+} from "react";
 import { Movie } from "@/lib/definitions";
 
 export interface CartState {
@@ -15,6 +22,10 @@ type CartAction =
 	| {
 			type: "REMOVE_FROM_CART";
 			movieToRemove: Movie;
+	  }
+	| {
+			type: "INITIALIZE_CART";
+			cartList: Movie[];
 	  };
 
 interface CartContextType {
@@ -42,6 +53,11 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 						(movie) => movie.id !== action.movieToRemove.id
 					) || null,
 			};
+		case "INITIALIZE_CART":
+			return {
+				...state,
+				cartList: action.cartList,
+			};
 		default:
 			return state;
 	}
@@ -49,6 +65,22 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const [state, dispatch] = useReducer(cartReducer, { cartList: [] });
+
+	useEffect(() => {
+		const storedCart = localStorage.getItem("cart");
+		if (storedCart) {
+			try {
+				const parsed = JSON.parse(storedCart);
+				dispatch({ type: "INITIALIZE_CART", cartList: parsed });
+			} catch (error) {
+				console.error("Failed to parse cart from localStorage", error);
+			}
+		}
+	}, []);
+	
+	useEffect(() => {
+		localStorage.setItem("cart", JSON.stringify(state.cartList));
+	}, [state.cartList]);
 
 	return (
 		<CartContext.Provider value={{ state, dispatch }}>
