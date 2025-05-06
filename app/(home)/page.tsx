@@ -21,7 +21,7 @@ export default function Home() {
 				<FeaturedItems />
 			</section>
 			<section>
-				<div className="w-full mx-4 flex items-center justify-start mb-6 mt-2 text-xl">
+				<div className="w-full mx-4 flex items-center justify-start mb-6 mt-4 text-xl">
 					<h2>Categories</h2>
 				</div>
 				<QuickMoviesBlock />
