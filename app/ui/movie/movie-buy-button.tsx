@@ -1,9 +1,9 @@
 "use client";
 
-import type { Movie } from "@/lib/definitions";
+import type { Movie, MoviePrice } from "@/lib/definitions";
 import { useCart } from "../main/context";
 
-const MovieBuyButton = ({ movie }: { movie: Movie }) => {
+const MovieBuyButton = ({ movie, moviePrice }: { movie: Movie, moviePrice: MoviePrice[] }) => {
 	const { dispatch } = useCart();
 
 	const handleAddToCart = () => {
@@ -13,9 +13,9 @@ const MovieBuyButton = ({ movie }: { movie: Movie }) => {
 	return (
 		<button
 			onClick={() => handleAddToCart()}
-			className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-12 rounded-md border-2 border-white"
+			className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-md border-2 border-white"
 		>
-			Add To Cart
+			Add To Cart ${moviePrice[0].price}
 		</button>
 	);
 };

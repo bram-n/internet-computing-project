@@ -1,5 +1,5 @@
 import { createClient } from "@/app/supabase/server";
-import { Movie, Genre } from "./definitions";
+import { Movie, Genre, MoviePrice } from "./definitions";
 
 // Rewrite all of these to sort in order of most likely to be preffered by the user using Tam's algo
 
@@ -210,8 +210,8 @@ const fetchAllGenres = async (): Promise<Genre[]> => {
     throw new Error("Error fetching genres");
   }
   
-  console.log("Returned genres count:", data.length);
-  console.log("First few genres:", data.slice(0, 5));
+  // console.log("Returned genres count:", data.length);
+  // console.log("First few genres:", data.slice(0, 5));
   
   return data as Genre[];
 };
@@ -235,14 +235,14 @@ const fetchMoviesByName = async (term: string, limit: number = 12): Promise<Movi
 const fetchMovieRatings = async ({ params }: { params: { movie: string } }): Promise<{ imdb_rating: string; tomatometer: number; metascore: string } | null> => {
 	const movieId = params.movie;
 	const supabase = await createClient();
-	console.log("moveid", movieId)
+	// console.log("moveid", movieId)
 	const { data: ratings, error } = await supabase
 		.from("review_stats")
 		.select('imdb_rating, tomatometer, metascore')
 		.eq('id', movieId)
 		.single()
 		
-	console.log(ratings)
+	// console.log(ratings)
 	if (error) {
 		console.error("Error fetching movie ratings:", error);
 		return null;
@@ -254,7 +254,7 @@ const fetchMovieRatings = async ({ params }: { params: { movie: string } }): Pro
 const fetchMovieCriticReviews = async ({ params }: { params: { movie: string } }): Promise<{ critic_name: string; publication_name: string; review_url: string; review_text: string }[] | null> => {
 	const movieId = params.movie;
 	const supabase = await createClient();
-	console.log("Fetching reviews for movie ID:", movieId);
+	// console.log("Fetching reviews for movie ID:", movieId);
 	
 	const { data: reviews, error } = await supabase
 		.from("critic_reviews")
@@ -266,9 +266,25 @@ const fetchMovieCriticReviews = async ({ params }: { params: { movie: string } }
 		return null;
 	}
 	
-	console.log("Reviews found:", reviews);
+	// console.log("Reviews found:", reviews);
 	return reviews;
 };
+
+const fetchPriceOfMovie = async (movieId: string) => {
+	const supabase = await createClient();
+
+	const { data: price, error } = await supabase
+		.from("prices")
+		.select("*")
+		.eq("id", movieId);
+
+	if (error) {
+		console.error("Error fetching critic reviews:", error);
+		return null;
+	}
+	
+	return price as MoviePrice[];
+}
 
 export {
 	fetchMovies,
@@ -283,4 +299,5 @@ export {
 	fetchMoviesByName,
 	fetchMovieRatings,
 	fetchMovieCriticReviews,
+	fetchPriceOfMovie,
 };

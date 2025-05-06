@@ -1,4 +1,4 @@
-import { getMoviePosterImage } from "@/lib/data";
+import { fetchPriceOfMovie, getMoviePosterImage } from "@/lib/data";
 import Image from "next/image";
 import { createClient } from "@/app/supabase/server";
 import MoviePoster from "@/app/ui/movie/movie-poster";
@@ -8,10 +8,11 @@ import ActorsList from "@/app/ui/movie/actors-list";
 import CriticReviews from "@/app/ui/movie/critic-reviews";
 import MovieReactions from "@/components/ui/movie-reactions";
 import MovieBuyButton from "@/app/ui/movie/movie-buy-button";
+import type { MoviePrice } from "@/lib/definitions";
 
 export default async function MovieDetails({ params }: { params: { movie: string } }) {
 
-  const movieId = await params.movie;
+  const movieId = params.movie;
 
   const supabase = await createClient();
   const { data: movie, error } = await supabase
@@ -41,6 +42,7 @@ export default async function MovieDetails({ params }: { params: { movie: string
     
     const moviePoster = await getMoviePosterImage(movieByNumericId.imdb_id);
     
+    
     return (
       <main className="p-6 bg-black text-white min-h-screen">
         <div className="flex flex-col items-center">
@@ -67,6 +69,7 @@ export default async function MovieDetails({ params }: { params: { movie: string
   }
   
   const moviePoster = await getMoviePosterImage(movie.imdb_id);
+  const moviePrice: MoviePrice[] = await fetchPriceOfMovie(movie.id) || [];
   
   return (
     <main className="p-6 bg-black text-white min-h-screen">
@@ -84,7 +87,10 @@ export default async function MovieDetails({ params }: { params: { movie: string
                   <MovieReactions movieId={movieId} />
                 </div>
                 <div className="mb-8">
-                  <MovieBuyButton movie={movie}/>
+                  <MovieBuyButton 
+                    movie={movie} 
+                    moviePrice={moviePrice}
+                  />
                 </div>
               </div>
             </div>

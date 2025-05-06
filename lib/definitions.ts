@@ -13,6 +13,7 @@ export type Movie = {
 	title: string;
 	runtime_minutes: number;
 	imdb_id: string;
+	price: number;
 }
 
 export type Genre = {
@@ -26,7 +27,11 @@ export type MovieGridProps = {
   };
 
 export type MoviePosterProps = {
-src: string;
-title: string;
+	src: string;
+	title: string;
 };
-  
+
+export type MoviePrice = {
+	id: string;
+	price: number;
+}
