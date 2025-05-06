@@ -8,7 +8,7 @@ const MovieGrid = async ({ movies, title }: MovieGridProps) => {
   // get the posters
   const moviesWithPosters = await Promise.all(
     movies.map(async (movie) => {
-      const posterPath = await getMoviePosterImage(movie.imdb_id);
+      const { posterPath } = await getMoviePosterImage(movie.imdb_id);
       return {
         ...movie,
         posterPath

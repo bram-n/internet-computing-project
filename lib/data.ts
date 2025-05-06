@@ -162,11 +162,11 @@ const fetchLongMovies = async (limit: number = 12): Promise<Movie[]> => {
 	return movies;
 };
 
-const getMoviePosterImage = async (imdbId: string): Promise<string> => {
+const getMoviePosterImage = async (imdbId: string): Promise<{ posterPath: string; tmdbId: string | null }> => {
 	try {
 		if (!imdbId) {
 			console.error("Missing IMDB ID");
-			return '/placeholder-poster.jpg';
+			return { posterPath: '/placeholder-poster.jpg', tmdbId: null };
 		}
 
 		const apiKey = process.env.TMDB_API_KEY!;
@@ -179,22 +179,25 @@ const getMoviePosterImage = async (imdbId: string): Promise<string> => {
 		// Check if movie_results exists and has at least one entry
 		if (!data.movie_results || data.movie_results.length === 0) {
 			console.log(`No movie results found for IMDB ID: ${imdbId}`);
-			return '/placeholder-poster.png';
+			return { posterPath: '/placeholder-poster.png', tmdbId: null };
 		}
 
-		// Safely access poster_path
+		// Safely access poster_path and id
 		const posterPath = data.movie_results[0]?.poster_path;
+		const tmdbId = data.movie_results[0]?.id;
 
 		if (!posterPath) {
 			console.log(`No poster path found for IMDB ID: ${imdbId}`);
-			return '/placeholder-poster.png';
+			return { posterPath: '/placeholder-poster.png', tmdbId };
 		}
 
-		return `https://image.tmdb.org/t/p/w500${posterPath}`;
+		return { 
+			posterPath: `https://image.tmdb.org/t/p/w500${posterPath}`,
+			tmdbId: tmdbId?.toString() || null
+		};
 	} catch (error) {
 		console.error(`Error fetching poster for ${imdbId}:`, error);
-		// https://www.flaticon.com/free-icon/movie_4263893?term=movie&page=1&position=38&origin=tag&related_id=4263893
-		return '/placeholder-poster.png';
+		return { posterPath: '/placeholder-poster.png', tmdbId: null };
 	}
 };
 
@@ -336,7 +339,29 @@ export async function FetchMovieDetails({ params }: { params: { movie: string } 
 	return movie;
 }
 
+const fetchMovieOverview = async (tmdbId: string): Promise<string | null> => {
+	try {
+		if (!tmdbId) {
+			console.error("Missing TMDB ID");
+			return null;
+		}
 
+		const apiKey = process.env.TMDB_API_KEY!;
+		const response = await fetch(
+			`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${apiKey}&language=en-US`
+		);
+
+		if (!response.ok) {
+			throw new Error(`TMDB API responded with status: ${response.status}`);
+		}
+
+		const data = await response.json();
+		return data.overview || null;
+	} catch (error) {
+		console.error(`Error fetching movie overview for TMDB ID ${tmdbId}:`, error);
+		return null;
+	}
+};
 
 export {
 	fetchMovies,
@@ -353,4 +378,5 @@ export {
 	fetchMovieCriticReviews,
 	fetchPriceOfMovie,
 	fetchMovieDirector,
+	fetchMovieOverview as getMovieOverview,
 };

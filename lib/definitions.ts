@@ -13,6 +13,7 @@ export type Movie = {
 	title: string;
 	runtime_minutes: number;
 	imdb_id: string;
+	tmdb_id: string;
 	price: number;
 	year: number;
 }

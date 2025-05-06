@@ -10,8 +10,8 @@ export async function GET(req: Request) {
   }
 
   try {
-    const poster = await getMoviePosterImage(imdbId);
-    return NextResponse.json({ poster });
+    const { posterPath } = await getMoviePosterImage(imdbId);
+    return NextResponse.json({ poster: posterPath });
   } catch (error) {
     console.error("Error fetching movie poster:", error);
     return NextResponse.json({ error: "Failed to fetch movie poster" }, { status: 500 });
