@@ -4,12 +4,15 @@ import { getMoviePosterImage } from "@/lib/data";
 import Image from "next/image";
 
 const SliderItem = async ({ movie }: { movie: Movie }) => {
-
 	const moviePoster = await getMoviePosterImage(movie.imdb_id);
 
 	return (
 		<>
-			<Link className="relative bg-black text-white" href={`/search/movie/${movie.id}`} key={movie.id}>
+			<Link
+				className="relative bg-black text-white"
+				href={`/search/movie/${movie.id}`}
+				key={movie.id}
+			>
 				<div className="group overflow-hidden relative">
 					<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
 						<div className="flex items-center rounded-full border border-neutral-50 font-semibold text-xs p-1">
@@ -17,13 +20,18 @@ const SliderItem = async ({ movie }: { movie: Movie }) => {
 								{movie.title}
 							</h3>
 							<p className="flex-none rounded-full bg-blue-700 p-2 text-white font-bold">
-								{/* replace hardcoded value with movie price */}
-								${399 / 100}
+								{/* replace hardcoded value with movie price */}${399 / 100}
 							</p>
 						</div>
 					</div>
-					<div>
-						<Image src={moviePoster} alt="Movie Poster" width={300} height={450}></Image>
+					<div className="rounded-lg">
+						<Image
+							src={moviePoster}
+							alt="Movie Poster"
+							width={300}
+							height={450}
+							className="rounded-lg"
+						></Image>
 					</div>
 				</div>
 			</Link>

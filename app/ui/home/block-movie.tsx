@@ -8,7 +8,7 @@ const BlockMovie = async ({ movie }: { movie: Movie }) => {
 	return (
 		<Link href={`/search/movie/${movie.id}`}>
 			<div className="w-40 h-60 flex items-center justify-center">
-				<Image src={poster} alt="Movie Poster" width={400} height={600} />
+				<Image src={poster} alt="Movie Poster" width={400} height={600} className="rounded-md"/>
 			</div>
 		</Link>
 	);

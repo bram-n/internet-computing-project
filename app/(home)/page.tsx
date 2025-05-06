@@ -16,7 +16,7 @@ export default function Home() {
 			</section>
 			<section>
 				<div className="w-full mx-4 flex items-center justify-start my-6 text-xl">
-					<h2>Popular Items</h2>
+					<h2>Featured Items</h2>
 				</div>
 				<FeaturedItems />
 			</section>
