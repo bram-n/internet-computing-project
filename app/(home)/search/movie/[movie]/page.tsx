@@ -1,4 +1,4 @@
-import { fetchPriceOfMovie, getMoviePosterImage } from "@/lib/data";
+import { fetchPriceOfMovie, getMoviePosterImage, FetchMovieDetails, fetchMovieDirector } from "@/lib/data";
 import Image from "next/image";
 import { createClient } from "@/app/supabase/server";
 import MoviePoster from "@/app/ui/movie/movie-poster";
@@ -9,67 +9,22 @@ import CriticReviews from "@/app/ui/movie/critic-reviews";
 import MovieReactions from "@/components/ui/movie-reactions";
 import MovieBuyButton from "@/app/ui/movie/movie-buy-button";
 import type { MoviePrice } from "@/lib/definitions";
+import { notFound } from "next/navigation";
 
 export default async function MovieDetails({ params }: { params: { movie: string } }) {
 
   const movieId = params.movie;
-
-  const supabase = await createClient();
-  const { data: movie, error } = await supabase
-    .from("Movies")
-    .select("*")
-    .eq("id", movieId)
-    .single();
+  const movie = await FetchMovieDetails({ params: { movie: movieId } });
   
-  if (error || !movie) {
-    console.log("Not found with full ID, trying with numeric part only");
-    const numericId = movieId.includes('-') ? movieId.split('-')[0] : movieId;
-    
-    const { data: movieByNumericId, error: error2 } = await supabase
-      .from("Movies")
-      .select("*")
-      .eq("id", numericId)
-      .single();
-      
-    if (error2 || !movieByNumericId) {
-      return (
-        <main className="p-6 bg-black text-white min-h-screen">
-          <h1>Movie not found</h1>
-          <p>Tried IDs: {movieId}, {numericId}</p>
-        </main>
-      );
-    }
-    
-    const moviePoster = await getMoviePosterImage(movieByNumericId.imdb_id);
-    
-    
-    return (
-      <main className="p-6 bg-black text-white min-h-screen">
-        <div className="flex flex-col items-center">
-          <h1 className="text-2xl font-bold mb-4">{movieByNumericId.title}</h1>
-          <div>
-            <Image 
-              src={moviePoster} 
-              alt={`Movie Poster for ${movieByNumericId.title}`}
-              width={300}
-              height={450}
-              className="rounded-md"
-            />
-          </div>
-          <div className="mt-4">
-            <p>Runtime: {movieByNumericId.runtime_minutes} minutes</p>
-            <p>IMDB ID: {movieByNumericId.imdb_id}</p>
-            <div className="mt-4">
-              <MovieReactions movieId={numericId} />
-            </div>
-          </div>
-        </div>
-      </main>
-    );
+  if (!movie) {
+    notFound();
   }
-  
-  const moviePoster = await getMoviePosterImage(movie.imdb_id);
+
+  const director = await fetchMovieDirector({ params: { movie: movieId } }) || { name: '' };
+
   const moviePrice: MoviePrice[] = await fetchPriceOfMovie(movie.id) || [];
+
+  const moviePoster = await getMoviePosterImage(movie.imdb_id);
   
   return (
     <main className="p-6 bg-black text-white min-h-screen">
@@ -81,7 +36,7 @@ export default async function MovieDetails({ params }: { params: { movie: string
               <MoviePoster src={moviePoster} title={movie.title} />
               
               <div className="w-full md:w-1/3">
-                <MovieInfo title={movie.title} runtime={movie.runtime_minutes} director="director id" />
+                <MovieInfo title={movie.title} runtime={movie.runtime_minutes} director={director.name} year={movie.year} />
                 <MovieRatings movieId={movieId} />
                 <div className="mb-4">
                   <MovieReactions movieId={movieId} />
