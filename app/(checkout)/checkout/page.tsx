@@ -14,8 +14,12 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useCart } from "@/app/ui/main/context";
 
 const CheckoutPage = () => {
+	const { state } = useCart();
+	const cartList = state.cartList || [];
+
 	return (
 		<main className="max-w-xl lg:max-w-8xl flex flex-col justify-center mx-4 sm:mx-auto">
 			<div className="w-full flex flex-col justify-center lg:flex-row">
@@ -89,11 +93,15 @@ const CheckoutPage = () => {
 								<div className="flex flex-col">
 									<div className="max-h-1/2 gap-4 mb-4 overflow-auto">
 										<div className="flex flex-col">
-											{/* items */}
-											<CartItem />
-											<CartItem />
-											<CartItem />
-											<CartItem />
+											{cartList.length === 0 ? (
+												<div className="text-neutral-400">
+													Your cart is empty.
+												</div>
+											) : (
+												cartList.map((movie) => (
+													<CartItem key={movie.id} movie={movie} />
+												))
+											)}
 										</div>
 									</div>
 									<div className="mb-2">
@@ -119,12 +127,13 @@ const CheckoutPage = () => {
 				<div className="hidden flex-col px-16 py-8 md:w-1/2 order-first lg:flex lg:order-last">
 					<div className="max-h-1/2 gap-4 mb-4 overflow-auto">
 						<div className="flex flex-col">
-							{/* items */}
-							<CartItem />
-							<CartItem />
-							<CartItem />
-							<CartItem />
-							<CartItem />
+							{cartList.length === 0 ? (
+								<div className="text-neutral-400">Your cart is empty.</div>
+							) : (
+								cartList.map((movie) => (
+									<CartItem key={movie.id} movie={movie} />
+								))
+							)}
 						</div>
 					</div>
 					<Separator />
