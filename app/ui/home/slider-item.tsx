@@ -4,7 +4,7 @@ import { getMoviePosterImage, fetchPriceOfMovie} from "@/lib/data";
 import Image from "next/image";
 
 const SliderItem = async ({ movie }: { movie: Movie }) => {
-	const moviePoster = await getMoviePosterImage(movie.imdb_id);
+	const { posterPath } = await getMoviePosterImage(movie.imdb_id);
 	const moviePrice: MoviePrice[] = await fetchPriceOfMovie(movie.id) || [];
 
 	return (
@@ -27,7 +27,7 @@ const SliderItem = async ({ movie }: { movie: Movie }) => {
 					</div>
 					<div className="rounded-lg">
 						<Image
-							src={moviePoster}
+							src={posterPath}
 							alt="Movie Poster"
 							width={300}
 							height={450}

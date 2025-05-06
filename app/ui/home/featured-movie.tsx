@@ -13,7 +13,7 @@ const FeaturedMovieCard = async ({ movie }: FeaturedMovieCardProps) => {
 		<div className="bg-neutral-900 rounded-lg overflow-hidden shadow transition-all duration-300 hover:shadow-xl hover:scale-102 mx-12 sm:mx-0 cursor-pointer">
 			<div className="overflow-hidden">
 				<Image
-					src={moviePoster}
+					src={moviePoster.posterPath}
 					alt={movie.title}
 					width={400}
 					height={600}
