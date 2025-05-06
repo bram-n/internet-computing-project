@@ -235,14 +235,14 @@ const fetchMoviesByName = async (term: string, limit: number = 12): Promise<Movi
 const fetchMovieRatings = async ({ params }: { params: { movie: string } }): Promise<{ imdb_rating: string; tomatometer: number; metascore: string } | null> => {
 	const movieId = params.movie;
 	const supabase = await createClient();
-	// console.log("moveid", movieId)
+	console.log("moveid", movieId)
 	const { data: ratings, error } = await supabase
 		.from("review_stats")
 		.select('imdb_rating, tomatometer, metascore')
 		.eq('id', movieId)
 		.single()
 		
-	// console.log(ratings)
+	console.log(ratings)
 	if (error) {
 		console.error("Error fetching movie ratings:", error);
 		return null;

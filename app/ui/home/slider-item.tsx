@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { Movie } from "@/lib/definitions";
-import { getMoviePosterImage } from "@/lib/data";
+import { Movie, MoviePrice} from "@/lib/definitions";
+import { getMoviePosterImage, fetchPriceOfMovie} from "@/lib/data";
 import Image from "next/image";
 
 const SliderItem = async ({ movie }: { movie: Movie }) => {
 	const moviePoster = await getMoviePosterImage(movie.imdb_id);
+	const moviePrice: MoviePrice[] = await fetchPriceOfMovie(movie.id) || [];
 
 	return (
 		<>
@@ -20,7 +21,7 @@ const SliderItem = async ({ movie }: { movie: Movie }) => {
 								{movie.title}
 							</h3>
 							<p className="flex-none rounded-full bg-blue-700 p-2 text-white font-bold">
-								{/* replace hardcoded value with movie price */}${399 / 100}
+								${moviePrice[0]?.price}
 							</p>
 						</div>
 					</div>
