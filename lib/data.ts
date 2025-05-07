@@ -13,6 +13,7 @@ const fetchMovies = async (limit: number = 10): Promise<Movie[]> => {
 		console.error("Database error:", error);
 		throw new Error("Error with querying movies");
 	}
+
 	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
 
 	return movies;
@@ -411,7 +412,7 @@ const fetchMovieContentRating = async (tmdbId: string): Promise<string | null> =
 
 		const data = await response.json();
 		// Find US rating
-		const usRelease = data.results.find((release: any) => release.iso_3166_1 === 'US');
+		const usRelease = data.results.find((release) => release.iso_3166_1 === 'US');
 		if (!usRelease || !usRelease.release_dates || usRelease.release_dates.length === 0) {
 			return null;
 		}

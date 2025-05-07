@@ -12,3 +12,10 @@ export function formatRuntime(minutes: number): string {
   const m = minutes % 60;
   return m === 0 ? `${h}h` : `${h}h ${m}m`;
 }
+
+export const formatCurrency = (amount: number): string => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(amount);
+};

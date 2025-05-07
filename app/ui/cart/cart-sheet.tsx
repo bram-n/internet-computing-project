@@ -15,11 +15,20 @@ import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import CartItem from "@/app/ui/cart/cart-item";
 import { useCart } from "@/app/ui/main/context";
+import { formatCurrency } from "@/lib/utils";
 
 const CartSheet = () => {
 
 	const { state } = useCart();
 	const cartList = state.cartList || [];
+
+	const calculateTotalPrice = () => {
+		return cartList.reduce((total, movie) => total + (movie.price || 0), 0);
+	}
+
+	const subtotal = calculateTotalPrice();
+	const taxes = Math.round(subtotal * 6.875) / 100;
+	const totalPrice = Math.round((subtotal + taxes) * 100) / 100;
 
 	return (
 		<Sheet>
@@ -52,11 +61,11 @@ const CartSheet = () => {
 							<div className="flex flex-col gap-2 mb-4">
 								<div className="flex flex-row justify-between items-center pb-1 border-b border-neutral-50">
 									<div className="text-sm">Taxes</div>
-									<div className="text-md font-semibold">$0.00</div>
+									<div className="text-md font-semibold">{formatCurrency(taxes)}</div>
 								</div>
 								<div className="flex flex-row justify-between items-center pb-1 border-b border-neutral-50">
 									<div className="text-sm">Total</div>
-									<div className="text-md font-semibold">$0.00</div>
+									<div className="text-md font-semibold">{formatCurrency(totalPrice)}</div>
 								</div>
 							</div>
 							<Link href="/checkout" className="w-full">

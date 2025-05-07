@@ -7,7 +7,7 @@ const MovieBuyButton = ({ movie, moviePrice }: { movie: Movie, moviePrice: Movie
 	const { dispatch } = useCart();
 
 	const handleAddToCart = () => {
-		dispatch({ type: "ADD_TO_CART", movieToAdd: movie });
+		dispatch({ type: "ADD_TO_CART", movieToAdd: { ...movie, price: moviePrice[0].price } });
 	};
 
 	return (
