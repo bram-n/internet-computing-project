@@ -7,15 +7,30 @@ import CriticReviews from "@/app/ui/movie/critic-reviews";
 import MovieReactions from "@/components/ui/movie-reactions";
 import MovieBuyButton from "@/app/ui/movie/movie-buy-button";
 import type { MoviePrice } from "@/lib/definitions";
-import { notFound } from "next/navigation";
 
-export default async function MovieDetails({ params }: { params: { movie: string } }) {
+export type paramsType = Promise<{ query?: string;}>;
 
-  const movieId = await params.movie;
+export default async function MovieDetails(params : { movie: paramsType }) {
+
+  const movieParam = await params.movie;
+  const movieId = movieParam.query;
+
+  if (typeof movieId !== 'string' || !movieId) {
+    return (
+			<main className="px-6 bg-black text-white min-h-screen">
+				<div>Error: Movie ID is invalid or missing.</div>
+			</main>
+		);
+  }
+
   const movie = await FetchMovieDetails({ params: { movie: movieId } });
   
   if (!movie) {
-    notFound();
+    return (
+			<main className="px-6 bg-black text-white min-h-screen">
+				<div>Error: Movie not found.</div>
+			</main>
+		);
   }
 
   const director = await fetchMovieDirector({ params: { movie: movieId } }) || { name: '' };
