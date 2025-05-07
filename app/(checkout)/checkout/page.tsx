@@ -162,7 +162,7 @@ const CheckoutPage = () => {
 						<div className="flex flex-col gap-2 mb-4 ">
 							<div className="flex flex-row justify-between items-center pb-1">
 								<div className="text-md font-semibold">
-									Subtotal &#183; {`${cartList.length} item${cartList.length == 1 ? "" : "s"}`}
+									Subtotal &#183; {`${cartList.length} item${cartList.length === 1 ? "" : "s"}`}
 								</div>
 								<div className="text-md font-semibold">
 									{formatCurrency(subtotal)}
