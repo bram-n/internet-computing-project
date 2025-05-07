@@ -1,15 +1,14 @@
 import { fetchMoviesByGenre } from "@/lib/data";
 import MovieGrid from "@/app/ui/search/movie-grid";
 
-interface PageProps {
-	params: {
-		category: string;
-	};
-	searchParams: { [key: string]: string | string[] | undefined };
-}
+type PageParams = {
+	category: string;
+};
 
-export default async function Category({ params }: PageProps) {
-	const category = params.category;
+export default async function Category({ params }: { params: Promise<PageParams> }) {
+	const resolvedParams = await params;
+	const category = resolvedParams.category; 
+
 	const categoryName = decodeURIComponent(category);
 	const movies = await fetchMoviesByGenre(categoryName);
 	const formattedCategoryName = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
