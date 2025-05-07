@@ -1,7 +1,7 @@
 import { fetchMovies, fetchMoviesByName } from "@/lib/data";
 import MovieGrid from "@/app/ui/search/movie-grid";
 
-const Search = async (props: {
+const FindPage = async (props: {
 	searchParams?: Promise<{
 		query?: string;
 	}>;
@@ -17,4 +17,4 @@ const Search = async (props: {
 	);
 };
 
-export default Search;
+export default FindPage;
