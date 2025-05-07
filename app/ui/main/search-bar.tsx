@@ -19,7 +19,7 @@ const SearchBar = () => {
 		} else {
 			params.delete("query");
 		}
-		replace(`/search/find?${params.toString()}`);
+		replace(`/search?${params.toString()}`);
 	}, 300);
 
 	return (

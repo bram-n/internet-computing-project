@@ -32,7 +32,7 @@ const HeaderNav = () => {
 					<ul className="hidden md:flex flex-row gap-4 items-center justify-center">
 						<li>
 							<Link
-								href="/search/find"
+								href="/search"
 								type="_self"
 								className="hover:border-b hover:border-white"
 							>

@@ -12,7 +12,7 @@ const CategorySidebar = async () => {
 			<ul className="list-none">
 				<li className="py-1 text-sm">
 					<Link
-						href="/search/find"
+						href="/search"
 						target="_self"
 						className="hover:border-b hover:border-white"
 					>

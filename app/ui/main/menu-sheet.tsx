@@ -78,7 +78,7 @@ const MenuSheet = () => {
 						<li className="py-2">
 							<SheetClose asChild>
 								<Link
-									href="/search/find"
+									href="/search"
 									type="_self"
 									className="text-xl transition-colors hover:text-neutral-500"
 								>
