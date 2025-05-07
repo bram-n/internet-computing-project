@@ -12,7 +12,7 @@ const CategorySidebar = async () => {
 			<ul className="list-none">
 				<li className="py-1 text-sm">
 					<Link
-						href="/search"
+						href="/search/find"
 						target="_self"
 						className="hover:border-b hover:border-white"
 					>
@@ -22,7 +22,7 @@ const CategorySidebar = async () => {
 				{genres.map((genre) => (
 					<li key={genre.genre_name} className="py-1 text-sm">
 						<Link
-							href={`/search/${genre.genre_name.toLowerCase()}`}
+							href={`/search/category/${genre.genre_name.toLowerCase()}`}
 							target="_self"
 							className="hover:border-b hover:border-white"
 						>

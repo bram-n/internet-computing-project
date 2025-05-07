@@ -32,7 +32,7 @@ const HeaderNav = () => {
 					<ul className="hidden md:flex flex-row gap-4 items-center justify-center">
 						<li>
 							<Link
-								href="/search"
+								href="/search/find"
 								type="_self"
 								className="hover:border-b hover:border-white"
 							>
@@ -41,7 +41,7 @@ const HeaderNav = () => {
 						</li>
 						<li>
 							<Link
-								href="/search/action"
+								href="/search/category/action"
 								type="_self"
 								className="hover:border-b hover:border-white"
 							>
@@ -50,7 +50,7 @@ const HeaderNav = () => {
 						</li>
 						<li>
 							<Link
-								href="/search/romance"
+								href="/search/category/romance"
 								type="_self"
 								className="hover:border-b hover:border-white"
 							>

@@ -27,7 +27,7 @@ const CategorySelect = (props: { genres: Genre[] }) => {
 				{props.genres.map((genre) => (
 					<SelectItem
 						key={genre.genre_name}
-						value={`/search/${genre.genre_name.toLowerCase()}`}
+						value={`/search/category/${genre.genre_name.toLowerCase()}`}
 						className="hover:border-b hover:border-white"
 					>
 						{genre.genre_name}

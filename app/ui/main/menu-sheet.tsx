@@ -78,7 +78,7 @@ const MenuSheet = () => {
 						<li className="py-2">
 							<SheetClose asChild>
 								<Link
-									href="/search"
+									href="/search/find"
 									type="_self"
 									className="text-xl transition-colors hover:text-neutral-500"
 								>
@@ -89,7 +89,7 @@ const MenuSheet = () => {
 						<li className="py-2">
 							<SheetClose asChild>
 								<Link
-									href="/search/action"
+									href="/search/category/action"
 									type="_self"
 									className="py-2 text-xl transition-colors hover:text-neutral-500"
 								>
@@ -100,7 +100,7 @@ const MenuSheet = () => {
 						<li className="py-2">
 							<SheetClose asChild>
 								<Link
-									href="/search/romance"
+									href="/search/category/romance"
 									type="_self"
 									className="py-2 text-xl transition-colors hover:text-neutral-500"
 								>
