@@ -412,7 +412,7 @@ const fetchMovieContentRating = async (tmdbId: string): Promise<string | null> =
 
 		const data = await response.json();
 		// Find US rating
-		const usRelease = data.results.find((release) => release.iso_3166_1 === 'US');
+		const usRelease = data.results.find((release: { iso_3166_1: string; }) => release.iso_3166_1 === 'US');
 		if (!usRelease || !usRelease.release_dates || usRelease.release_dates.length === 0) {
 			return null;
 		}
