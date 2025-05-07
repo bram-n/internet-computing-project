@@ -1,6 +1,5 @@
 import { fetchMoviesByGenre } from "@/lib/data";
 import MovieGrid from "@/app/ui/search/movie-grid";
-import { Metadata } from "next";
 
 interface PageProps {
 	params: {
