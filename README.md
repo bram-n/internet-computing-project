@@ -1,46 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 3AM Movies
 
-## Getting Started
+Developed by Tam Nguyen, Bram Nutt, and Camden Scholl 
 
-First, run the development server:
+## Overview
 
-Note from Camden: I am using pnpm, which stands for Performative NPM. It operates essentially the same as npm. To install it, run
-```bash
-npm i -g pnpm
-```
-and then run 
-```bash
-pnpm dev
-```
-If not, just follow the rest of the stuff below.
+3AM Movies is based on e-commerce sites like Amazon and movie or streaming service websites like Netflix. Our goal is to create a site where users can shop for movies based on recommendations and their selected preferences. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Development Timeline
+Developed from January 2025 to May 2025. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
+We are using NextJS with TypeScript and Tailwind. NextJS is a fullstack framework that uses ReactJS as a frontend framework and includes server componenets. For more advanced UI, we are using ShadCN UI, a UI component library. Our database is Supabase, which is a Postgres database. Lastly, we are using Python for our recommendation system, which is connected to the main website by an API.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to Run
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Running the 
