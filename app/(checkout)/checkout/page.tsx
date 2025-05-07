@@ -15,10 +15,19 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useCart } from "@/app/ui/main/context";
+import { formatCurrency } from "@/lib/utils";
 
 const CheckoutPage = () => {
 	const { state } = useCart();
 	const cartList = state.cartList || [];
+
+	const calculateTotalPrice = () => {
+		return cartList.reduce((total, movie) => total + (movie.price || 0), 0);
+	};
+
+	const subtotal = calculateTotalPrice();
+	const taxes = Math.round(subtotal * 6.875) / 100;
+	const totalPrice = Math.round((subtotal + taxes) * 100) / 100;
 
 	return (
 		<main className="max-w-xl lg:max-w-8xl flex flex-col justify-center mx-4 sm:mx-auto">
@@ -86,7 +95,9 @@ const CheckoutPage = () => {
 							<AccordionTrigger>
 								<div className="w-full flex flex-row justify-between items-center">
 									<div>Order summary</div>
-									<div className="text-lg font-semibold">$0.00</div>
+									<div className="text-lg font-semibold">
+										{formatCurrency(totalPrice)}
+									</div>
 								</div>
 							</AccordionTrigger>
 							<AccordionContent>
@@ -108,13 +119,23 @@ const CheckoutPage = () => {
 										<div className="flex flex-col gap-2">
 											<div className="flex flex-row justify-between items-center">
 												<div className="text-md font-semibold">
-													Subtotal &#183; 3 items
+													Subtotal &#183; {cartList.length} items
 												</div>
-												<div className="text-md font-semibold">$0.00</div>
+												<div className="text-md font-semibold">
+													{formatCurrency(subtotal)}
+												</div>
+											</div>
+											<div className="flex flex-row justify-between items-center">
+												<div className="text-md font-semibold">Taxes</div>
+												<div className="text-md font-semibold">
+													{formatCurrency(taxes)}
+												</div>
 											</div>
 											<div className="flex flex-row justify-between items-center">
 												<div className="text-xl font-bold">Total</div>
-												<div className="text-xl font-bold">$0.00</div>
+												<div className="text-xl font-bold">
+													{formatCurrency(totalPrice)}
+												</div>
 											</div>
 										</div>
 									</div>
@@ -141,13 +162,23 @@ const CheckoutPage = () => {
 						<div className="flex flex-col gap-2 mb-4 ">
 							<div className="flex flex-row justify-between items-center pb-1">
 								<div className="text-md font-semibold">
-									Subtotal &#183; 3 items
+									`Subtotal &#183; {`${cartList.length} item${cartList.length == 1 ? "" : "s"}`}
 								</div>
-								<div className="text-md font-semibold">$0.00</div>
+								<div className="text-md font-semibold">
+									{formatCurrency(subtotal)}
+								</div>
+							</div>
+							<div className="flex flex-row justify-between items-center">
+								<div className="text-md font-semibold">Taxes</div>
+								<div className="text-md font-semibold">
+									{formatCurrency(taxes)}
+								</div>
 							</div>
 							<div className="flex flex-row justify-between items-center pb-1">
 								<div className="text-xl font-bold">Total</div>
-								<div className="text-xl font-bold">$0.00</div>
+								<div className="text-xl font-bold">
+									{formatCurrency(totalPrice)}
+								</div>
 							</div>
 						</div>
 					</div>
