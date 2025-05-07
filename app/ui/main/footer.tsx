@@ -1,6 +1,4 @@
-
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 
 const Footer = () => {

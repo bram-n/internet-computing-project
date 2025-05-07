@@ -4,12 +4,10 @@ import { User } from 'lucide-react';
 import Link from 'next/link';
 import { createClient } from '@/app/supabase/client';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 export default function AccountButton() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     const checkSession = async () => {
