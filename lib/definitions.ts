@@ -38,5 +38,9 @@ export type MoviePrice = {
 	price: number;
 }
 
+export type ActorsListProps = {
+	tmdbId: string | null;
+}
+
   
   

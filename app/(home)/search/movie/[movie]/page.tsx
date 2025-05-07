@@ -1,6 +1,4 @@
-import { fetchPriceOfMovie, getMoviePosterImage, FetchMovieDetails, fetchMovieDirector, getMovieOverview } from "@/lib/data";
-import Image from "next/image";
-import { createClient } from "@/app/supabase/server";
+import { fetchPriceOfMovie, getMoviePosterImage, FetchMovieDetails, fetchMovieDirector, getMovieOverview, fetchMovieContentRating } from "@/lib/data";
 import MoviePoster from "@/app/ui/movie/movie-poster";
 import MovieInfo from "@/app/ui/movie/movie-info";
 import MovieRatings from "@/app/ui/movie/movie-ratings";
@@ -8,6 +6,7 @@ import ActorsList from "@/app/ui/movie/actors-list";
 import CriticReviews from "@/app/ui/movie/critic-reviews";
 import MovieReactions from "@/components/ui/movie-reactions";
 import MovieBuyButton from "@/app/ui/movie/movie-buy-button";
+import MovieRating from "@/app/ui/movie/movie-rating";
 import type { MoviePrice } from "@/lib/definitions";
 import { notFound } from "next/navigation";
 
@@ -26,6 +25,7 @@ export default async function MovieDetails({ params }: { params: { movie: string
 
   const { posterPath: moviePoster, tmdbId } = await getMoviePosterImage(movie.imdb_id);
   const movieOverview = tmdbId ? await getMovieOverview(tmdbId) : null;
+  const contentRating = tmdbId ? await fetchMovieContentRating(tmdbId) : null;
   
   return (
     <main className="p-6 bg-black text-white min-h-screen">
@@ -36,13 +36,14 @@ export default async function MovieDetails({ params }: { params: { movie: string
             <div className="flex flex-col md:flex-row md:w-full gap-8 mb-10">
               <MoviePoster src={moviePoster} title={movie.title} />
               
-              <div className="w-full md:w-1/3">
+              <div className="w-full mb-4">
                 <MovieInfo 
                   title={movie.title} 
                   runtime={movie.runtime_minutes} 
                   director={director.name} 
                   year={movie.year}
                   overview={movieOverview || ''} 
+                  rating={contentRating}
                 />
                 <MovieRatings movieId={movieId} />
                 <div className="mb-4">
@@ -56,7 +57,7 @@ export default async function MovieDetails({ params }: { params: { movie: string
                 </div>
               </div>
             </div>
-            <ActorsList />
+            <ActorsList tmdbId={tmdbId} />
             <CriticReviews movieId={movieId} />
           </div>
         </div>

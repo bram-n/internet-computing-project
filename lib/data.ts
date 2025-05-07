@@ -363,7 +363,66 @@ const fetchMovieOverview = async (tmdbId: string): Promise<string | null> => {
 	}
 };
 
+const fetchMovieCast = async (tmdbId: string): Promise<{ name: string; profile_path: string | null; character: string }[]> => {
+	try {
+		if (!tmdbId) {
+			console.error("Missing TMDB ID");
+			return [];
+		}
 
+		const apiKey = process.env.TMDB_API_KEY!;
+		const response = await fetch(
+			`https://api.themoviedb.org/3/movie/${tmdbId}/credits?api_key=${apiKey}&language=en-US`
+		);
+
+		if (!response.ok) {
+			throw new Error(`TMDB API responded with status: ${response.status}`);
+		}
+
+		const data = await response.json();
+		// Get top 6 cast members
+		return data.cast.slice(0, 6).map((actor: any) => ({
+			name: actor.name,
+			profile_path: actor.profile_path,
+			character: actor.character
+		}));
+	} catch (error) {
+		console.error(`Error fetching movie cast for TMDB ID ${tmdbId}:`, error);
+		return [];
+	}
+};
+
+const fetchMovieContentRating = async (tmdbId: string): Promise<string | null> => {
+	try {
+		if (!tmdbId) {
+			console.error("Missing TMDB ID");
+			return null;
+		}
+
+		const apiKey = process.env.TMDB_API_KEY!;
+		const response = await fetch(
+			`https://api.themoviedb.org/3/movie/${tmdbId}/release_dates?api_key=${apiKey}`
+		);
+
+		if (!response.ok) {
+			throw new Error(`TMDB API responded with status: ${response.status}`);
+		}
+
+		const data = await response.json();
+		// Find US rating
+		const usRelease = data.results.find((release: any) => release.iso_3166_1 === 'US');
+		if (!usRelease || !usRelease.release_dates || usRelease.release_dates.length === 0) {
+			return null;
+		}
+
+		// Get the certification
+		const rating = usRelease.release_dates[0].certification;
+		return rating || null;
+	} catch (error) {
+		console.error(`Error fetching content rating for TMDB ID ${tmdbId}:`, error);
+		return null;
+	}
+};
 
 export {
 	fetchMovies,
@@ -381,4 +440,6 @@ export {
 	fetchPriceOfMovie,
 	fetchMovieDirector,
 	fetchMovieOverview as getMovieOverview,
+	fetchMovieCast,
+	fetchMovieContentRating,
 };

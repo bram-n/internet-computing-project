@@ -1,5 +1,6 @@
 // import { fetchMovieRatings } from "@/lib/data";
 import { formatRuntime } from "@/lib/utils";
+import MovieRating from "./movie-rating";
 // import MovieInfo
 // TODO: UPDATE THIS TO HAVE DIRECTOR AND GENRES
 interface MovieInfoProps {
@@ -8,14 +9,18 @@ interface MovieInfoProps {
 	director: string;
 	year: number;
 	overview: string;
+	rating: string | null;
 }
 
-export default function MovieInfo({ title, runtime, year, director, overview }: MovieInfoProps) {
+export default function MovieInfo({ title, runtime, year, director, overview, rating }: MovieInfoProps) {
   const runtimeString = formatRuntime(runtime);
   return (
     <div className="mb-6">
       <h1 className="text-4xl font-bold mb-2">{title} <span className="font-normal">• {year}</span></h1>
-      <p className="text-2xl font-light text-white mb-1">Runtime {runtimeString}</p>
+      <div className="flex items-center gap-2">
+        <p className="text-2xl font-light text-white mb-1">Runtime {runtimeString}</p>
+        <MovieRating rating={rating} />
+      </div>
       <p className="text-lg text-gray-300 mb-1">Directed by <span className="font-medium text-white">{director}</span></p>
       <p className="text-lg text-gray-400 mb-4">Genres</p>
       {overview && (
