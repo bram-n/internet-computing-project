@@ -7,7 +7,7 @@ const Search = async (props: {
 	}>;
 }) => {
 	const searchParams = await props.searchParams;
-	const query = await searchParams?.query || "";
+	const query = searchParams?.query || "";
 	const movies = query ? await fetchMoviesByName(query) : await fetchMovies(20);
 
 	return (
