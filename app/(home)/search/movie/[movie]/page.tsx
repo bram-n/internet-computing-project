@@ -11,7 +11,8 @@ import { notFound } from "next/navigation";
 
 export default async function MovieDetails({ params }: { params: { movie: string } }) {
 
-  const movieId = await params.movie;
+  const movieId = params.movie;
+
   const movie = await FetchMovieDetails({ params: { movie: movieId } });
   
   if (!movie) {
