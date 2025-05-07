@@ -15,15 +15,13 @@ const SliderItem = async ({ movie }: { movie: Movie }) => {
 				key={movie.id}
 			>
 				<div className="group overflow-hidden relative">
-					<div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
-						<div className="flex items-center rounded-full border border-neutral-50 font-semibold text-xs p-1">
-							<h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">
-								{movie.title}
-							</h3>
-							<p className="flex-none rounded-full bg-blue-700 p-2 text-white font-bold">
-								${moviePrice[0]?.price}
-							</p>
-						</div>
+					<div className="absolute bottom-0 left-0 w-full bg-gray-800/80 px-4 py-3 flex flex-col items-start">
+						<h3 className="text-lg font-semibold text-white">
+							{movie.title} <span className="text-gray-300 font-normal">({movie.year})</span>
+						</h3>
+						<p className="text-sm text-blue-200 font-bold mt-1">
+							${moviePrice[0]?.price}
+						</p>
 					</div>
 					<div className="rounded-lg">
 						<Image

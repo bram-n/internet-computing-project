@@ -8,43 +8,60 @@ export default async function MovieRatings({ movieId }: { movieId: string }) {
     return null;
   }
 
+
   return (
-    <div className="mb-6">
-      <div className="flex items-center gap-6">
+    <div className="mb-8">
+      <h2 className="text-2xl font-semibold mb-4">Critic Ratings</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {ratings.imdb_rating && (
-          <div className="flex items-center">
+          <div className="bg-gray-900 p-4 rounded-lg flex items-center">
             <Image 
               src="/imdb.png" 
               alt="IMDb Rating" 
               width={40} 
               height={40} 
-              className="mr-2"
+              className="mr-4"
             />
-            <span>{ratings.imdb_rating}</span>
+            <div>
+              <div className="text-sm text-gray-400 mb-1">IMDb Rating</div>
+              <div className='text-2xl font-bold'>
+                {ratings.imdb_rating}
+              </div>
+            </div>
           </div>
         )}
         {ratings.metascore && (
-          <div className="flex items-center">
+          <div className="bg-gray-900 p-4 rounded-lg flex items-center">
             <Image 
               src="/metascore.png" 
               alt="Metacritic Score" 
               width={40} 
               height={40} 
-              className="mr-2"
+              className="mr-4"
             />
-            <span>{ratings.metascore}</span>
+            <div>
+              <div className="text-sm text-gray-400 mb-1">Metascore</div>
+              <div className='text-2xl font-bold'>
+                {ratings.metascore}
+              </div>
+            </div>
           </div>
         )}
         {ratings.tomatometer && (
-          <div className="flex items-center">
+          <div className="bg-gray-900 p-4 rounded-lg flex items-center">
             <Image 
               src="/tomato.png" 
               alt="Rotten Tomatoes Score" 
               width={40} 
               height={40} 
-              className="mr-2"
+              className="mr-4"
             />
-            <span>{ratings.tomatometer}%</span>
+            <div>
+              <div className="text-sm text-gray-400 mb-1">Tomatometer</div>
+              <div className={'text-2xl font-bold'}>
+                {ratings.tomatometer}%
+              </div>
+            </div>
           </div>
         )}
       </div>
