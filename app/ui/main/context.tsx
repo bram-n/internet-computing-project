@@ -9,6 +9,7 @@ import {
 	useEffect,
 } from "react";
 import { Movie } from "@/lib/definitions";
+import { createClient } from "@/app/supabase/client";
 
 export interface CartState {
 	cartList: Movie[] | null;
@@ -65,19 +66,39 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const [state, dispatch] = useReducer(cartReducer, { cartList: [] });
+	const checkAuth = async () => {
+		const supabase = createClient();
+		const {
+			data: { session },
+		} = await supabase.auth.getSession();
+		return !!session;
+	};
 
 	useEffect(() => {
-		const storedCart = localStorage.getItem("cart");
-		if (storedCart) {
-			try {
-				const parsed = JSON.parse(storedCart);
-				dispatch({ type: "INITIALIZE_CART", cartList: parsed });
-			} catch (error) {
-				console.error("Failed to parse cart from localStorage", error);
+		const handleAuthCheck = async () => {
+			const isAuthenticated = await checkAuth();
+			if (!isAuthenticated) {
+				// Clear the cart from localStorage if the user is not authenticated
+				localStorage.removeItem("cart");
+				dispatch({ type: "INITIALIZE_CART", cartList: [] }); // Clear the cart state
+				return;
 			}
-		}
+
+			// Load the cart from localStorage if the user is authenticated
+			const storedCart = localStorage.getItem("cart");
+			if (storedCart) {
+				try {
+					const parsed = JSON.parse(storedCart);
+					dispatch({ type: "INITIALIZE_CART", cartList: parsed });
+				} catch (error) {
+					console.error("Failed to parse cart from localStorage", error);
+				}
+			}
+		};
+
+		handleAuthCheck();
 	}, []);
-	
+
 	useEffect(() => {
 		localStorage.setItem("cart", JSON.stringify(state.cartList));
 	}, [state.cartList]);
