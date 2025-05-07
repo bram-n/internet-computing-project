@@ -1,14 +1,18 @@
 "use client";
-
+import { useEffect } from "react";
 import { X } from "lucide-react";
-import type { Movie } from "@/lib/definitions";
+import {fetchPriceOfMovie} from "@/lib/data";
+import type { Movie, MoviePrice} from "@/lib/definitions";
 import { useCart } from "@/app/ui/main/context";
 import CartMovie from "./cart-movie";
 
 const CartItem = ({ movie }: { movie: Movie }) => {
-
+	
+	// const moviePrice: MoviePrice[] = await fetchPriceOfMovie(movie.id) || [];
+	
+	
 	const { dispatch } = useCart();
-
+	
 	const handleRemove = () => {
 		dispatch({ type: "REMOVE_FROM_CART", movieToRemove: movie });
 	}
@@ -19,7 +23,7 @@ const CartItem = ({ movie }: { movie: Movie }) => {
 				<X />
 			</div>
 			<CartMovie movie={movie} />
-			<div>$9.99</div>
+			<div>${3.99}</div>
 		</div>
 	);
 };

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Movie, MoviePrice} from "@/lib/definitions";
 import { getMoviePosterImage, fetchPriceOfMovie} from "@/lib/data";
 import Image from "next/image";
+import { formatRuntime } from "@/lib/utils";
 
 const SliderItem = async ({ movie }: { movie: Movie }) => {
 	const { posterPath } = await getMoviePosterImage(movie.imdb_id);
@@ -17,7 +18,7 @@ const SliderItem = async ({ movie }: { movie: Movie }) => {
 				<div className="group overflow-hidden relative">
 					<div className="absolute bottom-0 left-0 w-full bg-gray-800/80 px-4 py-3 flex flex-col items-start">
 						<h3 className="text-lg font-semibold text-white">
-							{movie.title} <span className="text-gray-300 font-normal">({movie.year})</span>
+							{movie.title} <span className="text-gray-300 font-normal">{formatRuntime(movie.runtime_minutes)} </span>
 						</h3>
 						<p className="text-sm text-blue-200 font-bold mt-1">
 							${moviePrice[0]?.price}

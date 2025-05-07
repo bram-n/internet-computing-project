@@ -6,7 +6,6 @@ import ActorsList from "@/app/ui/movie/actors-list";
 import CriticReviews from "@/app/ui/movie/critic-reviews";
 import MovieReactions from "@/components/ui/movie-reactions";
 import MovieBuyButton from "@/app/ui/movie/movie-buy-button";
-import MovieRating from "@/app/ui/movie/movie-rating";
 import type { MoviePrice } from "@/lib/definitions";
 import { notFound } from "next/navigation";
 
@@ -31,7 +30,7 @@ export default async function MovieDetails({ params }: { params: { movie: string
     <main className="p-6 bg-black text-white min-h-screen">
       <div className="mx-auto max-w-screen-2xl">
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="order-last w-full">
+          <div className="order-last w-full md:w-full">
             {/* Top section with poster and basic details */}
             <div className="flex flex-col md:flex-row md:w-full gap-8 mb-10">
               <MoviePoster src={moviePoster} title={movie.title} />
@@ -49,13 +48,14 @@ export default async function MovieDetails({ params }: { params: { movie: string
                 <div className="mb-4">
                   <MovieReactions movieId={movieId} />
                 </div>
-                <div className="mb-8">
+                <div className="mb-2">
                   <MovieBuyButton 
                     movie={movie} 
                     moviePrice={moviePrice}
                   />
                 </div>
               </div>
+              
             </div>
             <ActorsList tmdbId={tmdbId} />
             <CriticReviews movieId={movieId} />

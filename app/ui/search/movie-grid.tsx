@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getMoviePosterImage } from "@/lib/data";
 import {MovieGridProps} from "@/lib/definitions";
+import { formatRuntime } from "@/lib/utils";
 
 const MovieGrid = async ({ movies, title }: MovieGridProps) => {
 
@@ -52,7 +53,7 @@ const MovieGrid = async ({ movies, title }: MovieGridProps) => {
                   )}
                 </div>
                 <h3 className="font-medium">{movie.title}</h3>
-                <p className="text-sm text-gray-400">{movie.runtime_minutes} min</p>
+                <p className="text-sm text-gray-400">{ formatRuntime(movie.runtime_minutes)}</p>
               </div>
             </Link>
           ))}

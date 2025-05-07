@@ -22,7 +22,6 @@ export default function MovieInfo({ title, runtime, year, director, overview, ra
         <MovieRating rating={rating} />
       </div>
       <p className="text-lg text-gray-300 mb-1">Directed by <span className="font-medium text-white">{director}</span></p>
-      <p className="text-lg text-gray-400 mb-4">Genres</p>
       {overview && (
         <div className="mt-4">
           <h2 className="text-xl font-semibold mb-2">Overview</h2>

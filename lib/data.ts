@@ -273,7 +273,8 @@ const fetchMovieCriticReviews = async ({ params }: { params: { movie: string } }
 	return reviews;
 };
 
-const fetchPriceOfMovie = async (movieId: string) => {
+
+const fetchPriceOfMovie = async (movieId: string): Promise<MoviePrice[] | null> => {
 	const supabase = await createClient();
 
 	const { data: price, error } = await supabase
@@ -286,7 +287,7 @@ const fetchPriceOfMovie = async (movieId: string) => {
 		return null;
 	}
 	
-	return price as MoviePrice[];
+	return price;
 }
 
 
