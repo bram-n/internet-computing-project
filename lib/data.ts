@@ -383,7 +383,7 @@ const fetchMovieCast = async (tmdbId: string): Promise<{ name: string; profile_p
 
 		const data = await response.json();
 		// Get top 6 cast members
-		return data.cast.slice(0, 6).map((actor: { name: any; profile_path: any; character: any; }) => ({
+		return data.cast.slice(0, 6).map((actor: { name: string; profile_path: string; character: string; }) => ({
 			name: actor.name,
 			profile_path: actor.profile_path,
 			character: actor.character
