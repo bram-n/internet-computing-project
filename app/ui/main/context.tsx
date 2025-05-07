@@ -66,7 +66,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const [state, dispatch] = useReducer(cartReducer, { cartList: [] });
-	const checkAuth = async () => {
+	const checkAuthStatus = async () => {
 		const supabase = createClient();
 		const {
 			data: { session },
@@ -76,7 +76,7 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
 	useEffect(() => {
 		const handleAuthCheck = async () => {
-			const isAuthenticated = await checkAuth();
+			const isAuthenticated = await checkAuthStatus();
 			if (!isAuthenticated) {
 				// Clear the cart from localStorage if the user is not authenticated
 				localStorage.removeItem("cart");
