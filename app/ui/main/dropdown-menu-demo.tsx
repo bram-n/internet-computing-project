@@ -33,7 +33,6 @@ export function AccountDropdown() {
 	}, []);
 
 	const handleSignOut = async () => {
-		// console.log('handleSignOut function CALLED!');
 
 		const supabase = createClient(); 
 		let userId = null;
