@@ -400,6 +400,7 @@ const fetchMovieContentRating = async (tmdbId: string): Promise<string | null> =
 const fetchRecommendedMovies = async (): Promise<Movie[] | null> => {
 	const supabase = await createClient();
 	const { data: { user }, error: authError } = await supabase.auth.getUser();
+	console.log("user", user);
 
 	if (!user) {
 		if (authError && authError.name === 'AuthSessionMissingError') {
