@@ -11,7 +11,9 @@ const HeaderNav = () => {
 	return (
 		<nav className="relative flex items-center justify-between p-4 lg:px-6 border-b border-neutral-50">
 			<div className="block flex-none md:hidden">
-				<MenuSheet />
+				<Suspense fallback={<div>Loading...</div>}>
+					<MenuSheet />
+				</Suspense>
 			</div>
 			<div className="flex w-full items-center">
 				<div className="flex w-full md:w-1/3 justify-start">
