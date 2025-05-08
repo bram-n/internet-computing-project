@@ -1,7 +1,5 @@
 import CategorySidebar from "@/app/ui/search/category-sidebar";
-import SortSidebar from "@/app/ui/search/sort-sidebar";
 import CategorySelect from "@/app/ui/search/category-select";
-import SortSelect from "@/app/ui/search/sort-select";
 
 import { fetchAllGenres } from "@/lib/data";
 import SearchBar from "@/app/ui/main/search-bar";
