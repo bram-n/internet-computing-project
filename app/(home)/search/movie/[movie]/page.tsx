@@ -49,10 +49,10 @@ export default async function MovieDetails({ params }: { params: MoviePageParams
                   rating={contentRating}
                 />
                 <MovieRatings movieId={movieId} />
-                <div className="mb-4">
+                <div className="mb-4 flex justify-center md:justify-start">
                   <MovieReactions movieId={movieId} />
                 </div>
-                <div className="mb-2">
+                <div className="mb-2 flex justify-center md:justify-start">
                   <MovieBuyButton 
                     movie={movie} 
                     moviePrice={moviePrice}

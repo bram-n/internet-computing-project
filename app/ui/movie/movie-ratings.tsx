@@ -12,9 +12,9 @@ export default async function MovieRatings({ movieId }: { movieId: string }) {
   return (
     <div className="mb-8">
       <h2 className="text-2xl font-semibold mb-4">Critic Ratings</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {ratings.imdb_rating && (
-          <div className="bg-gray-900 p-4 rounded-lg flex flex-col sm:flex-row items-center min-w-0">
+          <div className="bg-gray-900 p-4 rounded-lg flex flex-col sm:flex-row items-center min-w-0 max-w-[250px]">
             <Image 
               src="/imdb.png" 
               alt="IMDb Rating" 
@@ -31,7 +31,7 @@ export default async function MovieRatings({ movieId }: { movieId: string }) {
           </div>
         )}
         {ratings.metascore && (
-          <div className="bg-gray-900 p-4 rounded-lg flex flex-col sm:flex-row items-center min-w-0">
+          <div className="bg-gray-900 p-4 rounded-lg flex flex-col sm:flex-row items-center min-w-0 max-w-[250px]">
             <Image 
               src="/metascore.png" 
               alt="Metacritic Score" 
@@ -48,7 +48,7 @@ export default async function MovieRatings({ movieId }: { movieId: string }) {
           </div>
         )}
         {ratings.tomatometer && (
-          <div className="bg-gray-900 p-4 rounded-lg flex flex-col sm:flex-row items-center min-w-0">
+          <div className="bg-gray-900 p-4 rounded-lg flex flex-col sm:flex-row items-center min-w-0 max-w-[250px]">
             <Image 
               src="/tomato.png" 
               alt="Rotten Tomatoes Score" 
