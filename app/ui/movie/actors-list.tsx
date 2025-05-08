@@ -12,7 +12,7 @@ export default async function ActorsList({ tmdbId }: ActorsListProps) {
   return (
     <div className="mb-10">
       <h2 className="text-2xl font-semibold mb-4">Cast</h2>
-      <div className="flex flex-wrap gap-8">
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-6">
         {cast.map((actor, index) => (
           <div key={index} className="flex flex-col items-center">
             <div className="w-24 h-24 rounded-full bg-gray-700 flex items-center justify-center overflow-hidden border-2 border-white">
