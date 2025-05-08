@@ -37,6 +37,8 @@ export function AccountDropdown() {
 			const supabase = createClient();
 			await supabase.auth.signOut();
 			setIsLoggedIn(false);
+
+			// reset cart 
 			dispatch({ type: "INITIALIZE_CART", cartList: [] })
 			router.push("/");
 			router.refresh();
