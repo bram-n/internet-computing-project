@@ -1,24 +1,19 @@
-// import { Input } from "@/components/ui/input";
-// import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { 
-	// Search 
-} from "lucide-react";
 import Image from "next/image";
-// Removed Menu here
+
 import MenuSheet from "@/app/ui/main/menu-sheet";
 import CartSheet from "@/app/ui/cart/cart-sheet";
 import SearchBar from "@/app/ui/main/search-bar";
 import { AccountDropdown } from "@/app/ui/main/dropdown-menu-demo"
-// import AccountButton from "@/app/ui/main/account-button"
-
-// import { Separator } from "@/components/ui/separator";
+import { Suspense } from 'react';
 
 const HeaderNav = () => {
 	return (
 		<nav className="relative flex items-center justify-between p-4 lg:px-6 border-b border-neutral-50">
 			<div className="block flex-none md:hidden">
-				<MenuSheet />
+				<Suspense fallback={<div>Loading...</div>}>
+					<MenuSheet />
+				</Suspense>
 			</div>
 			<div className="flex w-full items-center">
 				<div className="flex w-full md:w-1/3 justify-start">
@@ -66,7 +61,9 @@ const HeaderNav = () => {
 							<Search />
 						</div>
 					</form> */}
-					<SearchBar />
+					<Suspense fallback={<div className="relative md:w-80 xl:w-full h-10 bg-gray-800 rounded-md animate-pulse"><span className="sr-only">Loading search bar...</span></div>}>
+						<SearchBar />
+					</Suspense>
 				</div>
 				<div className="flex justify-end md:w-1/3">
 					<div className="flex flex-row gap-4">

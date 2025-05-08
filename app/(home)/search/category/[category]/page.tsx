@@ -1,8 +1,9 @@
 import { fetchMoviesByGenre } from "@/lib/data";
 import MovieGrid from "@/app/ui/search/movie-grid";
 
+type CategoryPageParams = Promise<{ category: string }>;
 
-export default async function Category({ params }: { params: { category: string } }) {
+export default async function Category({ params }: { params: CategoryPageParams }) {
 	const { category } = await params; 
     const categoryName = decodeURIComponent(category);
 	const movies = await fetchMoviesByGenre(categoryName);

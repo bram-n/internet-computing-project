@@ -9,9 +9,12 @@ import MovieBuyButton from "@/app/ui/movie/movie-buy-button";
 import type { MoviePrice } from "@/lib/definitions";
 import { notFound } from "next/navigation";
 
-export default async function MovieDetails({ params }: { params: { movie: string } }) {
+type MoviePageParams = Promise<{ movie: string }>;
 
-  const movieId = params.movie;
+export default async function MovieDetails({ params }: { params: MoviePageParams }) {
+
+  const awaitedParams = await params;
+  const movieId = awaitedParams.movie;
 
   const movie = await FetchMovieDetails({ params: { movie: movieId } });
   
