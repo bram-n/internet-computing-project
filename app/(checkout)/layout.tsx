@@ -16,9 +16,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${inter.className} antialiased bg-black text-white`}>
-				<CartProvider>
-          {children}
-        </CartProvider>
+				<CartProvider>{children}</CartProvider>
 			</body>
 		</html>
 	);

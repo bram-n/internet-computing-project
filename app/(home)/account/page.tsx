@@ -1,4 +1,9 @@
-import { CircleUser, Package, Wrench } from "lucide-react";
+import { 
+	// CircleUser, 
+	// Package, 
+	Wrench 
+} from "lucide-react";
+import Link from "next/link";
 
 const AccountPage = () => {
 	return (
@@ -29,16 +34,16 @@ const AccountPage = () => {
 						</p>
 					</a>
 				</div> */}
-				<div className="flex flex-row w-full md:w-1/3 border border-neutral-50 py-8 px-4 rounded-xl">
+				<div className="flex flex-row w-full border border-neutral-50 py-8 px-4 rounded-xl">
 					<div className="flex justify-center items-center border border-neutral-50 rounded-full p-6">
 						<Wrench />
 					</div>
-					<a href="/preferences" className="ml-2">
+					<Link href="/preferences" className="ml-2 flex flex-col justify-center items-start">
 						<div>Preferences</div>
 						<p className="text-sm text-gray-100">
 							View and update your preferences
 						</p>
-					</a>
+					</Link>
 				</div>
 			</div>
 			<div className="mb-10"></div>

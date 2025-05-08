@@ -88,12 +88,12 @@ const fetchAwardWinningMovies = async (limit: number = 3): Promise<Movie[]> => {
 };
 
 // just get random movies for now
-const fetchFeaturedMovies = async (limit: number = 3): Promise<Movie[]> => {
+const fetchFeaturedMovies = async (limit: number = 3, offset: number = 200): Promise<Movie[]> => {
 	const supabase = await createClient();
 	const { data: supabaseMovies, error } = await supabase
 		.from("Movies")
 		.select()
-		.limit(limit);
+		.range(offset, offset + limit - 1);
 	if (error) {
 		console.error("Database error:", error);
 		throw new Error("Error with querying POPULAR movies");
@@ -400,7 +400,6 @@ const fetchMovieContentRating = async (tmdbId: string): Promise<string | null> =
 const fetchRecommendedMovies = async (): Promise<Movie[] | null> => {
 	const supabase = await createClient();
 	const { data: { user }, error: authError } = await supabase.auth.getUser();
-	console.log("user", user);
 
 	if (!user) {
 		if (authError && authError.name === 'AuthSessionMissingError') {
@@ -445,6 +444,16 @@ const fetchRecommendedMovies = async (): Promise<Movie[] | null> => {
 	return movies;
 }
 
+const isUserAuthenticated = async () => {
+	const supabase = await createClient();
+	const { data: { user }, error: authError } = await supabase.auth.getUser();
+	if (authError) {
+		console.error('Auth error', authError);
+	}
+
+	return !!user;
+}
+
 
 export {
 	fetchMovies,
@@ -465,4 +474,5 @@ export {
 	fetchMovieCast,
 	fetchMovieContentRating,
 	fetchRecommendedMovies,
+	isUserAuthenticated,
 };

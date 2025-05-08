@@ -9,6 +9,9 @@ import {
 	useEffect,
 } from "react";
 import { Movie } from "@/lib/definitions";
+import { useSession } from "next-auth/react"; // Import from next-auth
+import { redirect } from "next/navigation";
+
 
 export interface CartState {
 	cartList: Movie[] | null;
