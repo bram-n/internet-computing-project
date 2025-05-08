@@ -41,6 +41,12 @@ names(movies)
 ```
 
 ```{r}
+movies %>% 
+  select(id) %>% 
+  distinct()
+```
+
+```{r}
 sub_vars <- c("Title", "Genre", "runtimeMinutes" ,"originalLanguage","tomatoMeter", "audienceScore", "Actors", "Director", "Writer")
 
 dummy_var = c("Genre", "Actors", "Director")
