@@ -13,7 +13,6 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 import { useDebouncedCallback } from "use-debounce";
 
 const MenuSheet = () => {
@@ -55,7 +54,6 @@ const MenuSheet = () => {
 						</div>
 					</div>
 					<ul className="mt-4 flex w-full flex-col">
-						{/* put links for search in here */}
 						<li className="py-2">
 							<SheetClose asChild>
 								<Link
@@ -67,39 +65,15 @@ const MenuSheet = () => {
 								</Link>
 							</SheetClose>
 						</li>
-						<div className="my-2">
-							<Separator />
-						</div>
+
 						<li className="py-2">
 							<SheetClose asChild>
 								<Link
-									href="/search"
+									href="/preferences"
 									type="_self"
 									className="text-xl transition-colors hover:text-neutral-500"
 								>
-									All
-								</Link>
-							</SheetClose>
-						</li>
-						<li className="py-2">
-							<SheetClose asChild>
-								<Link
-									href="/search/category/action"
-									type="_self"
-									className="py-2 text-xl transition-colors hover:text-neutral-500"
-								>
-									Action
-								</Link>
-							</SheetClose>
-						</li>
-						<li className="py-2">
-							<SheetClose asChild>
-								<Link
-									href="/search/category/romance"
-									type="_self"
-									className="py-2 text-xl transition-colors hover:text-neutral-500"
-								>
-									Romance
+									Your Preferences
 								</Link>
 							</SheetClose>
 						</li>
