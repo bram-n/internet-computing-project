@@ -6,6 +6,15 @@ Developed by Tam Nguyen, Bram Nutt, and Camden Scholl
 
 3AM Movies is based on e-commerce sites like Amazon and movie or streaming service websites like Netflix. Our goal is to create a site where users can shop for movies based on recommendations and their selected preferences. 
 
+### Pages
+There are three main pages: the home page, which shows featured movies sorted by preference and additional categories, the search page, which allows users to search by category and name, and the checkout page, which is where the user can buy their movies. There are also some subpages within each of the main pages, but these are mostly extra details that make the website feel more natural, and aren't required for basic functionality.
+
+### Movie, User, and Image Information
+We store our movie and user information in our Supabase instance and keep most of our queries on the server side in a file called data.ts. When the queries are run on the server side, NextJS is able to process them much faster. In most cases, the images, which we get from TMDB's API, are also queried on the server side. However, in some cases, like in the cart, we query them on the client side because we need some other client side specific functionality in that component. For these cases, we set up both a client side access point to our Supabase instance and a client side access point to the TMDP API.
+
+### Recommender System
+Our recommender system is written in Python and is separate from the main website and we update the machine learning algorithm through API calls. This way, we can manange the recommender system separately and even detach it if there are issues that require fixing. To update the system, we send over the titles of the movies that the user has clicked on, and the recommender system updates to recommend similar movies.
+
 ## Development Timeline
 Developed from January 2025 to May 2025. 
 

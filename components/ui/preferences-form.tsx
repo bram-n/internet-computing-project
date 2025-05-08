@@ -18,8 +18,6 @@ import {
 import { Genre } from "@/lib/definitions";
 import { redirect } from "next/navigation";
 
-// TODO: NEED TO MAKE TYPES MATCH FOR GENRES
-
 const FormSchema = z.object({
 	genres: z
 		.array(z.string())
