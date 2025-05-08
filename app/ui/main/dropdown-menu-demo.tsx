@@ -105,14 +105,14 @@ export function AccountDropdown() {
 						<DropdownMenuLabel className="text-white">
 							My Account
 						</DropdownMenuLabel>
-						<DropdownMenuSeparator className="bg-neutral-50" />
+						{/* <DropdownMenuSeparator className="bg-neutral-50" />
 						<DropdownMenuItem
 							className="text-white focus:bg-neutral-800 focus:text-white cursor-pointer"
 							onClick={() => router.push("/account")}
 						>
 							Account
 						</DropdownMenuItem>
-						<DropdownMenuSeparator className="bg-neutral-50" />
+						<DropdownMenuSeparator className="bg-neutral-50" /> */}
 						<DropdownMenuItem
 							className="text-white focus:bg-neutral-800 focus:text-white cursor-pointer"
 							onClick={handleSignOut}

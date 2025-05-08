@@ -3,7 +3,7 @@ import {
 	// Package, 
 	Wrench 
 } from "lucide-react";
-import Link from "next/link";
+// import Link from "next/link";
 
 const AccountPage = () => {
 	return (
@@ -34,7 +34,7 @@ const AccountPage = () => {
 						</p>
 					</a>
 				</div> */}
-				<div className="flex flex-row w-full border border-neutral-50 py-8 px-4 rounded-xl">
+				{/* <div className="flex flex-row w-full border border-neutral-50 py-8 px-4 rounded-xl">
 					<div className="flex justify-center items-center border border-neutral-50 rounded-full p-6">
 						<Wrench />
 					</div>
@@ -44,7 +44,7 @@ const AccountPage = () => {
 							View and update your preferences
 						</p>
 					</Link>
-				</div>
+				</div> */}
 			</div>
 			<div className="mb-10"></div>
 		</main>
