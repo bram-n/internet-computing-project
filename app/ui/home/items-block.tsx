@@ -30,15 +30,12 @@ const ItemsBlock = async ({ cardTitle, movieList }: ItemsBlockProps) => {
 			<CardContent>
 				<div className="flex items-center justify-center">
 					<Carousel
-						opts={{
-							align: "start",
-						}}
 						className="max-w-sm sm:max-w-md md:max-w-[calc(100%-200px)]"
 					>
 						<CarouselContent>
 							{movieList.map((movie, index) => (
 								<CarouselItem
-									className="basis-1/2 md:basis-1/4 lg:basis-1/4 xl:basis-1/5"
+									className="basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 flex justify-center items-center"
 									key={index}
 								>
 									<BlockMovie movie={movie} />
