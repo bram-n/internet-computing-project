@@ -1,62 +1,42 @@
 [
     {
-        "idx":515,
-        "id":"terminator_2_judgment_day",
-        "preds":1,
-        "scores":0.7145502808
+        "movie_id":"best_of_youth",
+        "user_id":"2e9ed51b-3e10-4f7d-8752-fd8f5bf80489"
     },
     {
-        "idx":123,
-        "id":"1008852-great_race",
-        "preds":1,
-        "scores":0.7013945246
+        "movie_id":"norte_the_end_of_history",
+        "user_id":"2e9ed51b-3e10-4f7d-8752-fd8f5bf80489"
     },
     {
-        "idx":192,
-        "id":"indiana_jones_and_the_last_crusade",
-        "preds":1,
-        "scores":0.6648281864
+        "movie_id":"1048378-edvard_munch",
+        "user_id":"2e9ed51b-3e10-4f7d-8752-fd8f5bf80489"
     },
     {
-        "idx":546,
-        "id":"avatar",
-        "preds":1,
-        "scores":0.6613981419
+        "movie_id":"rrr",
+        "user_id":"2e9ed51b-3e10-4f7d-8752-fd8f5bf80489"
     },
     {
-        "idx":238,
-        "id":"raiders_of_the_lost_ark",
-        "preds":1,
-        "scores":0.6587479916
+        "movie_id":"khakee",
+        "user_id":"2e9ed51b-3e10-4f7d-8752-fd8f5bf80489"
     },
     {
-        "idx":127,
-        "id":"little_big_man",
-        "preds":1,
-        "scores":0.641371043
+        "movie_id":"jhund",
+        "user_id":"2e9ed51b-3e10-4f7d-8752-fd8f5bf80489"
     },
     {
-        "idx":134,
-        "id":"1040678-last_of_the_mohicans",
-        "preds":1,
-        "scores":0.6335702105
+        "movie_id":"iron_man_3",
+        "user_id":"2e9ed51b-3e10-4f7d-8752-fd8f5bf80489"
     },
     {
-        "idx":89,
-        "id":"smokey_and_the_bandit",
-        "preds":1,
-        "scores":0.6190963755
+        "movie_id":"lawrence_of_arabia",
+        "user_id":"2e9ed51b-3e10-4f7d-8752-fd8f5bf80489"
     },
     {
-        "idx":434,
-        "id":"barry_lyndon",
-        "preds":1,
-        "scores":0.6050370705
+        "movie_id":"bandit_queen",
+        "user_id":"2e9ed51b-3e10-4f7d-8752-fd8f5bf80489"
     },
     {
-        "idx":384,
-        "id":"shazam_fury_of_the_gods",
-        "preds":1,
-        "scores":0.5990326688
+        "movie_id":"spiderman_3",
+        "user_id":"2e9ed51b-3e10-4f7d-8752-fd8f5bf80489"
     }
 ]

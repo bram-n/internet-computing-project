@@ -33,15 +33,52 @@ export function AccountDropdown() {
 	}, []);
 
 	const handleSignOut = async () => {
+		// console.log('handleSignOut function CALLED!');
+
+		const supabase = createClient(); 
+		let userId = null;
+
 		try {
-			const supabase = createClient();
+			const { data: { user: currentUser }, error: getUserError } = await supabase.auth.getUser();
+			if (getUserError) {
+				console.error('Error fetching user before sign out:', getUserError);
+			}
+			if (currentUser) {
+				userId = currentUser.id;
+				console.log(`User ${userId} is logging out. Triggering recommender script.`);
+
+				const response = await fetch('/api/trigger-recommender', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ userId: userId }), // pass the user's ID
+				});
+
+				if (!response.ok) {
+					const errorData = await response.json();
+					console.error('Failed to trigger recommender script:', errorData.details || errorData.error || 'Unknown API error');
+				} else {
+					const result = await response.json();
+					console.log('Recommender script trigger result:', result.message || result);
+				}
+			} else {
+				console.warn('No user found before sign out. Cannot trigger recommender script.');
+			}
+		} catch (apiCallError) {
+			console.error('Error during pre-sign-out API call to trigger recommender:', apiCallError);
+		}
+
+		try {
 			await supabase.auth.signOut();
 			setIsLoggedIn(false);
 
-			// reset cart 
+			// reset cart
 			dispatch({ type: "INITIALIZE_CART", cartList: [] })
-			router.push("/");
-			router.refresh();
+			router.push("/"); 
+			router.refresh(); 
+			// console.log('User signed out and UI updated.');
+
 		} catch (error) {
 			console.error("Error signing out:", error);
 		}
