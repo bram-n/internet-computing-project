@@ -213,9 +213,7 @@ const fetchAllGenres = async (): Promise<Genre[]> => {
     console.error("Error fetching genres:", error);
     throw new Error("Error fetching genres");
   }
-  
-  // console.log("Returned genres count:", data.length);
-  // console.log("First few genres:", data.slice(0, 5));
+
   
   return data as Genre[];
 };
@@ -258,7 +256,6 @@ const fetchMovieRatings = async ({ params }: { params: { movie: string } }): Pro
 const fetchMovieCriticReviews = async ({ params }: { params: { movie: string } }): Promise<{ critic_name: string; publication_name: string; review_url: string; review_text: string }[] | null> => {
 	const movieId = params.movie;
 	const supabase = await createClient();
-	// console.log("Fetching reviews for movie ID:", movieId);
 	
 	const { data: reviews, error } = await supabase
 		.from("critic_reviews")
@@ -270,7 +267,6 @@ const fetchMovieCriticReviews = async ({ params }: { params: { movie: string } }
 		return null;
 	}
 	
-	// console.log("Reviews found:", reviews);
 	return reviews;
 };
 

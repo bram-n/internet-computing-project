@@ -9,7 +9,6 @@ import {
 	useEffect,
 } from "react";
 import { Movie } from "@/lib/definitions";
-import { createClient } from "@/app/supabase/client";
 
 export interface CartState {
 	cartList: Movie[] | null;
