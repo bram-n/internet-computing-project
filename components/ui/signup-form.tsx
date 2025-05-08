@@ -31,7 +31,7 @@ export default function SignupForm() {
 			}
 
 			if (data) {
-				router.push('/login?message=Check your email to confirm your account');
+				router.push('/login?message=Check-your-email-to-confirm-your-account');
 			}
 		} catch (error) {
 			console.error('Signup error', error);

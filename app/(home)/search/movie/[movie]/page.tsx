@@ -15,7 +15,7 @@ import CriticReviews from "@/app/ui/movie/critic-reviews";
 import MovieReactions from "@/components/ui/movie-reactions";
 import MovieBuyButton from "@/app/ui/movie/movie-buy-button";
 import type { MoviePrice } from "@/lib/definitions";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 
 type MoviePageParams = Promise<{ movie: string }>;
