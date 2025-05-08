@@ -27,7 +27,7 @@ export default function Home() {
 				<QuickMoviesBlock />
 				<LongMoviesBlock />
 				<FilmNoirBlock />
-				<YourHistoryBlock />
+				{/* <YourHistoryBlock /> */}
 			</section>
 		</main>
 	);
