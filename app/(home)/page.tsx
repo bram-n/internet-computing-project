@@ -30,10 +30,5 @@ export default function Home() {
 				<YourHistoryBlock />
 			</section>
 		</main>
-		// header w/ search DONE
-		// TODO: items section (3-4)
-		// fancy slider thing DONE
-		// about links DONE (in footer)
-		// footer DONE
 	);
 }

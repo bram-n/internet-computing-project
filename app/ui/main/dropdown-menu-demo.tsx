@@ -11,11 +11,13 @@ import { User } from "lucide-react";
 import { createClient } from "@/app/supabase/client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useCart } from "./context";
 
 export function AccountDropdown() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const router = useRouter();
+	const { dispatch } = useCart();
 
 	const checkSession = async () => {
 		const supabase = createClient();
@@ -35,6 +37,7 @@ export function AccountDropdown() {
 			const supabase = createClient();
 			await supabase.auth.signOut();
 			setIsLoggedIn(false);
+			dispatch({ type: "INITIALIZE_CART", cartList: [] })
 			router.push("/");
 			router.refresh();
 		} catch (error) {

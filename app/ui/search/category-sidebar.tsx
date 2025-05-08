@@ -1,8 +1,5 @@
 import Link from "next/link";
-// import { usePathname } from "next/navigation";
-// import clsx from "clsx";
 import { fetchAllGenres } from "@/lib/data";
-// import { Genre } from "@/lib/definitions";
 
 const CategorySidebar = async () => {
 	const genres = await fetchAllGenres();

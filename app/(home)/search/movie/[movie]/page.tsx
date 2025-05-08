@@ -69,9 +69,3 @@ export default async function MovieDetails({ params }: { params: MoviePageParams
     </main>
   );
 }
-
-// Todo get the Poster, Title, Actors, Director, Watch time, Review Statistics, Ratings, Awards
-// https://sketchfab.com/3d-models/emmy-award-29a62bb7fd664c7796c285504860fd51 mayeb add this for the award
-// https://www.svgrepo.com/svg/118870/oscar-academy-award other option
-// https://www.freepik.com/premium-psd/oscar-movie-trophy-white-background-ar-34-style-raw-job-id-a4954bbb3f734a74b66361468dd0259d_223617061.htm#fromView=keyword&page=1&position=8&uuid=21754a70-43e4-451f-9448-65bde28882fb&query=Oscar+3d
-// https://icons8.com/icons/set/metascore

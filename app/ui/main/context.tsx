@@ -66,26 +66,9 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const [state, dispatch] = useReducer(cartReducer, { cartList: [] });
-	const checkAuthStatus = async () => {
-		const supabase = createClient();
-		const {
-			data: { session },
-		} = await supabase.auth.getSession();
-		return !!session;
-	};
 
 	useEffect(() => {
-		const handleAuthCheck = async () => {
-			const isAuthenticated = await checkAuthStatus();
-			if (!isAuthenticated) {
-				// Clear the cart from localStorage if the user is not authenticated
-				localStorage.removeItem("cart");
-				dispatch({ type: "INITIALIZE_CART", cartList: [] }); // Clear the cart state
-				return;
-			}
-
-			// Load the cart from localStorage if the user is authenticated
-			const storedCart = localStorage.getItem("cart");
+		const storedCart = localStorage.getItem("cart");
 			if (storedCart) {
 				try {
 					const parsed = JSON.parse(storedCart);
@@ -94,9 +77,6 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 					console.error("Failed to parse cart from localStorage", error);
 				}
 			}
-		};
-
-		handleAuthCheck();
 	}, []);
 
 	useEffect(() => {

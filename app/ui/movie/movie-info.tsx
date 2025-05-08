@@ -1,8 +1,5 @@
-// import { fetchMovieRatings } from "@/lib/data";
 import { formatRuntime } from "@/lib/utils";
 import MovieRating from "./movie-rating";
-// import MovieInfo
-// TODO: UPDATE THIS TO HAVE DIRECTOR AND GENRES
 interface MovieInfoProps {
 	title: string;
 	runtime: number;

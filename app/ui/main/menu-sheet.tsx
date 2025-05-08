@@ -6,13 +6,8 @@ import {
 	SheetClose,
 	SheetContent,
 	SheetHeader,
-	// SheetFooter,
 	SheetTitle,
-	// SheetDescription,
 } from "@/components/ui/sheet";
-
-// import { Label } from "@/components/ui/label";
-// import { Button } from "@/components/ui/button";
 import { useSearchParams, useRouter } from "next/navigation";
 
 import { Menu, Search } from "lucide-react";

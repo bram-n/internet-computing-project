@@ -1,7 +1,6 @@
 import {
 	Card,
 	CardContent,
-	// CardDescription,
 	CardFooter,
 	CardHeader,
 	CardTitle,
@@ -13,8 +12,6 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
-
-// import Link from "next/link";
 import { Movie } from "@/lib/definitions";
 import BlockMovie from "./block-movie";
 
