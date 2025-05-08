@@ -87,31 +87,6 @@ const fetchAwardWinningMovies = async (limit: number = 3): Promise<Movie[]> => {
 	return movies;
 };
 
-// const fetchBoxOfficeHitsMovies = async (limit: number = 3): Promise<Movie[]> => {
-// 	const supabase = await createClient();
-// 	const { data: movieIds, error: movieIdsError } = await supabase
-// 			.from('boxOffice')
-// 			.select('movie_id')
-// 			.eq('genre_id', genre.genre_id)
-// 			.limit(limit * 2);
-
-// 		if (movieIdsError || !movieIds || movieIds.length === 0) return [];
-
-
-// 	const ids = movieIds.map(item => item.movie_id);
-
-// 		const { data: movies, error: moviesError } = await supabase
-// 			.from('Movies')
-// 			.select('*')
-// 			.in('id', ids)
-// 			.limit(limit);
-
-// 	const movies: Movie[] = (supabaseMovies as Movie[]) || [];
-
-// 	return movies;
-// };
-
-
 // just get random movies for now
 const fetchFeaturedMovies = async (limit: number = 3): Promise<Movie[]> => {
 	const supabase = await createClient();
@@ -422,6 +397,54 @@ const fetchMovieContentRating = async (tmdbId: string): Promise<string | null> =
 	}
 };
 
+const fetchRecommendedMovies = async (): Promise<Movie[] | null> => {
+	const supabase = await createClient();
+	const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+	if (!user) {
+		if (authError && authError.name === 'AuthSessionMissingError') {
+			console.log("Guest user or session missing. Fetching generic movies.");
+		} else if (authError) {
+			console.error("Authentication error:", authError);
+		} else {
+			console.log("Guest user. Fetching generic movies.");
+		}
+		return fetchMovies(10); 
+	}
+
+	const userId = user.id;
+	const { data: recommendedMoviesData, error: queryError } = await supabase
+		.from("user_recommendations") 
+		.select("movie_id")
+		.eq('user_id', userId);
+
+	if (queryError) {
+		console.error("Error fetching user recommendations:", queryError);
+		return fetchMovies(10);
+	}
+
+	if (!recommendedMoviesData || recommendedMoviesData.length === 0) {
+		console.log("No recommendations found for user. Fetching generic movies.");
+		return fetchMovies(10);
+	}
+
+	const ids = recommendedMoviesData.map((item: { movie_id: string }) => item.movie_id);
+
+	const { data: movies, error: moviesError } = await supabase
+		.from('Movies')
+		.select('*')
+		.in('id', ids)
+		.limit(10);
+	
+	if (moviesError) {
+		console.error("Error fetching movie details for recommendations:", moviesError);
+		return fetchMovies(10);
+	}
+
+	return movies;
+}
+
+
 export {
 	fetchMovies,
 	fetchPopularMovies,
@@ -440,4 +463,5 @@ export {
 	fetchMovieOverview as getMovieOverview,
 	fetchMovieCast,
 	fetchMovieContentRating,
+	fetchRecommendedMovies,
 };
