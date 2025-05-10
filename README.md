@@ -23,6 +23,12 @@ We are using NextJS with TypeScript and Tailwind. NextJS is a fullstack framewor
 
 ## How to Run
 
+To access the website use this link [3AM Movies Website]([https://example.com](https://3am-movies.vercel.app)
+
+
+To run this locally follow the following instructions.
+
+
 First, clone the repository from https://github.com/bram-n/internet-computing-project. We use pnpm instead of npm, since pnpm works better with NextJS.
 To install pnpm, run
 
@@ -64,3 +70,23 @@ Once everything is setup, run
 ```bash
 pnpm dev
 ```
+
+
+Resources used:
+
+[https://nextjs.org/learn](https://nextjs.org/learn/dashboard-app)
+[Tomato Icons](https://icons8.com/icons/set/rotten-tomatoes)
+[IMDB icon](https://icons8.com/icons/set/imdb)
+[IMDB icon](https://icons8.com/icons/set/imdb)
+[TMDB API](https://developer.themoviedb.org/docs/getting-started)
+[OMDB API](https://www.omdbapi.com)
+[Movie Ratings icons](https://www.flaticon.com/packs/age-restriction-15315734)
+[ShadCN](https://ui.shadcn.com)
+[Supabase](https://supabase.com/docs/guides/auth)
+
+
+
+
+
+
+
